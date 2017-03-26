@@ -33,7 +33,7 @@ Check out these links for some examples of D3 visualizations:
 
 [Ryan's Earthquake Visualizations (D3 & Leaflet)](https://ryshackleton.github.io/global_daily_earthquakes_d3_leaflet/)
 
-# The three D's
+# D3 - Data Driven Documents
 D3 stands for **Data Driven Documents**. We will unpack this title in three parts.
 
 ## Data
