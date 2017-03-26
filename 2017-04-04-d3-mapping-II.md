@@ -218,8 +218,8 @@ There's a lot going on in these 4 lines of code.  Let's go line by line:
 1.    .enter() - get that enter selection as an array
 1.    .append("circle") - attach each of the data objects to a circle element within the svg.  Then return the circle selection as an array.
 
-![Enter, Update, Exit Selections](https://ryshackleton.github.io/d3_maptime/img/enterUpdateExit.svg)
-<img src="https://rawgithub.com/potherca/StackOverflow/gh-pages/question.13808020.include-an-svg-hosted-on-github-in-markdown/controllers_brief.svg">
+![Enter, Update, Exit Selections](https://cdn.rawgit.com/Ryshackleton/d3_maptime/04639b24/img/enterUpdateExit.svg)
+<img src="https://cdn.rawgit.com/Ryshackleton/d3_maptime/04639b24/img/enterUpdateExit.svg">
 
 ### Define your projection
 
