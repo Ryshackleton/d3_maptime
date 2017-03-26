@@ -1,0 +1,10 @@
+<svg width="720" height="120">
+  <g>
+    <rect width="300" height="100" style="fill:rgb(0,0,255);"></rect>
+  </g>
+  <g>
+    <circle cx="40" cy="60" r="10"></circle>
+    <circle cx="80" cy="60" r="10"></circle>
+    <circle cx="120" cy="60" r="10"></circle>
+  </g>
+</svg>
