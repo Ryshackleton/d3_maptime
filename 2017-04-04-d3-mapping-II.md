@@ -218,7 +218,7 @@ There's a lot going on in these 4 lines of code.  Let's go line by line:
 1.    .enter() - get that enter selection as an array
 1.    .append("circle") - attach each of the data objects to a circle element within the svg.  Then return the circle selection as an array.
 
-<img src="https://cdn.rawgit.com/Ryshackleton/d3_maptime/master/img/enterUpdateExit.svg"></img>
+<img src="https://cdn.rawgit.com/Ryshackleton/d3_maptime/b821c0e1/img/enterUpdateExit.svg"></img>
 
 
 ### Define your projection
