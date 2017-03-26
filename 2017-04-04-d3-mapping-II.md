@@ -224,9 +224,8 @@ There's a lot going on in these 4 lines of code.  Let's go line by line:
 1.    .append("circle") - attach each of the data objects to a circle element within the svg.  This creates an update selection, and appends the data to circle object.  
 <img src="https://ryshackleton.github.io/d3_maptime/img/03_selectAllCirclesDataEnterAppend.svg">
 1. Then return the new updated circle selection as an array.
-<img src="https://ryshackleton.github.io/d3_maptime/04_assignToCircles.svg">
+<img src="https://ryshackleton.github.io/d3_maptime/img/04_assignToCircles.svg">
 
-![Enter, Update, Exit Selections](https://ryshackleton.github.io/d3_maptime/img/enterUpdateExitII.svg)
 <img src="https://ryshackleton.github.io/d3_maptime/img/enterUpdateExitII.svg">
 
 ### Define your projection
