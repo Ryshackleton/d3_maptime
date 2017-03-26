@@ -66,9 +66,10 @@ And this is the rendered version of that code:
 
 SVG's work similarly to html pages, with tags representing objects that contain other objects: each of those circles is an element in your SVG, which has a width and height. Each circle contains some coordinates of the object's center (cx, cy), and radius (r).  So the SVG is just a set of instructions for where to put each object.
 
-It's also worth noting that D3 has the ability to write and edit [many types of shape elements](https://www.w3.org/TR/SVG/shapes.html), like rectangles (rect), not just circles.  Another important one we'll use later is the [path element](https://www.w3.org/TR/SVG/paths.html#PathElement), which lets us define complex shapes like country boundaries [SVG].
+It's also worth noting that D3 has the ability to write and edit [many types of shape elements](https://www.w3schools.com/graphics/svg_examples.asp), like rectangles (rect), not just circles.  Another important one we'll use later is the [path element](https://www.w3schools.com/graphics/svg_path.asp), which lets us define complex shapes like country boundaries [SVG].
 
 We can also **group** items with the [g element](https://www.w3.org/TR/SVG/struct.html#Groups), which comes in handy when we start to build more complex SVG's with lots of different items that we want to keep organized.  The SVG below has one `<rect>` element grouped inside a `<g>` element, and the three `<circle>`'s grouped inside a different `<g>` element.
+
 ```HTML
 <svg width="720" height="120">
   <g>
