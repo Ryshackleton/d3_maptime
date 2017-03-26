@@ -214,10 +214,17 @@ Then join that data array to some `<circle>`'s within the SVG
 
 There's a lot going on in these 4 lines of code.  Let's go line by line:
 
-1. svg.selectAll("circle") - This selects any circles already in the SVG.  More importantly, it returns a selection, *even if the selection is empty,* that we can operate on in the next line:
-1.    .data(myData) - Binds the data to the selection. In the background, this creates an array of empty objects called the *enter selection*, which represents the *data coming into the selection*.
+1. svg.selectAll("circle") - This selects any circles already in the SVG.  More importantly, it returns a selection, *even if the selection is empty,* that we can operate on in the next line, and tells d3 that the "parent" of this object is the `<svg>` element.
+<img src="https://ryshackleton.github.io/d3_maptime/img/01_selectAllCircles.svg">
+
+1.    .data(myData) - This .data() method should really be called .join() because this is the magic that matches up new data to elements that are already in the SVG. In the background D3 creates 2 selections (arrays): an *enter selection* and an *exit selection*.  The *update selection* is what we're hoping to find, which is the join of the two datasets. The *enter selection* contains new data that is un-bound to any element. The *exit selection* contains all of the elements for which there is no new data.  In our case, there are no elements, so the *enter selection* becomes the *update selection*.
+<img src="https://ryshackleton.github.io/d3_maptime/img/02_selectAllCirclesData.svg">
+
 1.    .enter() - get that enter selection as an array
-1.    .append("circle") - attach each of the data objects to a circle element within the svg.  Then return the circle selection as an array.
+1.    .append("circle") - attach each of the data objects to a circle element within the svg.  This creates an update selection, and appends the data to circle object.  
+<img src="https://ryshackleton.github.io/d3_maptime/img/03_selectAllCirclesDataEnterAppend.svg">
+1. Then return the new updated circle selection as an array.
+<img src="https://ryshackleton.github.io/d3_maptime/04_assignToCircles.svg">
 
 ![Enter, Update, Exit Selections](https://ryshackleton.github.io/d3_maptime/img/enterUpdateExitII.svg)
 <img src="https://ryshackleton.github.io/d3_maptime/img/enterUpdateExitII.svg">
