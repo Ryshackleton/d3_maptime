@@ -63,9 +63,9 @@ SVGs are human readable, which works well for us because we aren't computers. Th
 
 And this is the rendered version of that code:
 <div>
-<img src="{{ site.baseurl }}/img/threeLittleCircles.svg">
+<img src="https://ryshackleton.github.io/d3_maptime/img/threeLittleCircles.svg">
 </div>
-This [example](http://bl.ocks.org/powersa/raw/dae5b2e58c5a813208f5/) is the same document embedded in a really simple web page. Right click one of the circles and select *Inspect element* from the drop down.
+This [example](https://ryshackleton.github.io/d3_maptime/img/threeLittleCircles.svg) is the same document embedded in a really simple web page. Right click one of the circles and select *Inspect element* from the drop down.
 
 Each of those circles is an element in your SVG, which has a width and height. This is the type of document D3 writes to your web browser. You can tell it to add circles or move circles or remove circles. Checkout this [selection](http://bost.ocks.org/mike/circles/) tutorial for more on the subject. It's also worth noting that D3 has the ability to write and edit many types of shapes, not just circles.
 
