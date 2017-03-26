@@ -62,9 +62,9 @@ SVGs are human readable, which works well for us because we aren't computers. Th
 ```
 
 And this is the rendered version of that code:
-
+<div>
 <img src="{{ site.baseurl }}/img/threeLittleCircles.svg">
-
+</div>
 This [example](http://bl.ocks.org/powersa/raw/dae5b2e58c5a813208f5/) is the same document embedded in a really simple web page. Right click one of the circles and select *Inspect element* from the drop down.
 
 Each of those circles is an element in your SVG, which has a width and height. This is the type of document D3 writes to your web browser. You can tell it to add circles or move circles or remove circles. Checkout this [selection](http://bost.ocks.org/mike/circles/) tutorial for more on the subject. It's also worth noting that D3 has the ability to write and edit many types of shapes, not just circles.
@@ -218,8 +218,8 @@ There's a lot going on in these 4 lines of code.  Let's go line by line:
 1.    .enter() - get that enter selection as an array
 1.    .append("circle") - attach each of the data objects to a circle element within the svg.  Then return the circle selection as an array.
 
-<img src="https://raw.githubusercontent.com/Ryshackleton/d3_maptime/master/img/enterUpdateExit.svg"></img>
-
+![Enter, Update, Exit Selections](https://github.com/Ryshackleton/d3_maptime/blob/master/img/enterUpdateExit.svg)
+<img src="https://github.com/Ryshackleton/d3_maptime/blob/master/img/enterUpdateExit.svg">
 
 ### Define your projection
 
