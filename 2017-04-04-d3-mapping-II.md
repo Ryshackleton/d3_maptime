@@ -62,14 +62,26 @@ SVGs are human readable, which works well for us because we aren't computers. Th
 ```
 
 And this is the rendered version of that code:
-<div>
 <img src="https://ryshackleton.github.io/d3_maptime/img/threeLittleCircles.svg">
-</div>
 
-Click the image above or [this link](https://ryshackleton.github.io/d3_maptime/img/threeLittleCircles.svg) to see the same document embedded in a really simple web page. Right click one of the circles and select *Inspect element* from the drop down.
+SVG's work simiarly to html pages, with tags representing objects that contain other objects: each of those circles is an element in your SVG, which has a width and height. Each circle contains some coordinates of the object's center (cx, cy), and radius (r).  So the SVG is just a set of instructions for where to put each object.
 
-Each of those circles is an element in your SVG, which has a width and height. This is the type of document D3 writes to your web browser. You can tell it to add circles or move circles or remove circles. Checkout this [selection](http://bost.ocks.org/mike/circles/) tutorial for more on the subject. It's also worth noting that D3 has the ability to write and edit many types of shapes, not just circles.
+It's also worth noting that D3 has the ability to write and edit [many types of shape elements](https://www.w3.org/TR/SVG/shapes.html), like rectangles (rect), not just circles.  Another important one we'll use later is the [path element](https://www.w3.org/TR/SVG/paths.html#PathElement), which lets us define complex shapes like country boundaries [SVG].
 
+We can also **group** items with the [g element](https://www.w3.org/TR/SVG/struct.html#Groups), which comes in handy when we start to build more complex SVG's with lots of different items that we want to keep organized.  This svg has one `<rect>` element grouped inside a `<g>` element, and the three `<circle>`'s grouped inside a different `<g>` element.
+```HTML
+<svg width="720" height="120">
+  <g>
+    <rect width="300" height="100" style="fill:rgb(0,0,255);"></rect>
+  </g>
+  <g>
+    <circle cx="40" cy="60" r="10"></circle>
+    <circle cx="80" cy="60" r="10"></circle>
+    <circle cx="120" cy="60" r="10"></circle>
+  </g>
+</svg>
+```
+If you want to see the svg code in your browser window, open [this link](https://ryshackleton.github.io/d3_maptime/img/threeLittleCirclesGroupedRect.svg), then *right click* in the SVG and select *Inspect element* from the drop down.
 
 # Tips
 
@@ -92,25 +104,19 @@ With any luck, today we will produce a simplified version of [this map](https://
 
 By the time we finish this tutorial, we will have built our first (or nth) D3 web map! This will not be the prettiest map you've ever made, but hopefully once you've made it, you will have a launching pad to make an even better D3 map in the future.
 
-## STEP 1: Review Web Pages
+## STEP 1: Create a simple web page template
 
-Before we get going, let's take a walk over to our [web map tutorial](http://maptimesea.github.io/2014/11/05/web-map-intro.html#let-s-get-started). While there, go through the steps to make an empty HTML file (through *Add a boilerplate to map.html*). 
+If you need a refresher on how to make a simple web page, take a walk over to our [web map tutorial](http://maptimesea.github.io/2014/11/05/web-map-intro.html#let-s-get-started).  I've included a starter template below, but if you haven't been exposed to creating your own web page, we can boil it down to 3 parts:
 
-At this stage, you should have a *map.html* file on your machine that you can open in your web browser. Give that a shot by dragging *map.html* into **Firefox**. This is what your file looks like:
+Like nouns, adjectives, and verbs, the web (in its simplest form) is made of HTML, CSS, and Javascript. These are the driving forces that work together to create your ~~sentence~~ webpage. With these three components, you can make a completely whole, modern, and dynamic webpage and website.
 
-<script src="https://gist.github.com/powersa/36be23aaa647c25c3236.js"></script>
+<img src="http://maptimesea.github.io/img/tut001-nounverbadj.svg">
 
-Save your eyes. Feel free to delete lines 7-9:
+Here's a basic boilerplate for a webpage that contains each of the 3 "ingredients."
 
-```HTML
-    body {
-      background-color: green;
-    }
-```
+<script src="https://gist.github.com/Ryshackleton/e3182682c731b9e54028061ee30af6d9.js"></script>
 
-### Include the D3.js library
-
-Now you can insert D3 into your page. For now we'll use an externally hosted version of the library instead of copying it into a new file. Add the following after the `<head>` tag of `map.html`.
+Notice that at the top of the page inside the `<head>` tag, we have already included the D3.js script (version 4). For now we'll use an externally hosted version of the library instead of copying it into a new file that we keep in our own directory.
 
 ```HTML
   <!--   using version 4-->
@@ -123,7 +129,18 @@ Before we add a map to our web page, we need to make a place to put it. The foll
 
 ### Define width and height of your graphic
 
+Add the new code, and all subsequent code, between the `<script>/* Your JavaScript Here */</script>` tags in the `<body>`.
+
 ```JavaScript
+  <body>
+    <script>
+    	/* Your JavaScript Here */
+	var width = 700,
+      	    height = 500;
+	/* keep adding new code below this line... */
+	
+    </script>
+  </body>
   var width = 700,
       height = 500;
 ```
@@ -143,11 +160,14 @@ The chunk of code above inserts an SVG into the document, which it does in 2 ste
 
 ```html
  <body>
+    <script> /* This is the script tag with the JavaScript code we're writing right now. */ </script>
     <svg></svg>
  </body>
 ```
 
-**Notice that we also assigned the svg element as a variable so we can do more things to it later.**
+You might notice that the `<body>` tag also contains the script we are writing between the `<script>` tags, and when we append() to the body element, we just add the new `<svg>` below the script.
+
+**Notice that we also assigned the svg element as a variable (** *var svg=...* **) so we can do more things to it later.**
 
 *Gaahhh!!!, why the empty space before .append(...)??*
 
