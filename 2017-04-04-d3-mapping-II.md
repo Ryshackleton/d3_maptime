@@ -244,14 +244,23 @@ Then join that data array to some `<circle>`'s within the SVG
 ```
 
 There's a lot going on in these 4 lines of code, but here's what's basically happening:
+
+* We use .selectAll("circles") to get an *element selection* of circles inside the SVG.  In our case, the array is empty, but we need a selection of elements to join some data to, which we'll do in the next line.
+* The function: .data(myData) JOINS the *data selection* the empty **element selection** from the SVG.  It does this by sequentially matching each item in the data to corresponding items in the element selection with the same index
+	* New items contained in the *data selection* that are not in the *element selection* are called the **enter selection**
+	* Old items in the *element selection* that are not in the incoming *data selection* are called the **exit seletion**
+
+<div>
+<img src="https://ryshackleton.github.io/d3_maptime/img/enterUpdateExitII.svg">
+</div>
+
+* The joined selection is called the **update selection**, and D3 creates a "dummy element" with an attached `_data_` variable that holds the data 
+
 <div>
 <img src="https://ryshackleton.github.io/d3_maptime/img/d3.data.elments.png">
 </div>
 
-1. We use .selectAll("circles") to get a selection of circles inside the SVG.  At first, the selection is an empty selection (array).
-1. Then .data(myData) JOINS the data we have to the empty circle selection we got from the SVG in the previous line (more on this later).
-1. Because the svg circle selection was empty, the .data() function creates new empty elements, with indices 0, 1, 2 and attaches a `_data_` variable to each indexed element with the corresponding data in our data array
-1. When we call .enter().append("circle"), a new circle element is appended to the temporary element objects that were created
+* When we call .enter().append("circle"), a new circle element is appended to the temporary element objects that were created, and we're left with circles with our data attached.
 
 <div>
 <img src="https://ryshackleton.github.io/d3_maptime/img/d3.data.circles.png">
