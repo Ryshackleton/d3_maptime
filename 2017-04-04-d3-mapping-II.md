@@ -138,7 +138,7 @@ Notice that we have already included the D3.js script (version 4) at the top of 
 
 ## STEP 2: Use D3 to build your first SVG!
 
-Before we add a map to our web page, we need to make a place to put it. The following work will take place between `<script>` tags.
+From here on out, most of what we'll be doing is writing JavaScript to build our SVG map.  In the `hello-d3.html`, find the `<body>` tag, then find the `<script>` tag inside the `<body>`.  All of our code will go there.
 
 ### Define width and height of your graphic
 
@@ -176,7 +176,7 @@ The chunk of code above inserts an SVG into the document, which it does in 2 ste
  </body>
 ```
 
-When we append() to the `<body>` element, we just add the new `<svg>` below the script that we're actually writing.  Yeah, you heard that right: we're writing code to edit the html document that we're writing....#mindblown.
+When we append() to the `<body>` element, we just add the new `<svg>` below the script that we're actually writing.  Yeah, you heard that right: we're writing code to edit the document that we're writing....#mindblown.
 
 **Also notice that we assigned the svg element as a variable (** *var svg=...* **) so we can have a reference to work on the SVG later.**
 
@@ -198,7 +198,7 @@ Right now the SVG has no height or width, so it won't be visible or even have a 
  ```
 
 ### Give SVG some style
-Great, a blank image! Try adding this bit of code to show the boundary of the SVG. Notice that we used the .style() method instead of the .attr() method to apply styles, and the result is a style="stylename: style value;" on the element.
+Great, we made a blank image! Try adding this bit of code to show the boundary of the SVG. Notice that we used the .style() method instead of the .attr() method to apply styles, and the result is a style="stylename: style value;" on the element.
 
  ```JavaScript
   svg.style("border","3px solid black"); // applies some CSS-like styles to the svg.
@@ -216,7 +216,7 @@ We'll use SVG styling more below to style individual elements. [Here's the full 
 
 ### DATA JOINING: Put some `<circle>`'s in your SVG!
 
-We'll start by defining a simple array that we'll bind to the circles.  Right now, the "data" is meaningless: just some numbers that we'll use to offset the circles in the x-direction (in SVG space).  Later we'll learn to relate data to coordinates.
+We'll start by defining a simple array that we'll bind, or join, to the circles.  Right now, the "data" is meaningless: just some numbers that we'll use to offset the circles in the x-direction (in SVG space).  Later we'll learn to relate data to SVG coordinates.
 
 ```JavaScript
   // a JavaScript array of data
@@ -258,7 +258,7 @@ Then we JOIN our data to the empty array, creating any necessary circles using .
 <img src="https://ryshackleton.github.io/d3_maptime/img/d3.data.circles.png">
 </div>
 
-Selections are one of the most conceptually difficult parts of D3, so if this seems confusing, don't worry. It takes a while to wrap your head around.  Try Mike Bostock's [How Selections Work](https://bost.ocks.org/mike/selection/) and [Thinking with Joins](https://bost.ocks.org/mike/join/) to get the lowdown on how these selections work.  [This Presentation](https://bost.ocks.org/mike/d3/workshop/#0) is also a good place to start.
+Selections and data binding are the most conceptually difficult parts of D3, so if this seems confusing, don't worry. It takes a while to wrap your head around.  What we're doing now is a derivation of Mike Bostock's [Three Little Circles Tutorial](https://strongriley.github.io/d3/tutorial/circle.html), which has some nice animations of how selections work.  You can also check out [How Selections Work](https://bost.ocks.org/mike/selection/) and [Thinking with Joins](https://bost.ocks.org/mike/join/), also by Mike.  [This Presentation](https://bost.ocks.org/mike/d3/workshop/#0) is also a good place to start.
 
 ##### TLDR Version
 
