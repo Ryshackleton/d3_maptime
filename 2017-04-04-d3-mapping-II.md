@@ -80,6 +80,7 @@ We can also **group** items with the [g element](https://www.w3.org/TR/SVG/struc
   </g>
 </svg>
 ```
+...and the rendered version:
 
 <img src=https://ryshackleton.github.io/d3_maptime/img/threeLittleCirclesGroupedRect.svg></img>
 
