@@ -258,6 +258,8 @@ Then we JOIN our data to the empty array, creating any necessary circles using .
 <img src="https://ryshackleton.github.io/d3_maptime/img/d3.data.circles.png">
 </div>
 
+Selections are one of the most conceptually difficult parts of D3, so if this seems confusing, don't worry. It takes a while to wrap your head around.  Try Mike Bostock's [How Selections Work](https://bost.ocks.org/mike/selection/) and [Thinking with Joins](https://bost.ocks.org/mike/join/) to get the lowdown on how these selections work.  [This Presentation](https://bost.ocks.org/mike/d3/workshop/#0) is also a good place to start.
+
 ##### TLDR Version
 
 * We use .selectAll("circles") to get an *element selection* of circles inside the SVG.  In our case, the array is empty (as shown on the left below), but provides something to join our data to.  The data is shown on the right: an array of 3 data items.  The green boxes just indicate the order, or indices of the data: 0, 1, 2.
