@@ -254,7 +254,7 @@ There's a lot going on in these 4 lines of code.  Let's go line by line:
 <img src="https://ryshackleton.github.io/d3_maptime/img/01_selectAllCircles.svg">
 </div>
 
-1.    .data(myData) - This .data() method should really be called .join() because this is the magic that matches a **data selection** to an **element selection** that is already in the SVG.  D3 creates 3 selections in the process:
+.data(myData) - This .data() method matches a **data selection** to an **element selection** that is already in the SVG.  To do this, D3 creates:
 	1. an *enter selection* to contain NEW data objects with *no corresponding element in the existing selection*
 	1. an *exit selection* to contain OLD objects that *were once in the data, but now are no longer in the data*
 	1. an *update selection*, to contain the JOIN of the incoming **data** and the existing **elements**
@@ -262,17 +262,19 @@ There's a lot going on in these 4 lines of code.  Let's go line by line:
 <img src="https://ryshackleton.github.io/d3_maptime/img/02_selectAllCirclesData.svg">
 </div>
 
-1.    .enter() - just returns the enter selection as an array
-1.    .append("circle") - attaches each of the data objects to a circle element within the svg.  If there are no `<circle>` elements, then D3 will create them: the result is the update selection.  
+.enter() - just returns the enter selection as an array
+.append("circle") - attaches each of the data objects to a circle element within the svg.  If there are no `<circle>` elements, then D3 will create them: the result is the update selection.  
 <div>
 <img src="https://ryshackleton.github.io/d3_maptime/img/03_selectAllCirclesDataEnterAppend.svg">
 </div>
 
-1. The newly updated circle selection is returned as an array, which we store as a variable: circles.
+The newly updated circle selection is returned as an array, which we store as a variable: circles.
 
 <div>
 <img src="https://ryshackleton.github.io/d3_maptime/img/04_assignToCircles.svg">
 </div>
+
+Notice that at the end, even though you can't see it in the SVG, the `_data_` is still attached to the `<circle>` elements.  This is how D3 can match up the incoming data to the existing circle elements.
 
 ### Define your projection
 
