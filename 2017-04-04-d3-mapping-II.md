@@ -243,38 +243,21 @@ Then join that data array to some `<circle>`'s within the SVG
                         // ...and return the selection of circles
 ```
 
-There's a lot going on in these 4 lines of code.  Here's the TLDR version:
+There's a lot going on in these 4 lines of code, but here's what's basically happening:
+<div>
+<img src="https://ryshackleton.github.io/d3_maptime/img/d3.data.elments.png">
+</div>
 
-1. svg.selectAll("circle")
-	1. This selects any circle elements already in the SVG (for now, the selection is empty)
-	1. Calling selectAll() tells d3 that the "parent" of this selection is the `<svg>` element (so where to nest the circles).
-	1. More importantly, selectAll() returns a selection of **elements**, *even if the selection is empty,* that we can join to some data.
+1. We use .selectAll("circles") to get a selection of circles inside the SVG.  At first, the selection is an empty selection (array).
+1. Then .data(myData) JOINS the data we have to the empty circle selection we got from the SVG in the previous line (more on this later).
+1. Because the svg circle selection was empty, the .data() function creates new empty elements, with indices 0, 1, 2 and attaches a `_data_` variable to each indexed element with the corresponding data in our data array
+1. When we call .enter().append("circle"), a new circle element is appended to the temporary element objects that were created
 
 <div>
-<img src="https://ryshackleton.github.io/d3_maptime/img/01_selectAllCircles.svg">
+<img src="https://ryshackleton.github.io/d3_maptime/img/d3.data.circles.png">
 </div>
 
-.data(myData) - This .data() method matches a **data selection** to an **element selection** that is already in the SVG.  To do this, D3 creates:
-	1. an *enter selection* to contain NEW data objects with *no corresponding element in the existing selection*
-	1. an *exit selection* to contain OLD objects that *were once in the data, but now are no longer in the data*
-	1. an *update selection*, to contain the JOIN of the incoming **data** and the existing **elements**
-<div>	
-<img src="https://ryshackleton.github.io/d3_maptime/img/02_selectAllCirclesData.svg">
-</div>
-
-.enter() - just returns the enter selection as an array
-.append("circle") - attaches each of the data objects to a circle element within the svg.  If there are no `<circle>` elements, then D3 will create them: the result is the update selection.  
-<div>
-<img src="https://ryshackleton.github.io/d3_maptime/img/03_selectAllCirclesDataEnterAppend.svg">
-</div>
-
-The newly updated circle selection is returned as an array, which we store as a variable: circles.
-
-<div>
-<img src="https://ryshackleton.github.io/d3_maptime/img/04_assignToCircles.svg">
-</div>
-
-Notice that at the end, even though you can't see it in the SVG, the `_data_` is still attached to the `<circle>` elements.  This is how D3 can match up the incoming data to the existing circle elements.
+At the end of all of this, even though you can't see it in the SVG, the `_data_` is still attached to the `<circle>` elements.  This is how D3 can match up the incoming data to the existing circle elements.
 
 ### Define your projection
 
