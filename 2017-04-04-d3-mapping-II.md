@@ -243,7 +243,7 @@ Then join that data array to some `<circle>`'s within the SVG
                         // ...and return the selection of circles
 ```
 
-There's a lot going on in these 4 lines of code.  Let's go line by line:
+There's a lot going on in these 4 lines of code.  Here's the TLDR version:
 
 1. svg.selectAll("circle")
 	1. This selects any circle elements already in the SVG (for now, the selection is empty)
