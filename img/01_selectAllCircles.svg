@@ -1,18 +1,19 @@
 <svg width="640" height="500" xmlns="http://www.w3.org/2000/svg">
  <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+
  <g>
   <title>background</title>
-  <rect fill="#fff" id="canvas_background" height="502" width="642" y="-1" x="-1"/>
+  <rect x="-1" y="-1" width="642" height="502" id="canvas_background" fill="#fff"/>
  </g>
  <g>
   <title>Layer 1</title>
-  <ellipse stroke="#000000" opacity="0.5" ry="144.499978" rx="206.499995" id="svg_20" cy="348.499976" cx="421.99999" stroke-opacity="null" stroke-width="2" fill="#9ACEE6"/>
-  <text xml:space="preserve" text-anchor="start" font-family="'Palatino Linotype', 'Book Antiqua', Palatino, serif" font-size="20" id="svg_6" y="283" x="499.5" stroke-opacity="null" stroke-width="0" stroke="#000000" fill="null">Exit:</text>
-  <ellipse ry="20.5" rx="40.5" id="svg_16" cy="201.5" cx="590" stroke-opacity="null" stroke-width="2" stroke="#000000" fill="#B1FFFF"/>
-  <text xml:space="preserve" text-anchor="start" font-family="'Palatino Linotype', 'Book Antiqua', Palatino, serif" font-size="20" id="svg_17" y="208" x="563.5" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#000000" fill="null">&lt;svg&gt;</text>
-  <line stroke="#000000" stroke-linecap="null" stroke-linejoin="null" id="svg_18" y2="242.999999" x2="562.5" y1="220.000001" x1="574.5" fill-opacity="null" stroke-opacity="null" stroke-width="2" fill="none"/>
-  <text stroke="#000000" xml:space="preserve" text-anchor="start" font-family="'Palatino Linotype', 'Book Antiqua', Palatino, serif" font-size="20" id="svg_21" y="35" x="135.5" fill-opacity="null" stroke-opacity="null" stroke-width="0" fill="null">svg.selectAll("circles")</text>
-  <text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Palatino Linotype', 'Book Antiqua', Palatino, serif" font-size="20" id="svg_27" y="177" x="432.5" stroke-opacity="null" stroke-width="0" stroke="#000000" fill="null">Elements</text>
-  <text stroke="#000000" xml:space="preserve" text-anchor="start" font-family="'Palatino Linotype', 'Book Antiqua', Palatino, serif" font-size="18" id="svg_34" y="309" x="511.5" stroke-opacity="null" stroke-width="0" fill="null">[ ]</text>
+  <ellipse fill="#9ACEE6" stroke-width="2" stroke-opacity="null" cx="421.99999" cy="348.499976" id="svg_20" rx="206.499995" ry="144.499978" opacity="0.5" stroke="#000000"/>
+  <text fill="null" stroke="#000000" stroke-width="0" stroke-opacity="null" x="477.5" y="283" id="svg_6" font-size="20" font-family="'Palatino Linotype', 'Book Antiqua', Palatino, serif" text-anchor="start" xml:space="preserve">An Array:</text>
+  <ellipse fill="#B1FFFF" stroke="#000000" stroke-width="2" stroke-opacity="null" cx="590" cy="201.5" id="svg_16" rx="40.5" ry="20.5"/>
+  <text fill="null" stroke="#000000" stroke-width="0" stroke-opacity="null" fill-opacity="null" x="563.5" y="208" id="svg_17" font-size="20" font-family="'Palatino Linotype', 'Book Antiqua', Palatino, serif" text-anchor="start" xml:space="preserve">&lt;svg&gt;</text>
+  <line fill="none" stroke-width="2" stroke-opacity="null" fill-opacity="null" x1="574.5" y1="220.000001" x2="562.5" y2="242.999999" id="svg_18" stroke-linejoin="null" stroke-linecap="null" stroke="#000000"/>
+  <text fill="null" stroke-width="0" stroke-opacity="null" fill-opacity="null" x="135.5" y="35" id="svg_21" font-size="20" font-family="'Palatino Linotype', 'Book Antiqua', Palatino, serif" text-anchor="start" xml:space="preserve" stroke="#000000">svg.selectAll("circles")</text>
+  <text fill="null" stroke="#000000" stroke-width="0" stroke-opacity="null" x="432.5" y="177" id="svg_27" font-size="20" font-family="'Palatino Linotype', 'Book Antiqua', Palatino, serif" text-anchor="start" xml:space="preserve" font-weight="bold">Elements</text>
+  <text fill="null" stroke-width="0" stroke-opacity="null" x="511.5" y="309" id="svg_34" font-size="18" font-family="'Palatino Linotype', 'Book Antiqua', Palatino, serif" text-anchor="start" xml:space="preserve" stroke="#000000">[ ]</text>
  </g>
 </svg>
