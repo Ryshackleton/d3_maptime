@@ -90,13 +90,13 @@ If you want to see the svg code in your browser window, open [this link](https:/
 * The learning curve can be pretty steep. Stay positive
 * Start simple, add complexity piece by piece
 * Refer to documentation/tutorials
-* **Cannibalize code** wherever/whenever you can. D3 has great examples and most the code is freely accessible. See something you like? Take a look at how it's done
+* **Cannibalize code** wherever/whenever you can. D3 has [great examples](https://bl.ocks.org/) and most the code is freely accessible. See something you like? Take a look at how it's done, but definitely go line-by-line in the code to make sure you know what's happening!
 
 # Tutorial Time!
 
 With any luck, today we will produce a simplified version of [this map](https://ryshackleton.github.io/global_daily_earthquakes_d3/index.html), which displays the [USGS's GeoJSON feed of recent earthquakes around the world](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php).  We'll do this in steps:
 
- 1. Create a simple web page to hold our SVG graphic and the JaveScript code to create it.  The rest is all JavaScript...
+ 1. Create a simple web page to hold our SVG graphic and the JaveScript code to create it.
  1. Create a "scatterplot" with some circles
  1. Explore D3's methods to scale data coordinates to graphics coordinates
  1. Explore D3's geographic projection methods scale geo-data coordinates to graphics coordinates
@@ -108,7 +108,7 @@ By the time we finish this tutorial, we will have built our first (or nth) D3 we
 
 ## STEP 1: Create a simple web page template
 
-If you need a refresher on how to make a simple web page, have a look a our [web map tutorial](http://maptimesea.github.io/2014/11/05/web-map-intro.html#let-s-get-started).  Here's the speedy version, which will serve our purposes:
+If you need a refresher on how to make a simple web page, have a look a our [web map tutorial](http://maptimesea.github.io/2014/11/05/web-map-intro.html#let-s-get-started).  Here's the quick-and-dirty version, which will serve our purposes just fine:
 
 Like nouns, adjectives, and verbs, the web (in its simplest form) is made of HTML, CSS, and Javascript.
 
@@ -122,6 +122,8 @@ Like nouns, adjectives, and verbs, the web (in its simplest form) is made of HTM
 
 **D3 is like a word processor that you use to write complete sentences: it helps you BUILD your webpage by constructing HTML, SVG, CSS, and even JavaScript elements dynamically from your data.**
 
+### Copy this HTML to a file called hello-d3.html
+
 Here's a basic boilerplate for a webpage that contains each of the 3 "ingredients."
 
 <script src="https://gist.github.com/Ryshackleton/e3182682c731b9e54028061ee30af6d9.js"></script>
@@ -133,7 +135,7 @@ Notice that at the top of the page inside the `<head>` tag, we have already incl
   <script src="https://d3js.org/d3.v4.min.js"></script>
 ```
 
-## STEP 2: Build the document
+## STEP 2: Use D3 to build your first SVG!
 
 Before we add a map to our web page, we need to make a place to put it. The following work will take place between `<script>` tags.
 
