@@ -97,8 +97,8 @@ If you want to see the svg code in your browser window, open [this link](https:/
 
 With any luck, today we will produce a simplified version of [this map](https://ryshackleton.github.io/global_daily_earthquakes_d3/index.html), which displays the [USGS's GeoJSON feed of recent earthquakes around the world](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php).  We'll do this in steps:
 
- 1. Create a simple web page to hold our SVG graphic and the JaveScript code to create it.
- 1. Create a "scatterplot" with some circles
+ 1. Create a simple web page to hold our SVG graphic
+ 1. Write some JavaScript calling D3 to create a "scatterplot" with some circles
  1. Explore D3's methods to scale data coordinates to graphics coordinates
  1. Explore D3's geographic projection methods scale geo-data coordinates to graphics coordinates
  1. Use D3 to read in GEOJSON data from the USGS daily earthquake feed
