@@ -37,11 +37,11 @@ Check out these links for some examples of D3 visualizations:
 D3 stands for **Data Driven Documents**. We will unpack this title in three parts.
 
 ## Data
-D3 has straightforward functions to grab data from a variety of sources including XMLHttpRequests, text files, JSON blobs, HTML document fragments, XML document fragments, comma-separated values (CSV) files, and tab-separated values (TSV) files. The data is converted to a D3 "selection", which is just an array. Part of the tremendous power of D3 is that it can select and join data elements quickly and efficiently.
+D3 has straightforward functions to grab data from a variety of sources including XMLHttpRequests, text files, JSON blobs, HTML document fragments, XML document fragments, comma-separated values (CSV) files, and tab-separated values (TSV) files. Part of the tremendous power of D3 is that it can take data from a variety of sources, merge different data sources, and then join data elements to the visual elements that represent the data.
 
 ## Driven
 
-**Driven** is actually one of the defining characteristics of D3: the graphical elements are defined by the data.  In other words, each circle, line, or polygon also contains the data they are defined by. A desktop GIS software works this way while you're working on your map, but when you export your map the vector-based features lose the data that defines them. If you export a raster image those attributes are completely converted to color values.
+**Driven** is actually one of the defining characteristics of D3: the graphical elements are defined by the data.  In other words, each circle, line, or polygon also contains the data they are defined by. A desktop GIS software works in the same way while you're working on your map, but when you export the map, the vector-based features lose the data that defines them. If you export a raster image those attributes are completely converted to color values and the data is detached completely.
 
 That type of thing doesn't happen in D3. Not only does your data define the elements in your graphic, the data is also bound (joined) to the elements in your document. A circle isn't just a circle element with an x,y and radius, it's also the data that originated the element in the first place. This characteristic of D3 allows data to drive your visualization, not only upon creation, but throughout its life cycle.
 
@@ -216,13 +216,15 @@ We'll use SVG styling more below to style individual elements. [Here's the full 
 
 ### DATA JOINING: Put some `<circle>`'s in your SVG!
 
-We'll start by defining the simplest array of data we can think of.
+We'll start by defining a simple array that we'll bind to the circles.  Right now, the "data" is meaningless: just some numbers that we'll use to offset the circles in the x-direction (in SVG space).  Later we'll learn to relate data to coordinates.
+
 ```JavaScript
   // a JavaScript array of data
   var myData = [ 5, 15, 30 ];
 ```
 
 Then join that data array to some `<circle>`'s within the SVG
+
 ```JavaScript
   // the original svg starts out as an empty svg element (with its own attributes, but nothing inside it)
   var circles = svg.selectAll("circle") // select all circles within the SVG
@@ -243,19 +245,34 @@ Then join that data array to some `<circle>`'s within the SVG
 
 There's a lot going on in these 4 lines of code.  Let's go line by line:
 
-1. svg.selectAll("circle") - This selects any circles already in the SVG.  More importantly, it returns a selection, *even if the selection is empty,* that we can operate on in the next line, and tells d3 that the "parent" of this object is the `<svg>` element.
+1. svg.selectAll("circle")
+	1. This selects any circle elements already in the SVG (for now, the selection is empty)
+	1. Calling selectAll() tells d3 that the "parent" of this selection is the `<svg>` element (so where to nest the circles).
+	1. More importantly, selectAll() returns a selection of **elements**, *even if the selection is empty,* that we can join to some data.
+
+<div>
 <img src="https://ryshackleton.github.io/d3_maptime/img/01_selectAllCircles.svg">
+</div>
 
-1.    .data(myData) - This .data() method should really be called .join() because this is the magic that matches up new data to elements that are already in the SVG. In the background D3 creates 2 selections (arrays): an *enter selection* and an *exit selection*.  The *update selection* is what we're hoping to find, which is the join of the two datasets. The *enter selection* contains new data that is un-bound to any element. The *exit selection* contains all of the elements for which there is no new data.  In our case, there are no elements, so the *enter selection* becomes the *update selection*.
+1.    .data(myData) - This .data() method should really be called .join() because this is the magic that matches a **data selection** to an **element selection** that is already in the SVG.  D3 creates 3 selections in the process:
+	1. an *enter selection* to contain NEW data objects with *no corresponding element in the existing selection*
+	1. an *exit selection* to contain OLD objects that *were once in the data, but now are no longer in the data*
+	1. an *update selection*, to contain the JOIN of the incoming **data** and the existing **elements**
+<div>	
 <img src="https://ryshackleton.github.io/d3_maptime/img/02_selectAllCirclesData.svg">
+</div>
 
-1.    .enter() - get that enter selection as an array
-1.    .append("circle") - attach each of the data objects to a circle element within the svg.  This creates an update selection, and appends the data to circle object.  
+1.    .enter() - just returns the enter selection as an array
+1.    .append("circle") - attaches each of the data objects to a circle element within the svg.  If there are no `<circle>` elements, then D3 will create them: the result is the update selection.  
+<div>
 <img src="https://ryshackleton.github.io/d3_maptime/img/03_selectAllCirclesDataEnterAppend.svg">
-1. Then return the new updated circle selection as an array.
-<img src="https://ryshackleton.github.io/d3_maptime/img/04_assignToCircles.svg">
+</div>
 
-<img src="https://ryshackleton.github.io/d3_maptime/img/enterUpdateExitII.svg">
+1. The newly updated circle selection is returned as an array, which we store as a variable: circles.
+
+<div>
+<img src="https://ryshackleton.github.io/d3_maptime/img/04_assignToCircles.svg">
+</div>
 
 ### Define your projection
 
