@@ -109,7 +109,7 @@ By the time we finish this tutorial, we will have built our first (or nth) D3 we
 
 ## STEP 1: Create a simple web page template
 
-If you need a refresher on how to make a simple web page, have a look a our [web map tutorial](http://maptimesea.github.io/2014/11/05/web-map-intro.html#let-s-get-started).  Here's the quick-and-dirty version, which will serve our purposes just fine:
+Below I've included the quick-and-dirtiest version EVER of how web pages work, along with some boilerplate HTML we can use to get started.  If you need more of a refresher on how to make a simple web page, have a look a our [web map tutorial](http://maptimesea.github.io/2014/11/05/web-map-intro.html#let-s-get-started).  
 
 Like nouns, adjectives, and verbs, the web (in its simplest form) is made of HTML, CSS, and Javascript.
 
@@ -123,13 +123,13 @@ Like nouns, adjectives, and verbs, the web (in its simplest form) is made of HTM
 
 **D3 is like a word processor that you use to write complete sentences: it helps you BUILD your webpage by constructing HTML, SVG, CSS, and even JavaScript elements dynamically from your data.**
 
-### Copy this HTML to a file called hello-d3.html
+### Copy this HTML to a file called hello-d3.html to get started
 
 Here's a basic boilerplate for a webpage that contains each of the 3 "ingredients."
 
 <script src="https://gist.github.com/Ryshackleton/e3182682c731b9e54028061ee30af6d9.js"></script>
 
-Notice that at the top of the page inside the `<head>` tag, we have already included the D3.js script (version 4). For now we'll use an externally hosted version of the library instead of copying it into a new file that we keep in our own directory.
+Notice that we have already included the D3.js script (version 4) at the top of the page inside the `<head>` tag.
 
 ```HTML
   <!--   using version 4-->
@@ -154,11 +154,9 @@ Add the new code, and all subsequent code, between the `<script>/* Your JavaScri
 	
     </script>
   </body>
-  var width = 700,
-      height = 500;
 ```
 
-### Create your SVG in the `<body>` element
+### Use D3 to magically create your SVG in the `<body>` element
 
 D3 has really easy shorthand for electing and creating objects:
 ```JavaScript
@@ -173,18 +171,16 @@ The chunk of code above inserts an SVG into the document, which it does in 2 ste
 
 ```html
  <body>
-    <script> /* This is the script tag with the JavaScript code we're writing right now. */ </script>
+    <script> /* The script tag with the JavaScript code we're writing right now!! */ </script>
     <svg></svg>
  </body>
 ```
 
-You might notice that the `<body>` tag also contains the script we are writing between the `<script>` tags, and when we append() to the body element, we just add the new `<svg>` below the script.
+When we append() to the `<body>` element, we just add the new `<svg>` below the script that we're actually writing.  Yeah, you heard that right: we're writing code to edit the html document that we're writing....#mindblown.
 
-**Notice that we also assigned the svg element as a variable (** *var svg=...* **) so we can do more things to it later.**
+**Also notice that we assigned the svg element as a variable (** *var svg=...* **) so we can have a reference to work on the SVG later.**
 
-*Gaahhh!!!, why the empty space before .append(...)??*
-
-This code is also an example of **method chaining**, which is common in some JavaScript libraries like jQuery.  Basically, select(), and append() return references to something (a d3 selection) that we operate on in the next link of the method chain. [See this page](http://alignedleft.com/tutorials/d3/chaining-methods) for a thorough discussion of method chaining in D3.
+You might also be wondering what's going on with that empty space before .append(...). That's because D3 uses **method chaining**, which is common in some JavaScript libraries like jQuery.  Basically, select(), and append() return references to something (a d3 selection) that we operate on in the next "link" of the method chain. [See this page](http://alignedleft.com/tutorials/d3/chaining-methods) for a more thorough discussion of method chaining in D3.
 
 ### Give your new `<svg>` some width and height
 Right now the SVG has no height or width, so it won't be visible or even have a clickable area. To fix that, we'll use the svg variable we assigned above to add some attributes to the svg with the .attr() function, which adds attributes to objects in the web page.
