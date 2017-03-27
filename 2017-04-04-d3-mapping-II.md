@@ -245,6 +245,21 @@ Then join that data array to some `<circle>`'s within the SVG
 
 There's a lot going on in these 4 lines of code, but here's what's basically happening:
 
+##### Short Version
+We select an empty array of **elements**, or circles, using svg.selectAll("circles").
+
+<div>
+<img src="https://ryshackleton.github.io/d3_maptime/img/d3.data.png">
+</div>
+
+Then we JOIN our data to the empty array, creating any necessary circles using .data(myData).enter().append("circle").
+
+<div>
+<img src="https://ryshackleton.github.io/d3_maptime/img/d3.data.circles.png">
+</div>
+
+##### TLDR Version
+
 * We use .selectAll("circles") to get an *element selection* of circles inside the SVG.  In our case, the array is empty (as shown on the left below), but provides something to join our data to.  The data is shown on the right: an array of 3 data items.  The green boxes just indicate the order, or indices of the data: 0, 1, 2.
 
 <div>
