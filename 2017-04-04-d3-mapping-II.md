@@ -41,15 +41,13 @@ D3 has straightforward functions to grab data from a variety of sources includin
 
 ## Driven
 
- At this point *Driven* might not make sense. If we stopped here, we could probably make a case to change *Driven* to *Defined*. Let's keep going.
+**Driven** is actually one of the defining characteristics of D3: the graphical elements are defined by the data.  In other words, each circle, line, or polygon also contains the data they are defined by. A desktop GIS software works this way while you're working on your map, but when you export your map the vector-based features lose the data that defines them. If you export a raster image those attributes are completely converted to color values.
 
-**Driven** is actually one of the defining characteristics of D3: the document (graphics) are defined by the data. Consider a contrary example: what happens when you export a map from your desktop GIS software to do custom design work in a graphics editor? As soon as your vector data leaves the GIS, features lose the data that defines them. At best, the great attributes you honed are represented graphically and at worst are totally gone.
-
-That type of thing doesn't happen in D3. Not only does your data define the elements in your SVG, the data is also bound (joined) to the elements in your document. A circle isn't just a circle element with an x,y and radius, it's also the data that originated the element in the first place. This characteristic of D3 allows data to drive your visualization, not only upon creation, but throughout its life cycle.
+That type of thing doesn't happen in D3. Not only does your data define the elements in your graphic, the data is also bound (joined) to the elements in your document. A circle isn't just a circle element with an x,y and radius, it's also the data that originated the element in the first place. This characteristic of D3 allows data to drive your visualization, not only upon creation, but throughout its life cycle.
 
 ## Documents
 
-At its core, D3 takes your information and transforms it into a visual output. That output is your document, and for all intents and purposes, your document is an [SVG](http://www.w3.org/TR/SVG/), but it can be any part of the HTML Document Object Model. Scalable Vector Graphics is a file format that encodes vector data for use in a wide array of applications, including your web browser. SVGs are used all over the place to display all kinds of data. If you've ever exported a map from [desktop GIS](http://www.qgis.org/en/site/) and styled it in a [graphics program](https://inkscape.org/en/), chances are your data was stored as SVG at some stage of the process.
+At its core, D3 takes your information and transforms it into a visual output. That output is your document, and for all intents and purposes, your document is a [Scalable Vector Graphic, or SVG](http://www.w3.org/TR/SVG/). SVG is a file format that encodes vector data for use in a wide array of applications. SVGs are used all over the place to display all kinds of data. If you've ever exported a map from [desktop GIS](http://www.qgis.org/en/site/) and styled it in a [graphics program](https://inkscape.org/en/), chances are your data was stored as SVG at some stage of the process.
 
 SVGs are human readable, which works well for us because we aren't computers. This is an SVG in code:
 
@@ -64,16 +62,16 @@ SVGs are human readable, which works well for us because we aren't computers. Th
 And this is the rendered version of that code:
 <img src="https://ryshackleton.github.io/d3_maptime/img/threeLittleCircles.svg">
 
-SVG's work similarly to html pages, with tags representing objects that contain other objects: each of those circles is an element in your SVG, which has a width and height. Each circle contains some coordinates of the object's center (cx, cy), and radius (r).  So the SVG is just a set of instructions for where to put each object.
+SVG's work similarly to html pages, where tags represent objects with other objects **nested** within: each circle is an element nested within the SVG. Each circle contains some coordinates of the object's center (cx, cy), and radius (r), so the SVG is just a set of instructions defining the geometry of each object, where to put each object, and how to style the objects.
 
-It's also worth noting that D3 has the ability to write and edit [many types of shape elements](https://www.w3schools.com/graphics/svg_examples.asp), like rectangles (rect), not just circles.  Another important one we'll use later is the [path element](https://www.w3schools.com/graphics/svg_path.asp), which lets us define complex shapes like country boundaries [SVG].
+It's also worth noting that D3 has the ability to write and edit [many types of shape elements](https://www.w3schools.com/graphics/svg_examples.asp) to SVG's, like rectangles (`<rect>`), not just circles.  Later we'll use a [`<path>` element](https://www.w3schools.com/graphics/svg_path.asp), which has a shorthand format for definining complex polygons like country boundaries.
 
-We can also **group** items with the [g element](https://www.w3.org/TR/SVG/struct.html#Groups), which comes in handy when we start to build more complex SVG's with lots of different items that we want to keep organized.  The SVG below has one `<rect>` element grouped inside a `<g>` element, and the three `<circle>`'s grouped inside a different `<g>` element.
+We can also **group** items with the [g element](https://www.w3.org/TR/SVG/struct.html#Groups), which comes in handy when we start to build more complex SVG's with lots of different items that we want to keep organized.  The SVG below is the same SVG we saw above, but we've added a `<rect>` element grouped inside a `<g>` element, and the three `<circle>`'s are grouped inside a different `<g>` element.
 
 ```HTML
 <svg width="720" height="120">
   <g>
-    <rect width="300" height="100" style="fill:rgb(0,0,255);"></rect>
+    <rect width="300" height="100" style="fill: blue;"></rect>
   </g>
   <g>
     <circle cx="40" cy="60" r="10"></circle>
@@ -82,6 +80,9 @@ We can also **group** items with the [g element](https://www.w3.org/TR/SVG/struc
   </g>
 </svg>
 ```
+
+<img src=https://ryshackleton.github.io/d3_maptime/img/threeLittleCirclesGroupedRect.svg></img>
+
 If you want to see the svg code in your browser window, open [this link](https://ryshackleton.github.io/d3_maptime/img/threeLittleCirclesGroupedRect.svg), then *right click* in the SVG and select *Inspect element* from the drop down.
 
 # Tips
@@ -107,11 +108,19 @@ By the time we finish this tutorial, we will have built our first (or nth) D3 we
 
 ## STEP 1: Create a simple web page template
 
-If you need a refresher on how to make a simple web page, take a walk over to our [web map tutorial](http://maptimesea.github.io/2014/11/05/web-map-intro.html#let-s-get-started).  I've included a starter template below, but if you haven't been exposed to creating your own web page, we can boil it down to 3 parts:
+If you need a refresher on how to make a simple web page, have a look a our [web map tutorial](http://maptimesea.github.io/2014/11/05/web-map-intro.html#let-s-get-started).  Here's the speedy version, which will serve our purposes:
 
-Like nouns, adjectives, and verbs, the web (in its simplest form) is made of HTML, CSS, and Javascript. These are the driving forces that work together to create your ~~sentence~~ webpage. With these three components, you can make a completely whole, modern, and dynamic webpage and website.
+Like nouns, adjectives, and verbs, the web (in its simplest form) is made of HTML, CSS, and Javascript.
 
+1. The HTML describes what's IN your webpage: the nouns.
+1. The CSS describes what everything LOOKS like: the adjectives.
+1. The JavaScript describes what your webpage DOES: the actions.  
+
+<div>
 <img src="http://maptimesea.github.io/img/tut001-nounverbadj.svg">
+</div>
+
+**D3 is like a word processor that you use to write complete sentences: it helps you BUILD your webpage by constructing HTML, SVG, CSS, and even JavaScript elements dynamically from your data.**
 
 Here's a basic boilerplate for a webpage that contains each of the 3 "ingredients."
 
