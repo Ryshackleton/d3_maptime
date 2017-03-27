@@ -245,16 +245,22 @@ Then join that data array to some `<circle>`'s within the SVG
 
 There's a lot going on in these 4 lines of code, but here's what's basically happening:
 
-* We use .selectAll("circles") to get an *element selection* of circles inside the SVG.  In our case, the array is empty, but we need a selection of elements to join some data to, which we'll do in the next line.
-* The function: .data(myData) JOINS the *data selection* the empty **element selection** from the SVG.  It does this by sequentially matching each item in the data to corresponding items in the element selection with the same index
-	* New items contained in the *data selection* that are not in the *element selection* are called the **enter selection**
-	* Old items in the *element selection* that are not in the incoming *data selection* are called the **exit seletion**
+* We use .selectAll("circles") to get an *element selection* of circles inside the SVG.  In our case, the array is empty (as shown on the left below), but provides something to join our data to.  The data is shown on the right: an array of 3 data items.  The green boxes just indicate the order, or indices of the data: 0, 1, 2.
 
+<div>
+<img src="https://ryshackleton.github.io/d3_maptime/img/d3.data.png">
+</div>
+
+* The function: .data(myData) JOINS the *data selection* the empty **element selection** from the SVG.  It does this by sequentially matching each item in the data to corresponding items in the element selection with the same index.
+	* New items contained in the *data selection* that are not in the *element selection* are called the **enter selection** (In this case, ALL of our items are in the enter selection because there were no items in the element selection)
+	* Old items in the *element selection* that are not in the incoming *data selection* are called the **exit seletion**
+	* Old items in the *element selection* that are in the incoming data selection are called the **update selection**
+	
 <div>
 <img src="https://ryshackleton.github.io/d3_maptime/img/enterUpdateExitII.svg">
 </div>
 
-* The joined selection is called the **update selection**, and D3 creates a "dummy element" with an attached `_data_` variable that holds the data 
+* For items in the **enter selection** that don't have corresponding elements, D3 creates a "dummy element" with an attached `_data_` variable that holds the data 
 
 <div>
 <img src="https://ryshackleton.github.io/d3_maptime/img/d3.data.elments.png">
