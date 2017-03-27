@@ -62,7 +62,7 @@ SVGs are human readable, which works well for us because we aren't computers. Th
 And this is the rendered version of that code:
 <img src="https://ryshackleton.github.io/d3_maptime/img/threeLittleCircles.svg">
 
-SVG's work similarly to html pages, where tags represent objects with other objects **nested** within: each circle is an element nested within the SVG. Each circle contains some coordinates of the object's center (cx, cy), and radius (r), so the SVG is just a set of instructions defining the geometry of each object, where to put each object, and how to style the objects.
+SVG's work similarly to html pages, where tags represent objects that can have *objects nested within them*: each circle is an element *nested within* the SVG. Each circle contains some coordinates of the object's center (cx, cy), and radius (r), so the SVG is just a set of instructions defining the geometry of each object, where to put each object, and how to style the objects.
 
 It's also worth noting that D3 has the ability to write and edit [many types of shape elements](https://www.w3schools.com/graphics/svg_examples.asp) to SVG's, like rectangles (`<rect>`), not just circles.  Later we'll use a [`<path>` element](https://www.w3schools.com/graphics/svg_path.asp), which has a shorthand format for definining complex polygons like country boundaries.
 
