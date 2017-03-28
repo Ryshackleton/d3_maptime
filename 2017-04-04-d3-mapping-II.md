@@ -150,7 +150,25 @@ D3 has really easy shorthand for selecting objects in webpages.  First, we'll as
   
   var svg = body.select("svg"); // select the <svg> that lies within the <body>
 ```
-You just did your first D3 Selection!
+You just did your first D3 Selection! Not very exciting, but this will provide us a little intro to how to debug your scripts in a web browser using the browser's Developer Tools.
+
+##### Developer Tools for debugging
+To see the contents of the variables ("body" and "svg")
+1. go back to your web browser showing hello-d3.html
+1. right click anywhere in the page
+1. select "View Page Source" or "Inspect Element", which shows you the source code for the page
+1. find the "Console" section or tab
+1. type "svg" into the console to access your stored "svg" variable, which should reveal something like this:
+
+```JavaScript
+> dt {_groups: Array[1], _parents: Array[1]}
+```
+You can expand the dropdowns and see the contents of the svg object.  This is a handy way to get behind the scenes of your JavaScript code.  The console would also show you errors, which I'm sure you'll never have in your code.  You can also access the console directly from inside your code by adding things like:
+
+```JavaScript
+console.log("Here's my svg at step 1:");
+console.log(svg);
+```
 
 ### Select more than one thing at once...
 
@@ -159,18 +177,33 @@ How about selecting more than one thing, like, say, the circles in the SVG?  Eas
 ```JavaScript
   var circles = svg.selectAll("circles");
 ```
+
 ### 1st Challenge, 10 minutes: Change the Color and Size of the SVG elements
 Head over to [this awesome tutorial](https://strongriley.github.io/d3/tutorial/circle.html), where the first section: **Selecting Elements** will show you how to give your circles some style.  Once you've found the code to change colors and sizes of circles, add the relevant code to your script and see if you cant make your circles have the following properties
 
- 	1. Radius: 20
- 	1. fill: darkred
-	
- You can even try to move your circles around in x/y space, but be careful how far you move them!!!
+ 1. Radius: 20
+ 1. fill: darkred
+ 
+Be sure to make use of the Developer Tools to find errors (in the Console).  You can even try to move your circles around in x/y space, but be careful how far you move them!!!
  
 ### 2nd Challenge, 10 minutes: Bind Some Data to your circles
 Stick with the [same tutorial](https://strongriley.github.io/d3/tutorial/circle.html), but now move onto: **Binding Data**.  See if you can bind the following data to the `cy` attribute on each of your circles
 ```JavaScript
 	var myData = [ 20, 60, 100 ];
+```
+### Advanced Challenge: Add Transition Effects
+Check out (the tutorial on Transitions)[https://bost.ocks.org/mike/transition/], and see if you can transition from one state to another.  You probably want to wrap your code in a button, which you can add with the following snippet
+
+```JavaScript
+    // use d3 to add a new button, linked to the doTransition() function below
+    d3.select("body")
+      .append("button")
+      .on("click",doTransition)
+      .text("Run My Transition");
+    
+    function doTransition() {
+      // add your transitioning code here
+    }
 ```
 
 ## STEP 2: Use D3 to build your first SVG!
