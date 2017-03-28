@@ -274,26 +274,26 @@ We know our SVG should go inside the `<body>`, it needs a a height and width, an
 </body>
 ```
 So our general plan could be to:
-1. Create an SVG in the body with the .append() function
-1. Give SVG a width and height attribute with .attr()
+1. Create an SVG in the `<body>` with the .append() function
+1. Give SVG a *width* and *height* attribute with .attr()
 1. Give SVG some style with .style()
 1. Get an array of earthquake data
 	1. For each earthquake in the data array
 		1. create a circle with the .append() function
-		1. scale the earthquake coordinates to fit into SVG's width and height
+		1. give circle a *cx* and *cy* attribute representing their coordinates (scaled to the SVG coordinates!)
 		1. size the earthquake based on the earthquake's magnitude (set r to something with .attr())
 
-So, we might start by saving a width and height variable
+Whoah.  That was a lot.  How about an easy decision? Let's start with deciding on a width and height for our graphic.
 ```JavaScript
 	var width = 700;
       	var height = 500;
 ```
-### Use D3 to magically create your SVG in the `<body>` element
+### Use D3 to magically create an SVG in the `<body>` element
 To add things to the document, use d3's `.append()` function:
 ```JavaScript
 	var svg = d3.select("body).append("svg"); // appends an svg to the body, saves it as a variable called svg
 ```
-When we append() to the `<body>` element, we just add the new `<svg>` below the script that we're actually writing.  Yeah, you heard that right: we're writing code to edit the document that we're writing....#mindblown.
+When we append() to the `<body>` element, D3 just adds a new `<svg>` below the script that we're actually writing.  Yeah, you heard that right: we're writing code to edit the document that we're writing....#mindblown.
 
 Now the body element looks like this:
 
@@ -304,7 +304,7 @@ Now the body element looks like this:
  </body>
 ```
 ### Give your new `<svg>` some width, height, and style!
-The SVG won't even be selectable until we assign the width and height variables. To fix that, we add some attributes to the svg with D3's .attr() function, which adds attributes to objects in the web page or on the SVG.  Then we'll add some style with the .style() method instead of the .attr() method, and the result is a style="stylename: style value;" on the element.
+The SVG won't even be selectable until we assign the width and height attributes. Again, use the .attr() function, which adds attributes to objects in the web page or on the SVG.  Then we'll add some style with the .style() method, and the result is a style="stylename: style value;" on the element.
 ```JavaScript
   svg.attr("width", width)
                            // NOW svg looks like this in the document:
@@ -316,7 +316,7 @@ The SVG won't even be selectable until we assign the width and height variables.
                            // <body>
                            //    <svg width="600" height="500"></svg>
                            // </body>
-     .style("border","3px solid black"); // applies some CSS-like styles to the svg.
+     .style("border","3px solid black") // applies some CSS-like styles to the svg.
      .style("background-color","lightblue"); // applies some CSS-like styles to the svg.
                            // NOW svg looks like this in the document:
                            // <body>
