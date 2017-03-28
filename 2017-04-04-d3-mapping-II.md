@@ -197,7 +197,7 @@ How about selecting more than one thing, like, say, the circles in the SVG?  Eas
 ```JavaScript
   var circles = svg.selectAll("circles");
 ```
-Here I'm looking *withing the svg* for all of the circle objects.  I could also write `d3.selectAll("circles");`, but that would give me any circles anywhere in the web page.  It's good to be specific so you don't end up selecting elements you didn't want to modify.
+Here I'm looking *within the svg that I selected above* for all of the circle objects.  I could also write `d3.selectAll("circles");`, but that would give me any circles *anywhere in the web page*.  It's good to be specific so you don't end up selecting elements you didn't want to modify.
 
 ### 1st Challenge, 10 minutes: Change the Color and Size of the SVG elements
 Head over to [this awesome tutorial](https://strongriley.github.io/d3/tutorial/circle.html), where the first section: **Selecting Elements** will show you how to give your circles some style.  Once you've found the code to change colors and sizes of circles, add the relevant code to your script and see if you cant make your circles have the following properties
