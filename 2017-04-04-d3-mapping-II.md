@@ -78,7 +78,8 @@ It's also worth noting that D3 has the ability to write and edit [many types of 
 With any luck, today we will produce a simplified version of [this map](https://ryshackleton.github.io/global_daily_earthquakes_d3/index.html), which displays the [USGS's GeoJSON feed of recent earthquakes around the world](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php).  We'll do this in steps:
 
  1. Create a simple web page to hold our SVG graphic
- 1. Write some JavaScript calling D3 to create a "scatterplot" with some circles
+ 1. Learn to select SVG objects with D3
+ 1. Learn to create SVG objects with D3
  1. Explore D3's methods to scale data coordinates to graphics coordinates
  1. Explore D3's geographic projection methods scale geo-data coordinates to graphics coordinates
  1. Use D3 to read in GEOJSON data from the USGS daily earthquake feed
@@ -87,7 +88,7 @@ With any luck, today we will produce a simplified version of [this map](https://
 
 By the time we finish this tutorial, we will have built our first (or nth) D3 web map! This will not be the prettiest map you've ever made, but hopefully once you've made it, you will have a launching pad to make an even better D3 map in the future.
 
-## STEP 1: Create a simple web page template
+## STEP 1: Create a simple web page to hold our SVG graphic
 
 Below I've included the quick-and-dirtiest version EVER of how web pages work, along with some boilerplate HTML we can use to get started.  If you need more of a refresher on how to make a simple web page, have a look a our [web map tutorial](http://maptimesea.github.io/2014/11/05/web-map-intro.html#let-s-get-started).  
 
@@ -110,10 +111,10 @@ Like nouns, adjectives, and verbs, the web (in its simplest form) is made of HTM
 <html lang="en">
 
 <head>
+  <meta charset="utf-8">
+  
   <!--   using D3 version 4-->
   <script src="https://d3js.org/d3.v4.min.js"></script>
-  
-    <meta charset="utf-8">
   
     <!--  could add CSS inside the <style> tags -->
     <style>
@@ -159,8 +160,8 @@ From here on out, most of what we'll be doing is writing JavaScript to select an
     	/* Your JavaScript Here */
     </script>
 ```
-
-### Do your first D3 Selection
+## STEP 2: Learn to select SVG objects with D3
+### Your first D3 Selection
 
 D3 has really easy shorthand for selecting objects in webpages.  First, we'll ask D3 to select the `<body>` tag, and then select the `<svg>` inside the body.  Again, writing your code between the `<script>` tags, add the following code.
 
@@ -211,21 +212,24 @@ Stick with the [same tutorial](https://strongriley.github.io/d3/tutorial/circle.
 	var myData = [ 20, 60, 100 ];
 ```
 ### Advanced Challenge, if you have extra time: Add Transition Effects
-Check out [the tutorial on Transitions](https://bost.ocks.org/mike/transition/), and see if you can transition from one state to another.  You probably want to wrap your code in a button so you can see the transition happen. To add a button, add the following snippet to your script (not the html).
+Check out [the tutorial on Transitions](https://bost.ocks.org/mike/transition/), and see if you can transition from one state to another.  You probably want to wrap your code in a button so you can see the transition happen. To add a button, add the following snippet to your script (not the html), then add your transitioning code inside the `function myFunction()`
 
 ```JavaScript
     // use d3 to add a new button in the body
     d3.select("body")
       .append("button")
-      .on("click",doTransition) // link the doTransition function to the button click
-      .text("Run My Transition"); // add some text to the button
+      .on("click",myFunction) // link the myFunction function to the button click
+      .text("Run My Function"); // add some text to the button
     
-    function doTransition() {
+    function myFunction() {
       // add your transitioning code here
     }
 ```
+## STEP 3: Learn to create SVG objects with D3
+### Take 5 minutes to READ through the Creating Elements section
+[Same tutorial](https://strongriley.github.io/d3/tutorial/circle.html), but now move onto: **Creating Elements**. We'll create some elements in the next section, but this provides a nice intro to the idea of the enter and exit selections.
 
-## STEP 2: Use D3 to build your first SVG!
+
 
 From here on out, most of what we'll be doing is writing JavaScript to build our SVG map.  In the `hello-d3.html`, find the `<body>` tag, then find the `<script>` tag inside the `<body>`.  All of our code will go there.
 
