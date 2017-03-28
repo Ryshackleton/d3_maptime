@@ -52,7 +52,7 @@ At its core, D3 takes your information and transforms it into a visual output. T
 SVGs are human readable, which works well for us because we aren't computers. This is an SVG in code:
 
 ```HTML
-<svg width="720" height="120">
+<svg width="400" height="120">
   <circle cx="40" cy="60" r="10"></circle>
   <circle cx="80" cy="60" r="10"></circle>
   <circle cx="120" cy="60" r="10"></circle>
@@ -103,11 +103,39 @@ Like nouns, adjectives, and verbs, the web (in its simplest form) is made of HTM
 
 **D3 is like a word processor that you use to write complete sentences: it helps you BUILD your webpage by constructing HTML, SVG, CSS, and even JavaScript elements dynamically from your data.**
 
-### Copy this HTML to a file called hello-d3.html to get started
+### Copy this HTML code into a file called hello-d3.html to get started
 
-Here's a basic boilerplate for a webpage that contains each of the 3 "ingredients."
+```HTML
+<!doctype html>
+<html lang="en">
 
-<script src="https://gist.github.com/Ryshackleton/e3182682c731b9e54028061ee30af6d9.js"></script>
+<head>
+  <!--   using D3 version 4-->
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  
+    <meta charset="utf-8">
+  
+    <!--  could add CSS inside the <style> tags -->
+    <style>
+      
+    </style>
+
+</head>
+
+<body>
+  <svg width="400" height="120">
+    <circle cx="40" cy="60" r="10"></circle>
+    <circle cx="80" cy="60" r="10"></circle>
+    <circle cx="120" cy="60" r="10"></circle>
+  </svg>
+  
+  <script>
+    /* Your JavaScript Here */
+     
+  </script>
+</body>
+</html>
+```
 
 Notice that we have already included the D3.js script (version 4) at the top of the page inside the `<head>` tag.
 
@@ -119,7 +147,7 @@ Notice that we have already included the D3.js script (version 4) at the top of 
 I have also included the SVG we discussed above inside the `<body>` tag, which we'll learn to manipulate with D3.  It should look like this.
 
 ```HTML
-  <svg width="720" height="120">
+  <svg width="400" height="120">
     <circle cx="40" cy="60" r="10"></circle>
     <circle cx="80" cy="60" r="10"></circle>
     <circle cx="120" cy="60" r="10"></circle>
@@ -129,7 +157,7 @@ From here on out, most of what we'll be doing is writing JavaScript to select an
 
 ```JavaScript
   <body>
-     <svg width="720" height="120">
+     <svg width="400" height="120">
        <circle cx="40" cy="60" r="10"></circle>
        <circle cx="80" cy="60" r="10"></circle>
        <circle cx="120" cy="60" r="10"></circle>
@@ -195,11 +223,11 @@ Stick with the [same tutorial](https://strongriley.github.io/d3/tutorial/circle.
 Check out (the tutorial on Transitions)[https://bost.ocks.org/mike/transition/], and see if you can transition from one state to another.  You probably want to wrap your code in a button, which you can add with the following snippet
 
 ```JavaScript
-    // use d3 to add a new button, linked to the doTransition() function below
+    // use d3 to add a new button in the body
     d3.select("body")
       .append("button")
-      .on("click",doTransition)
-      .text("Run My Transition");
+      .on("click",doTransition) // link the doTransition function to the button click
+      .text("Run My Transition"); // add some text to the button
     
     function doTransition() {
       // add your transitioning code here
