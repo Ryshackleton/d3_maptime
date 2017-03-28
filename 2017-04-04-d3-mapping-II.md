@@ -70,7 +70,7 @@ It's also worth noting that D3 has the ability to write and edit [many types of 
 
 * The learning curve can be pretty steep. Stay positive
 * Start simple, add complexity piece by piece
-* Refer to documentation/tutorials
+* Refer to [documentation](https://github.com/d3/d3/blob/master/API.md) / [tutorials](https://github.com/d3/d3/wiki/Tutorials)
 * **Cannibalize code** wherever/whenever you can. D3 has [great examples](https://bl.ocks.org/) and most the code is freely accessible. See something you like? Take a look at how it's done, but definitely go line-by-line in the code to make sure you know what's happening!
 
 # Tutorial Time!
@@ -155,7 +155,7 @@ I have also included the SVG we discussed above inside the `<body>` tag, which w
 ```
 From here on out, most of what we'll be doing is writing JavaScript to select and add things to the web page.  In `hello-d3.html`, find the `<body>` tag, then find the `<script>` tag inside the `<body>`.  All of our code will go there.
 
-```JavaScript
+```JavaScript 
     <script>
     	/* Your JavaScript Here */
     </script>
@@ -204,7 +204,7 @@ Head over to [this awesome tutorial](https://strongriley.github.io/d3/tutorial/c
  1. Radius: 20
  1. fill: darkred
  
-Be sure to make use of the Developer Tools to find errors (in the Console).  You can even try to move your circles around in x/y space, but be careful how far you move them!!!
+Be sure to make use of the Developer Tools to find errors (in the Console).  You can even try to move your circles around in x/y space, but be careful how far you move them!!! (you can move them outside of the SVG and they'll be gone)
  
 ### 2nd Challenge, 10 minutes: Bind Some Data to your circles
 Stick with the [same tutorial](https://strongriley.github.io/d3/tutorial/circle.html), but now move onto: **Binding Data**.  See if you can bind the following data to the `cy` attribute on each of your circles
@@ -225,38 +225,75 @@ Check out [the tutorial on Transitions](https://bost.ocks.org/mike/transition/),
       // add your transitioning code here
     }
 ```
-## STEP 3: Learn to create SVG objects with D3
-### Take 5 minutes to READ through the Creating Elements section
-[Same tutorial](https://strongriley.github.io/d3/tutorial/circle.html), but now move onto: **Creating Elements**. We'll create some elements in the next section, but this provides a nice intro to the idea of the enter and exit selections.
+### Take 10 minutes to READ through the Creating Elements section
+[Same tutorial](https://strongriley.github.io/d3/tutorial/circle.html), but now move onto: **Creating Elements**. We'll create some elements in the next section.  Pay special attention to the **.append() function**, the idea of the **enter selection** and to **method chaining** at the end.
 
+## STEP 3: Start building our earthquake map
+### Start with a clean slate: copy and paste the code below to a new file called myMap.html
+```HTML
+<!doctype html>
+<html lang="en">
 
+<head>
+  <meta charset="utf-8">
+  
+  <!--   using D3 version 4-->
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  
+    <!--  could add CSS inside the <style> tags -->
+    <style>
+      
+    </style>
 
-From here on out, most of what we'll be doing is writing JavaScript to build our SVG map.  In the `hello-d3.html`, find the `<body>` tag, then find the `<script>` tag inside the `<body>`.  All of our code will go there.
+</head>
 
-### Define width and height of your graphic
-
-Add the new code, and all subsequent code, between the `<script>/* Your JavaScript Here */</script>` tags in the `<body>`.
-
-```JavaScript
-  <body>
-    <script>
-    	/* Your JavaScript Here */
-	var width = 700,
-      	    height = 500;
-	/* keep adding new code below this line... */
-	
-    </script>
-  </body>
+<body>  
+  <script>
+    /* Your JavaScript Here */
+     
+  </script>
+</body>
+</html>
 ```
+Notice that there's NO SVG in the file this time: that's because we'll just have D3 create it for us!
 
+### The Plan: Create a map with some circles representing earthquakes of varying size
+Let's think about what we want our map to look like, then translate that into a general idea of what the SVG code will look like,
+then figure out how to make D3 build it for us.
+
+We know our SVG should go inside the `<body>`, it needs a a height and width, and that it should have some circles that have some attributes as we saw before.  So it should look something like this:
+
+```HTML
+<body>
+   <svg width="some number" height="some number" style="some style with colors, borders, etc">
+    <circle cx="some x" cy="some y" r="some radius" style="some style....;"></circle>
+    <circle cx="some x" cy="some y" r="some radius" style="some style....;"></circle>
+    <circle cx="some x" cy="some y" r="some radius" style="some style....;"></circle>
+  </svg>
+</body>
+```
+So our general plan could be to:
+1. Create an SVG in the body with the .append() function
+1. Give SVG a width and height attribute with .attr()
+1. Give SVG some style with .style()
+1. Get an array of earthquake data
+	1. For each earthquake in the data array
+		1. create a circle with the .append() function
+		1. scale the earthquake coordinates to fit into SVG's width and height
+		1. size the earthquake based on the earthquake's magnitude (set r to something with .attr())
+
+So, we might start by saving a width and height variable
+```JavaScript
+	var width = 700;
+      	var height = 500;
+```
 ### Use D3 to magically create your SVG in the `<body>` element
-
-D3 has really easy shorthand for electing and creating objects.  First, we'll ask D3 to select the `<body>` tag, and then append a new SVG inside the body.
-
+To add things to the document, use d3's `.append()` function:
 ```JavaScript
-  var svg = d3.select("body") // select the html element with <body>
-              .append("svg"); // append an svg to that group
+	var svg = d3.select("body).append("svg"); // appends an svg to the body, saves it as a variable called svg
 ```
+When we append() to the `<body>` element, we just add the new `<svg>` below the script that we're actually writing.  Yeah, you heard that right: we're writing code to edit the document that we're writing....#mindblown.
+
 Now the body element looks like this:
 
 ```html
@@ -265,38 +302,28 @@ Now the body element looks like this:
     <svg></svg>
  </body>
 ```
-
-When we append() to the `<body>` element, we just add the new `<svg>` below the script that we're actually writing.  Yeah, you heard that right: we're writing code to edit the document that we're writing....#mindblown.
-
-You might also be wondering what's going on with that empty space before .append(...). That's because D3 uses **method chaining**, which is common in some JavaScript libraries like jQuery.  To read more about method chaining [see this page](http://alignedleft.com/tutorials/d3/chaining-methods).
-
-### Give your new `<svg>` some width and height
-The SVG won't even be selectable until we assign the width and height variables. To fix that, we add some attributes to the svg with D3's .attr() function, which adds attributes to objects in the web page or on the SVG.
+### Give your new `<svg>` some width, height, and style!
+The SVG won't even be selectable until we assign the width and height variables. To fix that, we add some attributes to the svg with D3's .attr() function, which adds attributes to objects in the web page or on the SVG.  Then we'll add some style with the .style() method instead of the .attr() method, and the result is a style="stylename: style value;" on the element.
 ```JavaScript
   svg.attr("width", width)
                            // NOW svg looks like this in the document:
                            // <body>
                            //    <svg width="700"></svg>
                            // </body>
-     .attr("height", height);
+     .attr("height", height)
                            // NOW svg looks like this in the document:
                            // <body>
                            //    <svg width="600" height="500"></svg>
                            // </body>
- ```
-
-### Give SVG some style
-Great, we made a blank image! Try adding this bit of code to show the boundary of the SVG. Notice that we used the .style() method instead of the .attr() method to apply styles, and the result is a style="stylename: style value;" on the element.
-
- ```JavaScript
-  svg.style("border","3px solid black"); // applies some CSS-like styles to the svg.
-  svg.style("background-color","lightblue"); // applies some CSS-like styles to the svg.
+     .style("border","3px solid black"); // applies some CSS-like styles to the svg.
+     .style("background-color","lightblue"); // applies some CSS-like styles to the svg.
                            // NOW svg looks like this in the document:
                            // <body>
                            //   <svg width="700" height="500" style="border: 3px solid black; background-color: lightblue;">
                            // </body>
                            // </body>
  ```
+You may notice that I have started **chaining** these methods together.  I can do that because the .attr() and .style() method return a reference to the selection containg the svg we're working on.  You'll see **method chaining** *a lot* in D3.
 
 If you refresh the html page, you should see your SVG in with a blue background, outlined with a solid black line. In your browser, right click in the box and select *Inspect Element*, and you'll see the stylish svg element in your page, hopefully within the `<body></body>` tag.
 
