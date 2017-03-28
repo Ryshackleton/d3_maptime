@@ -66,26 +66,6 @@ SVG's work similarly to html pages, where tags represent objects that can have *
 
 It's also worth noting that D3 has the ability to write and edit [many types of shape elements](https://www.w3schools.com/graphics/svg_examples.asp) to SVG's, like rectangles (`<rect>`), not just circles.  Later we'll use a [`<path>` element](https://www.w3schools.com/graphics/svg_path.asp), which has a shorthand format for definining complex polygons like country boundaries.
 
-We can also **group** items with the [g element](https://www.w3.org/TR/SVG/struct.html#Groups), which comes in handy when we start to build more complex SVG's with lots of different items that we want to keep organized.  The SVG below is the same SVG we saw above, but we've added a `<rect>` element grouped inside a `<g>` element, and the three `<circle>`'s are grouped inside a different `<g>` element.
-
-```HTML
-<svg width="720" height="120">
-  <g>
-    <rect width="300" height="100" style="fill: blue;"></rect>
-  </g>
-  <g>
-    <circle cx="40" cy="60" r="10"></circle>
-    <circle cx="80" cy="60" r="10"></circle>
-    <circle cx="120" cy="60" r="10"></circle>
-  </g>
-</svg>
-```
-...and the rendered version:
-
-<img src=https://ryshackleton.github.io/d3_maptime/img/threeLittleCirclesGroupedRect.svg></img>
-
-If you want to see the svg code in your browser window, open [this link](https://ryshackleton.github.io/d3_maptime/img/threeLittleCirclesGroupedRect.svg), then *right click* in the SVG and select *Inspect element* from the drop down.
-
 # Tips
 
 * The learning curve can be pretty steep. Stay positive
@@ -134,6 +114,63 @@ Notice that we have already included the D3.js script (version 4) at the top of 
 ```HTML
   <!--   using version 4-->
   <script src="https://d3js.org/d3.v4.min.js"></script>
+```
+
+I have also included the SVG we discussed above inside the `<body>` tag, which we'll learn to manipulate with D3.  It should look like this.
+
+```HTML
+  <svg width="720" height="120">
+    <circle cx="40" cy="60" r="10"></circle>
+    <circle cx="80" cy="60" r="10"></circle>
+    <circle cx="120" cy="60" r="10"></circle>
+  </svg>
+```
+From here on out, most of what we'll be doing is writing JavaScript to select and add things to the web page.  In the `hello-d3.html`, find the `<body>` tag, then find the `<script>` tag inside the `<body>`.  All of our code will go there.
+
+```JavaScript
+  <body>
+     <svg width="720" height="120">
+       <circle cx="40" cy="60" r="10"></circle>
+       <circle cx="80" cy="60" r="10"></circle>
+       <circle cx="120" cy="60" r="10"></circle>
+     </svg>
+  
+    <script>
+    	/* Your JavaScript Here */
+    </script>
+  </body>
+```
+
+### Do your first D3 Selection
+
+D3 has really easy shorthand for selecting objects in webpages.  First, we'll ask D3 to select the `<body>` tag, and then select the `<svg>` inside the body.  Again, writing your code between the `<script>` tags, add the following code.
+
+```JavaScript
+  var body = d3.select("body"); // select the html element with <body>
+  
+  var svg = body.select("svg"); // select the <svg> that lies within the <body>
+```
+You just did your first D3 Selection!
+
+### Select more than one thing at once...
+
+How about selecting more than one thing, like, say, the circles in the SVG?  Easy.
+
+```JavaScript
+  var circles = svg.selectAll("circles");
+```
+### 1st Challenge, 10 minutes: Change the Color and Size of the SVG elements
+Head over to [this awesome tutorial](https://strongriley.github.io/d3/tutorial/circle.html), where the first section: **Selecting Elements** will show you how to give your circles some style.  Once you've found the code to change colors and sizes of circles, add the relevant code to your script and see if you cant make your circles have the following properties
+
+ 	1. Radius: 25
+ 	1. fill: darkred
+	
+ You can even try to move your circles around in x/y space, but be careful how far you move them!!!
+ 
+### 2nd Challenge, 10 minutes: Bind Some Data to your circles
+Stick with the [same tutorial](https://strongriley.github.io/d3/tutorial/circle.html), but now move onto: **Binding Data**.  See if you can bind the following data to the `cy` attribute on each of your circles
+```JavaScript
+	var data = [ 20, 60, 80 ];
 ```
 
 ## STEP 2: Use D3 to build your first SVG!
