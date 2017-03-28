@@ -103,7 +103,7 @@ Like nouns, adjectives, and verbs, the web (in its simplest form) is made of HTM
 
 **D3 is like a word processor that you use to write complete sentences: it helps you BUILD your webpage by constructing HTML, SVG, CSS, and even JavaScript elements dynamically from your data.**
 
-### Copy this HTML code into a file called hello-d3.html to get started
+### Copy this HTML code into a file called hello-d3.html in your text editor to get started
 
 ```HTML
 <!doctype html>
@@ -136,7 +136,6 @@ Like nouns, adjectives, and verbs, the web (in its simplest form) is made of HTM
 </body>
 </html>
 ```
-
 Notice that we have already included the D3.js script (version 4) at the top of the page inside the `<head>` tag.
 
 ```HTML
@@ -153,20 +152,12 @@ I have also included the SVG we discussed above inside the `<body>` tag, which w
     <circle cx="120" cy="60" r="10"></circle>
   </svg>
 ```
-From here on out, most of what we'll be doing is writing JavaScript to select and add things to the web page.  In the `hello-d3.html`, find the `<body>` tag, then find the `<script>` tag inside the `<body>`.  All of our code will go there.
+From here on out, most of what we'll be doing is writing JavaScript to select and add things to the web page.  In `hello-d3.html`, find the `<body>` tag, then find the `<script>` tag inside the `<body>`.  All of our code will go there.
 
 ```JavaScript
-  <body>
-     <svg width="400" height="120">
-       <circle cx="40" cy="60" r="10"></circle>
-       <circle cx="80" cy="60" r="10"></circle>
-       <circle cx="120" cy="60" r="10"></circle>
-     </svg>
-  
     <script>
     	/* Your JavaScript Here */
     </script>
-  </body>
 ```
 
 ### Do your first D3 Selection
@@ -219,8 +210,8 @@ Stick with the [same tutorial](https://strongriley.github.io/d3/tutorial/circle.
 ```JavaScript
 	var myData = [ 20, 60, 100 ];
 ```
-### Advanced Challenge: Add Transition Effects
-Check out (the tutorial on Transitions)[https://bost.ocks.org/mike/transition/], and see if you can transition from one state to another.  You probably want to wrap your code in a button, which you can add with the following snippet
+### Advanced Challenge, if you have extra time: Add Transition Effects
+Check out [the tutorial on Transitions](https://bost.ocks.org/mike/transition/), and see if you can transition from one state to another.  You probably want to wrap your code in a button so you can see the transition happen. To add a button, add the following snippet to your script (not the html).
 
 ```JavaScript
     // use d3 to add a new button in the body
