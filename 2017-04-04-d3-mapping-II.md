@@ -291,7 +291,7 @@ Whoah.  That was a lot.  How about an easy decision? Let's start with deciding o
 ### Use D3 to magically create an SVG in the `<body>` element
 To add things to the document, use d3's `.append()` function:
 ```JavaScript
-	var svg = d3.select("body).append("svg"); // appends an svg to the body, saves it as a variable called svg
+	var svg = d3.select("body").append("svg"); // append an svg to the body, save it as a variable called svg
 ```
 When we append() to the `<body>` element, D3 just adds a new `<svg>` below the script that we're actually writing.  Yeah, you heard that right: we're writing code to edit the document that we're writing....#mindblown.
 
@@ -324,7 +324,7 @@ The SVG won't even be selectable until we assign the width and height attributes
                            // </body>
                            // </body>
  ```
-You may notice that I have started **chaining** these methods together.  I can do that because the .attr() and .style() method return a reference to the selection containg the svg we're working on.  You'll see **method chaining** *a lot* in D3.
+You may notice that I have started **chaining** these methods together.  I can do that because the .attr() and .style() method return a selection containing the svg we're working on.  You'll see **method chaining** *a lot* in D3.
 
 If you refresh the html page, you should see your SVG in with a blue background, outlined with a solid black line. In your browser, right click in the box and select *Inspect Element*, and you'll see the stylish svg element in your page, hopefully within the `<body></body>` tag.
 
