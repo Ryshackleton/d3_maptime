@@ -162,7 +162,7 @@ How about selecting more than one thing, like, say, the circles in the SVG?  Eas
 ### 1st Challenge, 10 minutes: Change the Color and Size of the SVG elements
 Head over to [this awesome tutorial](https://strongriley.github.io/d3/tutorial/circle.html), where the first section: **Selecting Elements** will show you how to give your circles some style.  Once you've found the code to change colors and sizes of circles, add the relevant code to your script and see if you cant make your circles have the following properties
 
- 	1. Radius: 25
+ 	1. Radius: 20
  	1. fill: darkred
 	
  You can even try to move your circles around in x/y space, but be careful how far you move them!!!
@@ -170,7 +170,7 @@ Head over to [this awesome tutorial](https://strongriley.github.io/d3/tutorial/c
 ### 2nd Challenge, 10 minutes: Bind Some Data to your circles
 Stick with the [same tutorial](https://strongriley.github.io/d3/tutorial/circle.html), but now move onto: **Binding Data**.  See if you can bind the following data to the `cy` attribute on each of your circles
 ```JavaScript
-	var data = [ 20, 60, 80 ];
+	var myData = [ 20, 60, 100 ];
 ```
 
 ## STEP 2: Use D3 to build your first SVG!
