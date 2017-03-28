@@ -158,16 +158,13 @@ Add the new code, and all subsequent code, between the `<script>/* Your JavaScri
 
 ### Use D3 to magically create your SVG in the `<body>` element
 
-D3 has really easy shorthand for electing and creating objects:
+D3 has really easy shorthand for electing and creating objects.  First, we'll ask D3 to select the `<body>` tag, and then append a new SVG inside the body.
+
 ```JavaScript
   var svg = d3.select("body") // select the html element with <body>
               .append("svg"); // append an svg to that group
 ```
-
-The chunk of code above inserts an SVG into the document, which it does in 2 steps
-
-1. First, D3 asks the browser to return the html element with the tag: `<body>`,
-1. Second, D3 takes that `<body>` element, and appends, or inserts an `<svg>` element into it, so that the body element now looks like this:
+Now the body element looks like this:
 
 ```html
  <body>
@@ -178,12 +175,10 @@ The chunk of code above inserts an SVG into the document, which it does in 2 ste
 
 When we append() to the `<body>` element, we just add the new `<svg>` below the script that we're actually writing.  Yeah, you heard that right: we're writing code to edit the document that we're writing....#mindblown.
 
-**Also notice that we assigned the svg element as a variable (** *var svg=...* **) so we can have a reference to work on the SVG later.**
-
-You might also be wondering what's going on with that empty space before .append(...). That's because D3 uses **method chaining**, which is common in some JavaScript libraries like jQuery.  Basically, select(), and append() return references to something (a d3 selection) that we operate on in the next "link" of the method chain. [See this page](http://alignedleft.com/tutorials/d3/chaining-methods) for a more thorough discussion of method chaining in D3.
+You might also be wondering what's going on with that empty space before .append(...). That's because D3 uses **method chaining**, which is common in some JavaScript libraries like jQuery.  To read more about method chaining [see this page](http://alignedleft.com/tutorials/d3/chaining-methods).
 
 ### Give your new `<svg>` some width and height
-Right now the SVG has no height or width, so it won't be visible or even have a clickable area. To fix that, we'll use the svg variable we assigned above to add some attributes to the svg with the .attr() function, which adds attributes to objects in the web page.
+The SVG won't even be selectable until we assign the width and height variables. To fix that, we add some attributes to the svg with D3's .attr() function, which adds attributes to objects in the web page or on the SVG.
 ```JavaScript
   svg.attr("width", width)
                            // NOW svg looks like this in the document:
@@ -216,36 +211,47 @@ We'll use SVG styling more below to style individual elements. [Here's the full 
 
 ### DATA JOINING: Put some `<circle>`'s in your SVG!
 
-We'll start by defining a simple array that we'll bind, or join, to the circles.  Right now, the "data" is meaningless: just some numbers that we'll use to offset the circles in the x-direction (in SVG space).  Later we'll learn to relate data to SVG coordinates.
+We'll start by defining a simple array that we'll bind, or join, to the circles.
 
 ```JavaScript
   // a JavaScript array of data
   var myData = [ 5, 15, 30 ];
 ```
+#### D3 Selections
+D3 mimics data arrays with the concept of a *selection*, which is an array of graphical **elements** like circles, rectangles, html tags, lines, or anything else we can select in the HTML.  So remember:
 
-Then join that data array to some `<circle>`'s within the SVG
+	DATA: [ data, data, data ], where data can be numbers or objects containing other data
+	SELECTION: [ element, element, element ], where elements are circles, rectangles, etc.
 
+The code below is the standard way that we match up the data in the DATA arrays to the elements in the SELECTION arrays.  We'll join our simple array of numbers to a *selection* of `<circle>`'s within the SVG.
+
+###### Heads up!
+The `// comments` I have included are certainly [tl;dr](https://en.wikipedia.org/wiki/TL;DR) for most people, but I've included them for reference.  Selections and data binding are the most conceptually difficult parts of D3, so if this seems confusing, don't worry. It takes a while to wrap your head around. For several more thorough explanations of the data binding method, start with Mike Bostock's [Three Little Circles Tutorial](https://strongriley.github.io/d3/tutorial/circle.html), which has some nice animations of how selections work.  You can also check out [How Selections Work](https://bost.ocks.org/mike/selection/) and [Thinking with Joins](https://bost.ocks.org/mike/join/), also by Mike. [This Presentation](https://bost.ocks.org/mike/d3/workshop/#0) also offers a good overview.
+
+OK, here we go!
 ```JavaScript
-  // the original svg starts out as an empty svg element (with its own attributes, but nothing inside it)
-  var circles = svg.selectAll("circle") // select all circles within the SVG
-     .data(myData) // JOIN the data to the circles,
-                 // if the data is larger than the selection, make a circle "placeholder" for each data object
-                // return a reference to the data object containing the placeholders
-      .enter() // RETURN the "enter" selection, which is any newly created placeholders for objects
-      .append("circle"); // on the enter selection, append a new circle object for each circle placeholder in the data
-                        //   then return the selection
+  var circles = svg.selectAll("circle") // select all circles within the SVG -> returns a SELECTION [] (empty in our case)
+     .data(myData) // JOIN the DATA [5,15,30] to the empty SELECTION [] in 3 steps:
+                  //  1) For any elements in SELECTION[] that have corresponding data in DATA[]: overwrite their data values
+		  //     This set becomes the "update selection" (update selection is empty in our case)
+		  //  2) For any data in DATA[] that don't have corresponding elements in SELECTION [],
+		  //      create a SELECTION[] of new "dummy" elements and attach a data object to each element
+		 //	  This is called the "enter selection" -> SELECTION[ element->data, element->data, element->data ]
+		 //   3) For elements in SELECTION[] that don't have corresponding data in DATA[],
+		 //       into an "exit selection"
+		 //   4) return the update, enter, and exit selections { update, enter, exit }
+      .enter() // get the "enter selection" from the returned object
+      .append("circle"); // on the "enter selection", append a new circle object for each "dummy" element we created 
+                        //   then return the selection, which is now: SELECTION[ circle->data, circle->data, circle->data ]
                         // NOW the svg contains 3 circles with no attributes
                         //  <svg "width"=700 "height"=500>
                         //      <circle></circle>
                         //      <circle></circle>
                         //      <circle></circle>
                         // </svg>
-                        // ...and return the selection of circles
 ```
+There's a lot going on in these 4 lines of code, but here's what's happening in a more visual manner:
 
-There's a lot going on in these 4 lines of code, but here's what's basically happening:
-
-##### Short Version
 We select an empty array of **elements**, or circles, using svg.selectAll("circles").
 
 <div>
@@ -258,38 +264,12 @@ Then we JOIN our data to the empty array, creating any necessary circles using .
 <img src="https://ryshackleton.github.io/d3_maptime/img/d3.data.circles.png">
 </div>
 
-Selections and data binding are the most conceptually difficult parts of D3, so if this seems confusing, don't worry. It takes a while to wrap your head around.  What we're doing now is a derivation of Mike Bostock's [Three Little Circles Tutorial](https://strongriley.github.io/d3/tutorial/circle.html), which has some nice animations of how selections work.  You can also check out [How Selections Work](https://bost.ocks.org/mike/selection/) and [Thinking with Joins](https://bost.ocks.org/mike/join/), also by Mike.  [This Presentation](https://bost.ocks.org/mike/d3/workshop/#0) is also a good place to start.
+##### D3's Selection/Array syntax
+You may notice we don't use for or forEach loops to do work on D3 selections.  That's because the .append(something) methods are defined on the selection object. So .append(something) appends an object of type "something" to EACH of the elements in the selection. 
 
-##### TLDR Version
+At the end of all of this, even though you can't see it in the SVG, the data is still attached as a variable called `__data__` within the `<circle>` elements.  This is how D3 can match up the incoming data to the existing circle elements.
 
-* We use .selectAll("circles") to get an *element selection* of circles inside the SVG.  In our case, the array is empty (as shown on the left below), but provides something to join our data to.  The data is shown on the right: an array of 3 data items.  The green boxes just indicate the order, or indices of the data: 0, 1, 2.
 
-<div>
-<img src="https://ryshackleton.github.io/d3_maptime/img/d3.data.png">
-</div>
-
-* The function: .data(myData) JOINS the *data selection* the empty **element selection** from the SVG.  It does this by sequentially matching each item in the data to corresponding items in the element selection with the same index.
-	* New items contained in the *data selection* that are not in the *element selection* are called the **enter selection** (In this case, ALL of our items are in the enter selection because there were no items in the element selection)
-	* Old items in the *element selection* that are not in the incoming *data selection* are called the **exit seletion**
-	* Old items in the *element selection* that are in the incoming data selection are called the **update selection**
-	
-<div>
-<img src="https://ryshackleton.github.io/d3_maptime/img/enterUpdateExitII.svg">
-</div>
-
-* For items in the **enter selection** that don't have corresponding elements, D3 creates a "dummy element" with an attached `_data_` variable that holds the data 
-
-<div>
-<img src="https://ryshackleton.github.io/d3_maptime/img/d3.data.elments.png">
-</div>
-
-* When we call .enter().append("circle"), a new circle element is appended to the temporary element objects that were created, and we're left with circles with our data attached.
-
-<div>
-<img src="https://ryshackleton.github.io/d3_maptime/img/d3.data.circles.png">
-</div>
-
-At the end of all of this, even though you can't see it in the SVG, the `_data_` is still attached to the `<circle>` elements.  This is how D3 can match up the incoming data to the existing circle elements.
 
 ### Define your projection
 
