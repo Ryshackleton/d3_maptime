@@ -99,11 +99,11 @@ Like nouns, adjectives, and verbs, the web (in its simplest form) is made of HTM
 1. The CSS describes what everything LOOKS like: the adjectives.
 1. The JavaScript describes what your webpage DOES: the verbs.  
 
+**D3 is like a word processor that you use to write complete sentences: it helps you BUILD your webpage by constructing HTML, SVG, CSS, and even JavaScript elements dynamically from your data.**
+
 <div>
 <img src="http://maptimesea.github.io/img/tut001-nounverbadj.svg">
 </div>
-
-**D3 is like a word processor that you use to write complete sentences: it helps you BUILD your webpage by constructing HTML, SVG, CSS, and even JavaScript elements dynamically from your data.**
 
 ### Copy this HTML code into a file called hello-d3.html in your text editor to get started
 
