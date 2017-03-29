@@ -23,6 +23,8 @@ Check out these links for some examples of D3 visualizations:
 
 [Geographic Projections: animated](https://bl.ocks.org/mbostock/3711652)
 
+[Geographic Projections: interactive and animated](https://www.jasondavies.com/maps/transition/)
+
 [Wealth of Nations](https://bost.ocks.org/mike/nations/)
 
 [Two Centuries of US Immigration](http://metrocosm.com/us-immigration-history-map.html)
@@ -77,12 +79,11 @@ It's also worth noting that D3 has the ability to write and edit [many types of 
 
 With any luck, today we will produce a simplified version of [this map](https://ryshackleton.github.io/global_daily_earthquakes_d3/index.html), which displays the [USGS's GeoJSON feed of recent earthquakes around the world](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php).  We'll do this in steps:
 
- 1. Create a simple web page to hold our SVG graphic
- 1. Learn to select SVG objects with D3
- 1. Learn to create SVG objects with D3
- 1. Explore D3's methods to scale data coordinates to graphics coordinates
- 1. Explore D3's geographic projection methods scale geo-data coordinates to graphics coordinates
- 1. Use D3 to read in GEOJSON data from the USGS daily earthquake feed
+ 1. Start with a simple webpage template
+ 1. Learn to select existing SVG objects with D3
+ 1. Learn to create new SVG objects with D3 to create a scatterplot
+ 1. Read GeoJSON data and scatterplot that data (no geo-projection)
+ 1. Project the data coordinates to graphics coordinates
  1. Add country boundaries to the map
  1. Pretty it up!
 
@@ -115,6 +116,7 @@ Like nouns, adjectives, and verbs, the web (in its simplest form) is made of HTM
   
   <!--   using D3 version 4-->
   <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://d3js.org/topojson.v2.min.js"></script>
   
     <!--  could add CSS inside the <style> tags -->
     <style>
@@ -197,40 +199,41 @@ How about selecting more than one thing, like, say, the circles in the SVG?  Eas
 ```JavaScript
   var circles = svg.selectAll("circles");
 ```
-Here I'm looking *within the svg that I selected above* for all of the circle objects.  I could also write `d3.selectAll("circles");`, but that would give me any circles *anywhere in the web page*.  It's good to be specific so you don't end up selecting elements you didn't want to modify.
+Here I'm looking *within the svg that I selected above* for all of the circle objects.
 
 ### 1st Challenge, 10 minutes: Change the Color and Size of the SVG elements
-Head over to [this awesome tutorial](https://strongriley.github.io/d3/tutorial/circle.html), where the first section: **Selecting Elements** will show you how to give your circles some style.  Once you've found the code to change colors and sizes of circles, add the relevant code to your script and see if you cant make your circles have the following properties
+Head over to [this awesome tutorial](https://strongriley.github.io/d3/tutorial/circle.html), where the first section: **Selecting Elements** will show you how to give your circles some style.  Find the code to select circles, and change colors and sizes of circles, then add the relevant code to your script and see if you can make your circles have the following properties
 
- 1. Radius: 20
+ 1. radius: 20
  1. fill: darkred
  
 Be sure to make use of the Developer Tools to find errors (in the Console).  You can even try to move your circles around in x/y space, but be careful how far you move them!!! (you can move them outside of the SVG and they'll be gone)
  
 ### 2nd Challenge, 10 minutes: Bind Some Data to your circles
-Stick with the [same tutorial](https://strongriley.github.io/d3/tutorial/circle.html), but now move onto: **Binding Data**.  See if you can bind the following data to the `cy` attribute on each of your circles
+Stick with the [same tutorial](https://strongriley.github.io/d3/tutorial/circle.html), but now move onto: **Binding Data**.  See if you can bind the following data to the `cy` attribute on each of your circles.
+
 ```JavaScript
 	var myData = [ 20, 60, 100 ];
 ```
+
 ### Advanced Challenge, if you have extra time: Add Transition Effects
-Check out [the tutorial on Transitions](https://bost.ocks.org/mike/transition/), and see if you can transition from one state to another.  You probably want to wrap your code in a button so you can see the transition happen. To add a button, add the following snippet to your script (not the html), then add your transitioning code inside the `function myFunction()`
+Check out [the tutorial on Transitions](https://bost.ocks.org/mike/transition/), and see if you can transition from one state to another.  You probably want to have your code triggered by a button so you can see the transition happen. To add a button, add the following snippet to your script (not the html), then add your transitioning code inside the `function myFunction()`
 
 ```JavaScript
     // use d3 to add a new button in the body
     d3.select("body")
       .append("button")
-      .on("click",myFunction) // link the myFunction function to the button click
+      .on("click", myFunction) // link the myFunction function to the button click
       .text("Run My Function"); // add some text to the button
     
     function myFunction() {
       // add your transitioning code here
     }
 ```
-### Take 10 minutes to READ through the Creating Elements section
-[Same tutorial](https://strongriley.github.io/d3/tutorial/circle.html), but now move onto: **Creating Elements**. We'll create some elements in the next section.  Pay special attention to the **.append() function**, the idea of the **enter selection** and to **method chaining** at the end.
 
-## STEP 3: Start building our earthquake map
-### Start with a clean slate: copy and paste the code below to a new file called myMap.html
+## STEP 3: Learn to Create Elements from Scratch!
+Start with this template, or copy the code to below to a file called myScatterPlot.html. Notice that there's no SVG in the `<body>`: just the script, which uses D3 to create the SVG from scratch!  Your job will be to finish the rest of the script to add some circles and make a scatterplot. 
+
 ```HTML
 <!doctype html>
 <html lang="en">
@@ -250,94 +253,112 @@ Check out [the tutorial on Transitions](https://bost.ocks.org/mike/transition/),
 
 <body>  
   <script>
-    /* Your JavaScript Here */
-     
-  </script>
-</body>
-</html>
-```
-Notice that there's NO SVG in the file this time: that's because we'll just have D3 create it for us!
-
-### The Plan: Create a map with some circles representing earthquakes of varying size
-Let's think about what we want our map to look like, then translate that into a general idea of what the SVG code will look like,
-then figure out how to make D3 build it for us.
-
-We know our SVG should go inside the `<body>`, it needs a a height and width, and that it should have some circles that have some attributes as we saw before.  So it should look something like this:
-
-```HTML
-<body>
-   <svg width="some number" height="some number" style="some style with colors, borders, etc">
-    <circle cx="some x" cy="some y" r="some radius" style="some style....;"></circle>
-    <circle cx="some x" cy="some y" r="some radius" style="some style....;"></circle>
-    <circle cx="some x" cy="some y" r="some radius" style="some style....;"></circle>
-  </svg>
-</body>
-```
-So our general plan could be to:
-1. Create an SVG in the `<body>` with the .append() function
-1. Give SVG a *width* and *height* attribute with .attr()
-1. Give SVG some style with .style()
-1. Get an array of earthquake data
-	1. For each earthquake in the data array
-		1. create a circle with the .append() function
-		1. give circle a *cx* and *cy* attribute representing their coordinates (scaled to the SVG coordinates!)
-		1. size the earthquake based on the earthquake's magnitude (set r to something with .attr())
-
-Whoah.  That was a lot.  How about an easy decision? Let's start with deciding on a width and height for our graphic.
-```JavaScript
-	var width = 700;
-      	var height = 500;
-```
-### Use D3 to magically create an SVG in the `<body>` element
-To add things to the document, use d3's `.append()` function:
-```JavaScript
-	var svg = d3.select("body").append("svg"); // append an svg to the body, save it as a variable called svg
-```
-When we append() to the `<body>` element, D3 just adds a new `<svg>` below the script that we're actually writing.  Yeah, you heard that right: we're writing code to edit the document that we're writing....#mindblown.
-
-Now the body element looks like this:
-
-```html
- <body>
-    <script> /* The script tag with the JavaScript code we're writing right now!! */ </script>
-    <svg></svg>
- </body>
-```
-### Give your new `<svg>` some width, height, and style!
-The SVG won't even be selectable until we assign the width and height attributes. Again, use the .attr() function, which adds attributes to objects in the web page or on the SVG.  Then we'll add some style with the .style() method, and the result is a style="stylename: style value;" on the element.
-```JavaScript
-  svg.attr("width", width)
-                           // NOW svg looks like this in the document:
+    var width = 700,
+        height = 500;
+    
+    var svg = d3.select("body")
+                .append("svg"); // NOW svg looks like this in the document:
                            // <body>
-                           //    <svg width="700"></svg>
+                           //    <svg></svg>
                            // </body>
-     .attr("height", height)
-                           // NOW svg looks like this in the document:
+    svg.attr("width", width)
+        .attr("height", height) // NOW svg looks like this in the document:
                            // <body>
-                           //    <svg width="600" height="500"></svg>
+                           //    <svg width="700" height="500"></svg>
                            // </body>
-     .style("border","3px solid black") // applies some CSS-like styles to the svg.
-     .style("background-color","lightblue"); // applies some CSS-like styles to the svg.
+        .style("border","3px solid black") 
+        .style("background-color","lightblue"); 
                            // NOW svg looks like this in the document:
                            // <body>
                            //   <svg width="700" height="500" style="border: 3px solid black; background-color: lightblue;">
                            // </body>
-                           // </body>
- ```
-You may notice that I have started **chaining** these methods together.  I can do that because the .attr() and .style() method return a selection containing the svg we're working on.  You'll see **method chaining** *a lot* in D3.
-
-If you refresh the html page, you should see your SVG in with a blue background, outlined with a solid black line. In your browser, right click in the box and select *Inspect Element*, and you'll see the stylish svg element in your page, hopefully within the `<body></body>` tag.
-
-We'll use SVG styling more below to style individual elements. [Here's the full documentation](https://www.w3.org/TR/SVG/styling.html) for styling SVG elements for reference.
-
-### DATA JOINING: Put some `<circle>`'s in your SVG!
-
-We'll start by defining a simple array that we'll bind, or join, to the circles.
+    
+    // here's your data to plot!
+    var myData = [ 20, 60, 100, 300 ];
+    
+    /* add your code to create circles here */
+    
+  </script>
+</body>
+</html>
+```
+Have a look at the JavaScript code above: We start by creating some variables to hold width and height (in pixels), then the next line selects the `<body>` tag and appends an `<svg>` to it.
 
 ```JavaScript
-  // a JavaScript array of data
-  var myData = [ 5, 15, 30 ];
+	var svg = d3.select("body")
+	            .append("svg");
 ```
+When we append() to the `<body>` element, D3 just adds a new `<svg>` just below the script that we're actually writing.  Yeah, you heard that right: we're writing code to edit the document that we're writing....#MINDBLOWN. To prove it to yourself, open the file in your browswer, right click on the svg, and select *Inspect Element*.
+
+The next lines just adds attributes and styles to the SVG in the same way we were doing to the circles in the [tutorial](https://strongriley.github.io/d3/tutorial/circle.html).  We'll use SVG styling more below to style individual elements. [Here's the full documentation](https://www.w3.org/TR/SVG/styling.html) for styling SVG elements for reference.
+
+You may notice that I have started **chaining** methods together.  I can do that because the .attr() and .style() method return a selection containing the svg we're working on.  You'll see **method chaining** *a lot* in D3.
+
+### 3rd Challenge, 10 minutes: Create Circles from scratch using data!
+[Same tutorial](https://strongriley.github.io/d3/tutorial/circle.html), but now move onto: **Creating Elements**.  When you've finished that section, you should have all the tools to plot the data that's defined at the end of your script.  Create some circles with the following attributes, which will define your first scatterplot.
+1. cx: myData
+1. cy: myData / 2
+1. radius ("r"): square root of myData (use JavaScript's Math.sqrt() function)
+
+You can add the following styles if you have time, or add your own styles.
+1. fill: "rgb(255, 255, 0)"
+1. stroke: "black"
+1. stroke-width: 1
+1. opacity: 0.5
+
+When you're done, pat yourself on the back for having made a scatterplot from scratch!
+
+## STEP 4: Read GeoJSON data and scatterplot that data (no geo-projection)
+OK, enough of this plotting boring arrays of meaningless data.  Let's plot something REAL!  Well, earthquakes are real, and pretty serious, so how about that?
+
+Let's start with the earthquake data.  The data format will be [GeoJSON](http://geojson.org/), which will be a bit more complicated to reference, but is still just an array of data. Previously, our data was just: `var myData = [ 20, 60, 100 ];`, whereas now we'll have something like what you see below, where each block of `{ }` will be parsed into a *JavaScript object*, which could hold arrays of sub-data like strings, arrays of numbers, etc, etc.
+```JavaScript
+	var myData = [ {/* data */ }, {/* data */ }, {/* data */ } ];
+```
+If you're not that familiar with JSON data, [have a look here for the basic formats and data types](https://www.w3schools.com/js/js_json_datatypes.asp).
+
+Our data feed will come from the [USGS GeoJSON feed of earthquakes](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php), which contains a lot more data than we'll need.  I've pasted an abridged version of the data format below.  I have deleted a lot of attributes so you can see where the coordinate data "lives" in the GeoJSON data structure.  To see an example of the feed of all global earthquakes in the past day, with all of the associated data [click here](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson).
+
+```JSON
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    162.734,
+                    56.9205,
+                    22.83
+                ]
+            },
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    117.2386667,
+                    34.0388333,
+                    17.64
+                ]
+            },
+        }
+    ]
+}
+```
+So, we still just have an array of data, we just need to know how to pull the data out and attach it to our circles.  Here's how: if a webserver can feed me the data above as a string (a blob of text), I can parse that and refer to objects inside the JSON like this:
+```JavaScript
+	var myData = d3.json(myJSONblob); // parse the data into JavaScript objects
+	
+	var myFeatureArray = myData.features; // the feature array 
+	var myFirstFeature = myData.features[0]; // the first feature (features indexed from 0 to n-1)
+	var myFirstFeatureLongitude = myFirstFeature.geometry.coordinates[0];
+	var myFirstFeatureLatitude = myFirstFeature.geometry.coordinates[1];
+	var myFirstFeatureDepth = myFirstFeature.geometry.coordinates[2];
+```
+
 #### D3 Selections
 D3 mimics data arrays with the concept of a *selection*, which is an array of graphical **elements** like circles, rectangles, html tags, lines, or anything else we can select in the HTML.  So remember:
 
@@ -391,16 +412,16 @@ You may notice we don't use for or forEach loops to do work on D3 selections.  T
 At the end of all of this, even though you can't see it in the SVG, the data is still attached as a variable called `__data__` within the `<circle>` elements.  This is how D3 can match up the incoming data to the existing circle elements.
 
 
-
+[Command Line Cartography](https://medium.com/@mbostock/command-line-cartography-part-1-897aa8f8ca2c)
 ### Define your projection
 
 ```JS
 	var projection = d3.geo.mercator()
         .scale(96) // scales your map
-		.translate([width / 2, height / 2]); // centers in SVG
+        .translate([width / 2, height / 2]); // centers in SVG
 ```
 
-When you define a projection, you tell D3 how to transform your data from spherical to Cartesian coordinates. Take a look at the [projection docs](https://github.com/mbostock/d3/wiki/Geo-Projections) to get a sense of how you can project your data with D3. 
+When you define a projection, you tell D3 how to transform your data from spherical to Cartesian coordinates. Take a look at the [projection docs](https://github.com/d3/d3/blob/master/API.md#geographies-d3-geo) to get a sense of how you can project your data with D3. 
 
 ### Translate to screen coordinates
 
