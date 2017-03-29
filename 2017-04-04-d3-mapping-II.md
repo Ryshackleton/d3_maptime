@@ -116,7 +116,6 @@ Like nouns, adjectives, and verbs, the web (in its simplest form) is made of HTM
   
   <!--   using D3 version 4-->
   <script src="https://d3js.org/d3.v4.min.js"></script>
-  <script src="https://d3js.org/topojson.v2.min.js"></script>
   
     <!--  could add CSS inside the <style> tags -->
     <style>
@@ -288,14 +287,14 @@ Have a look at the JavaScript code above: We start by creating some variables to
 	var svg = d3.select("body")
 	            .append("svg");
 ```
-When we append() to the `<body>` element, D3 just adds a new `<svg>` just below the script that we're actually writing.  Yeah, you heard that right: we're writing code to edit the document that we're writing....#MINDBLOWN. To prove it to yourself, open the file in your browswer, right click on the svg, and select *Inspect Element*.
+When we append() to the `<body>` element, D3 just adds a new `<svg>` just below the script that we're actually writing.  Yeah, you heard that right: we're writing code to edit the document that we're writing....#MINDBLOWN. To prove it to yourself, open the file in your browser, right click on the svg, and select *Inspect Element*.
 
 The next lines just adds attributes and styles to the SVG in the same way we were doing to the circles in the [tutorial](https://strongriley.github.io/d3/tutorial/circle.html).  We'll use SVG styling more below to style individual elements. [Here's the full documentation](https://www.w3.org/TR/SVG/styling.html) for styling SVG elements for reference.
 
-You may notice that I have started **chaining** methods together.  I can do that because the .attr() and .style() method return a selection containing the svg we're working on.  You'll see **method chaining** *a lot* in D3.
+You may notice that I have started [chainin methods](http://alignedleft.com/tutorials/d3/chaining-methods) together.  I can do that because the .attr() and .style() methods assign an attribute or style first, then they *return svg a reference to the svg that they just modified*.  You'll see **method chaining** *a lot* in D3.
 
 ### 3rd Challenge, 10 minutes: Create Circles from scratch using data!
-[Same tutorial](https://strongriley.github.io/d3/tutorial/circle.html), but now move onto: **Creating Elements**.  When you've finished that section, you should have all the tools to plot the data that's defined at the end of your script.  Create some circles with the following attributes, which will define your first scatterplot.
+[Same tutorial](https://strongriley.github.io/d3/tutorial/circle.html), but now move onto: **Creating Elements**.  When you've finished that section, you should have all the tools to plot the data that's defined at the end of your script.  Create some circles with the following attributes, which will define your first scatterplot. (Hint, find the second to last (or last) code block in the **Creating Elements** section, and then figure out how to modify the `function(d) { return d; }` section of the code to return the data values in the proper format)
 1. cx: myData
 1. cy: myData / 2
 1. radius ("r"): square root of myData (use JavaScript's Math.sqrt() function)
@@ -311,20 +310,27 @@ When you're done, pat yourself on the back for having made a scatterplot from sc
 ## STEP 4: Read GeoJSON data and scatterplot that data (no geo-projection)
 OK, enough of this plotting boring arrays of meaningless data.  Let's plot something REAL!  Well, earthquakes are real, and pretty serious, so how about that?
 
-Let's start with the earthquake data.  The data format will be [GeoJSON](http://geojson.org/), which will be a bit more complicated to reference, but is still just an array of data. Previously, our data was just: `var myData = [ 20, 60, 100 ];`, whereas now we'll have something like what you see below, where each block of `{ }` will be parsed into a *JavaScript object*, which could hold arrays of sub-data like strings, arrays of numbers, etc, etc.
+Let's start with the earthquake data.  The data format will be [GeoJSON](http://geojson.org/), which will be a bit more complicated to reference, but is still just an array of data features. Previously, our data was just: `var myData = [ 20, 60, 100 ];`, whereas now we'll have something like what you see below, where each block `{ }` will be parsed into a *JavaScript object*, which could hold arrays of sub-data like strings, arrays of numbers, etc, etc.
 ```JavaScript
-	var myData = [ {/* data */ }, {/* data */ }, {/* data */ } ];
+	var myData = [ {/* object with data */ }, {/* object with data */ }, {/* object with data */ } ];
 ```
 If you're not that familiar with JSON data, [have a look here for the basic formats and data types](https://www.w3schools.com/js/js_json_datatypes.asp).
 
-Our data feed will come from the [USGS GeoJSON feed of earthquakes](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php), which contains a lot more data than we'll need.  I've pasted an abridged version of the data format below.  I have deleted a lot of attributes so you can see where the coordinate data "lives" in the GeoJSON data structure.  To see an example of the feed of all global earthquakes in the past day, with all of the associated data [click here](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson).
+Our data feed will come from the [USGS GeoJSON feed of earthquakes](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php), which contains a lot more data than we'll need.  I've pasted an abridged version of the data format below with two "features" representing earthquakes.  I have deleted a lot of attributes so you can see where the coordinate data "lives" in the GeoJSON data structure.  To see an example of the feed of all global earthquakes in the past day, with all of the associated data [click here](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson).
 
-```JSON
+```JSON 
 {
     "type": "FeatureCollection",
+    "metadata": {
+        "count": 3
+    },
     "features": [
         {
             "type": "Feature",
+            "properties": {
+                "mag": 6.6,
+                "place": "78km NNE of Ust'-Kamchatsk Staryy, Russia"
+            },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
@@ -332,87 +338,143 @@ Our data feed will come from the [USGS GeoJSON feed of earthquakes](https://eart
                     56.9205,
                     22.83
                 ]
-            },
+            }
         },
         {
             "type": "Feature",
+            "properties": {
+                "mag": 3.61,
+                "place": "2km ESE of Loma Linda, CA"
+            },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    117.2386667,
+                    -117.2386667,
                     34.0388333,
                     17.64
                 ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "mag": 6.3,
+                "place": "32km NW of Kandrian, Papua New Guinea"
             },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    149.353,
+                    -5.999,
+                    31.07
+                ]
+            }
         }
+    ],
+    "bbox": [
+        -117.2386667,
+        -5.999,
+        17.64,
+        162.734,
+        56.9205,
+        31.07
     ]
 }
 ```
-So, we still just have an array of data, we just need to know how to pull the data out and attach it to our circles.  Here's how: if a webserver can feed me the data above as a string (a blob of text), I can parse that and refer to objects inside the JSON like this:
+So, we just need to know how to pull the data out of this "blob" and attach it to our circles.  Here's how: if a webserver can feed me the data above as a string (a blob of text), D3 can parse that and refer to objects inside the JSON like this:
+
 ```JavaScript
-	var myData = d3.json(myJSONblob); // parse the data into JavaScript objects
-	
-	var myFeatureArray = myData.features; // the feature array 
-	var myFirstFeature = myData.features[0]; // the first feature (features indexed from 0 to n-1)
-	var myFirstFeatureLongitude = myFirstFeature.geometry.coordinates[0];
-	var myFirstFeatureLatitude = myFirstFeature.geometry.coordinates[1];
-	var myFirstFeatureDepth = myFirstFeature.geometry.coordinates[2];
+    var todaysQuakesFeed =
+        "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson";
+    
+    // send a JSON request to the earthquake feed,
+    d3.json(todaysQuakesFeed, function(parsedJSON){ // <-- result of the parsing is in parsedJSON
+      
+      console.log("Number of quakes = " + parsedJSON.metadata.count);
+      
+      console.log(parsedJSON.features); // log the features array to the console
+      
+      console.log(parsedJSON.features[0].properties); // log the properties for the first feature to the console
+      
+      console.log(parsedJSON.features[1].geometry); // log the geometry for the second feature to the console
+    });
 ```
 
-#### D3 Selections
-D3 mimics data arrays with the concept of a *selection*, which is an array of graphical **elements** like circles, rectangles, html tags, lines, or anything else we can select in the HTML.  So remember:
+The first `console.log("Number of quakes = " + parsedJSON.metadata.count);` refers to a single variable, which it prints to the Developer Tools console.  The next statement `console.log(parsedJSON.features);` prints the whole array of features to the console.  We'll explore this in the next challenge!
+### 4th Challenge, 10 minutes: Extract that data from the GeoJSON!!!
+Copy and paste to the following html to a file called "myEarthquakeMap.html".
+```HTML
+<!doctype html>
+<html lang="en">
 
-	DATA: [ data, data, data ], where data can be numbers or objects containing other data
-	SELECTION: [ element, element, element ], where elements are circles, rectangles, etc.
+<head>
+  <meta charset="utf-8">
+  
+  <!--   using D3 version 4-->
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://d3js.org/topojson.v2.min.js"></script>
+  
+  <!--  could add CSS inside the <style> tags -->
+  <style>
 
-The code below is the standard way that we match up the data in the DATA arrays to the elements in the SELECTION arrays.  We'll join our simple array of numbers to a *selection* of `<circle>`'s within the SVG.
+  </style>
 
-###### Heads up!
-The `// comments` I have included are certainly [tl;dr](https://en.wikipedia.org/wiki/TL;DR) for most people, but I've included them for reference.  Selections and data binding are the most conceptually difficult parts of D3, so if this seems confusing, don't worry. It takes a while to wrap your head around. For several more thorough explanations of the data binding method, start with Mike Bostock's [Three Little Circles Tutorial](https://strongriley.github.io/d3/tutorial/circle.html), which has some nice animations of how selections work.  You can also check out [How Selections Work](https://bost.ocks.org/mike/selection/) and [Thinking with Joins](https://bost.ocks.org/mike/join/), also by Mike. [This Presentation](https://bost.ocks.org/mike/d3/workshop/#0) also offers a good overview.
+</head>
 
-OK, here we go!
-```JavaScript
-  var circles = svg.selectAll("circle") // select all circles within the SVG -> returns a SELECTION [] (empty in our case)
-     .data(myData) // JOIN the DATA [5,15,30] to the empty SELECTION [] in 3 steps:
-                  //  1) For any elements in SELECTION[] that have corresponding data in DATA[]: overwrite their data values
-		  //     This set becomes the "update selection" (update selection is empty in our case)
-		  //  2) For any data in DATA[] that don't have corresponding elements in SELECTION [],
-		  //      create a SELECTION[] of new "dummy" elements and attach a data object to each element
-		 //	  This is called the "enter selection" -> SELECTION[ element->data, element->data, element->data ]
-		 //   3) For elements in SELECTION[] that don't have corresponding data in DATA[],
-		 //       into an "exit selection"
-		 //   4) return the update, enter, and exit selections { update, enter, exit }
-      .enter() // get the "enter selection" from the returned object
-      .append("circle"); // on the "enter selection", append a new circle object for each "dummy" element we created 
-                        //   then return the selection, which is now: SELECTION[ circle->data, circle->data, circle->data ]
-                        // NOW the svg contains 3 circles with no attributes
-                        //  <svg "width"=700 "height"=500>
-                        //      <circle></circle>
-                        //      <circle></circle>
-                        //      <circle></circle>
-                        // </svg>
+<body>  
+  <script>
+    var width = 700,
+        height = 500;
+    
+    // set up the SVG
+    var svg = d3.select("body")
+                .append("svg"); 
+    svg.attr("width", width)
+        .attr("height", height) 
+        .style("border","3px solid black") 
+        .style("background-color","lightblue"); 
+    
+    var todaysQuakesFeed =
+        "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson";
+    
+    // send a JSON request to the earthquake feed,
+    d3.json(todaysQuakesFeed, function(parsedJSON){ // <-- result of the parsing is in parsedJSON
+      
+      console.log("Number of quakes = " + parsedJSON.metadata.count);
+      
+      console.log(parsedJSON.features); // log the features array to the console
+      
+      console.log(parsedJSON.features[0].properties); // log the properties for the first feature to the console
+      
+      console.log(parsedJSON.features[1].geometry); // log the geometry for the second feature to the console
+      
+      svg.selectAll("circle")
+          .data(parsedJSON.features) // <-- notice that we refer to .features: an array just like before!
+        .enter().append("circle")
+          .attr("cx", function(d) { // <-- this 'd' refers to A FEATURE in the array
+                  // modify this method to return the
+                  // earthquake longitude from the JSON feature (return d.something....)
+                  return 0;
+                }) 
+          .attr("cy", function(d) { // <-- this 'd' refers to A FEATURE in the array
+                  // modify this method to return the
+                  // earthquake latitude from the JSON feature (return d.something....)
+                  return 0;
+                })
+          .attr("r", 10 ) // try adding a function here that returns the magnitude
+          .style("fill", "rgb(255, 255, 0)")
+          .style("stroke", "black")
+          .style("stroke-width", 1)
+          .style("opacity", 0.5);
+    });
+    
+  </script>
+</body>
+</html>
 ```
-There's a lot going on in these 4 lines of code, but here's what's happening in a more visual manner:
-
-We select an empty array of **elements**, or circles, using svg.selectAll("circles").
-
-<div>
-<img src="https://ryshackleton.github.io/d3_maptime/img/d3.data.png">
-</div>
-
-Then we JOIN our data to the empty array, creating any necessary circles using .data(myData).enter().append("circle").
-
-<div>
-<img src="https://ryshackleton.github.io/d3_maptime/img/d3.data.circles.png">
-</div>
-
-##### D3's Selection/Array syntax
-You may notice we don't use for or forEach loops to do work on D3 selections.  That's because the .append(something) methods are defined on the selection object. So .append(something) appends an object of type "something" to EACH of the elements in the selection. 
-
-At the end of all of this, even though you can't see it in the SVG, the data is still attached as a variable called `__data__` within the `<circle>` elements.  This is how D3 can match up the incoming data to the existing circle elements.
-
 
 [Command Line Cartography](https://medium.com/@mbostock/command-line-cartography-part-1-897aa8f8ca2c)
+
 ### Define your projection
 
 ```JS
