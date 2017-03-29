@@ -1,0 +1,141 @@
+{
+    "type": "FeatureCollection",
+    "metadata": {
+        "generated": 1490828421000,
+        "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson",
+        "title": "USGS Significant Earthquakes, Past Month",
+        "status": 200,
+        "api": "1.5.7",
+        "count": 3
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "mag": 6.6,
+                "place": "78km NNE of Ust'-Kamchatsk Staryy, Russia",
+                "time": 1490760564830,
+                "updated": 1490814879243,
+                "tz": 720,
+                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us20008vhl",
+                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/us20008vhl.geojson",
+                "felt": 1,
+                "cdi": 6.1,
+                "mmi": 7.77,
+                "alert": "yellow",
+                "status": "reviewed",
+                "tsunami": 1,
+                "sig": 671,
+                "net": "us",
+                "code": "20008vhl",
+                "ids": ",us20008vhl,pt17088050,at00onk67q,",
+                "sources": ",us,pt,at,",
+                "types": ",dyfi,geoserve,impact-link,losspager,moment-tensor,origin,phase-data,shakemap,",
+                "nst": null,
+                "dmin": 4.559,
+                "rms": 0.92,
+                "gap": 21,
+                "magType": "mww",
+                "type": "earthquake",
+                "title": "M 6.6 - 78km NNE of Ust'-Kamchatsk Staryy, Russia"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    162.734,
+                    56.9205,
+                    22.83
+                ]
+            },
+            "id": "us20008vhl"
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "mag": 3.61,
+                "place": "2km ESE of Loma Linda, CA",
+                "time": 1489468014460,
+                "updated": 1490544143863,
+                "tz": -480,
+                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci37828544",
+                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ci37828544.geojson",
+                "felt": 3394,
+                "cdi": 4.8,
+                "mmi": 3.78,
+                "alert": null,
+                "status": "reviewed",
+                "tsunami": 0,
+                "sig": 680,
+                "net": "ci",
+                "code": "37828544",
+                "ids": ",ci37828544,nc72775131,",
+                "sources": ",ci,nc,",
+                "types": ",dyfi,focal-mechanism,geoserve,nearby-cities,origin,phase-data,scitech-link,shakemap,",
+                "nst": 182,
+                "dmin": 0.01436,
+                "rms": 0.2,
+                "gap": 15,
+                "magType": "mw",
+                "type": "earthquake",
+                "title": "M 3.6 - 2km ESE of Loma Linda, CA"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.2386667,
+                    34.0388333,
+                    17.64
+                ]
+            },
+            "id": "ci37828544"
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "mag": 6.3,
+                "place": "32km NW of Kandrian, Papua New Guinea",
+                "time": 1488754073310,
+                "updated": 1489171038734,
+                "tz": 600,
+                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us1000876f",
+                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/us1000876f.geojson",
+                "felt": 4,
+                "cdi": 8.6,
+                "mmi": 6.06,
+                "alert": "green",
+                "status": "reviewed",
+                "tsunami": 1,
+                "sig": 614,
+                "net": "us",
+                "code": "1000876f",
+                "ids": ",us1000876f,pt17064051,at00omd5zx,",
+                "sources": ",us,pt,at,",
+                "types": ",dyfi,geoserve,impact-link,losspager,moment-tensor,origin,phase-data,shakemap,",
+                "nst": null,
+                "dmin": 3.326,
+                "rms": 0.99,
+                "gap": 17,
+                "magType": "mww",
+                "type": "earthquake",
+                "title": "M 6.3 - 32km NW of Kandrian, Papua New Guinea"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    149.353,
+                    -5.999,
+                    31.07
+                ]
+            },
+            "id": "us1000876f"
+        }
+    ],
+    "bbox": [
+        -117.2386667,
+        -5.999,
+        17.64,
+        162.734,
+        56.9205,
+        31.07
+    ]
+}
