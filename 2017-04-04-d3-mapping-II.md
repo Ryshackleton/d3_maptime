@@ -614,7 +614,7 @@ When you complete this step, you will have a map to "back up" your earthquake da
 
 ### 6th Challenge: Copy and Paste the following block of code JUST ABOVE THE closing `</script>` tag near the bottom of your html file
 
-Refresh your map, bask in the glory, and then we'll talk about how it all works!
+Refresh your map. Then sit back, bask in the glory, and then we'll talk about how it all works!
 ```JS
     function drawCountryBoundaries() {
       // define the path generator (this should really be at the top)
@@ -645,6 +645,9 @@ Refresh your map, bask in the glory, and then we'll talk about how it all works!
 ```
 ### [6th Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/03_myEarthquakeMap_challenge6_solution.html)
 
+### [6th Challenge Live Solution](https://bl.ocks.org/Ryshackleton/52c97ff17236c2accccdadc47b122228)
+
+Map should look vaguely like this, although the earthquake locations will be different than in this image
 <img src="https://ryshackleton.github.io/d3_maptime/img/challenge6_solution.svg">
 
 #### Projection for lines
