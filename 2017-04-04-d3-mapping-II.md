@@ -21,19 +21,15 @@ Check out these links for some examples of D3 visualizations:
 
 [The full gallery of D3 visualizations](https://github.com/d3/d3/wiki/Gallery)
 
-[Geographic Projections: animated](https://bl.ocks.org/mbostock/3711652)
+[Geographic Projections: animated](https://bl.ocks.org/mbostock/3711652), and [draggable](https://www.jasondavies.com/maps/transition/)
 
-[Geographic Projections: interactive and animated](https://www.jasondavies.com/maps/transition/)
-
-[Wealth of Nations](https://bost.ocks.org/mike/nations/)
-
-[Two Centuries of US Immigration](http://metrocosm.com/us-immigration-history-map.html)
+[The famous: Wealth of Nations](https://bost.ocks.org/mike/nations/)
 
 [Ummm, really?](https://bl.ocks.org/mbostock/1136236)
 
-[Ryan's Global Obesity Data Viz](https://d3-obesity-viz.herokuapp.com/)
+[Global Obesity Data Viz & Cartogram (by Ryan)](https://d3-obesity-viz.herokuapp.com/)
 
-[Ryan's Earthquake Visualizations (D3 & Leaflet)](https://ryshackleton.github.io/global_daily_earthquakes_d3_leaflet/)
+[D3/Leaflet Earthquake Visualizations (by Ryan)](https://ryshackleton.github.io/global_daily_earthquakes_d3_leaflet/)
 
 # D3 - Data Driven Documents
 D3 stands for **Data Driven Documents**. We will unpack this title in three parts.
