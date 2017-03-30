@@ -105,7 +105,7 @@ Like nouns, adjectives, and verbs, the web (in its simplest form) is made of HTM
 <img src="http://maptimesea.github.io/img/tut001-nounverbadj.svg">
 </div>
 
-#### Copy this HTML code into a file called hello-d3.html in your text editor to get started
+#### Copy this HTML code to your text editor, and SAVE your file as `hello-d3.html` to get started
 
 ```HTML
 <!doctype html>
@@ -170,6 +170,7 @@ From here on out, most of what we'll be doing is writing JavaScript to select an
 ### Your first D3 Selection
 
 D3 has really easy shorthand for selecting objects in webpages.  First, we'll ask D3 to select the `<body>` tag, and then select the `<svg>` inside the body.
+
 #### Again, writing your code between the `<script>` tags, add the following code.
 
 ```JavaScript
