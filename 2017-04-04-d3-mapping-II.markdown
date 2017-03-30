@@ -66,7 +66,7 @@ It's also worth noting that D3 has the ability to write and edit [many types of 
 
 # Tutorial Time!
 
-With any luck, today we will produce [this map](https://bl.ocks.org/Ryshackleton/52c97ff17236c2accccdadc47b122228), which displays the [United States Geological Survey (USGS) GeoJSON feed of recent earthquakes around the world](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php).  We'll do this in steps:
+With any luck, today we will produce **[this map](https://bl.ocks.org/Ryshackleton/52c97ff17236c2accccdadc47b122228/71e8c79a711b532565b97a16c83dc222246568d2)**, which displays the [United States Geological Survey (USGS) GeoJSON feed of recent earthquakes around the world](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php).  We'll do this in steps:
 
 1. Start with a simple webpage containing the SVG we saw above
 <img src="https://ryshackleton.github.io/d3_maptime/img/threeLittleCircles.svg">
