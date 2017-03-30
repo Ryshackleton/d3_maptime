@@ -98,8 +98,8 @@ By the time we finish this tutorial, we will have built our first (or nth) D3 we
 * Start simple, add complexity piece by piece
 * Refer to [documentation](https://github.com/d3/d3/blob/master/API.md) / [tutorials](https://github.com/d3/d3/wiki/Tutorials)
 * **Cannibalize code** wherever/whenever you can. D3 has [great examples](https://bl.ocks.org/) and most the code is freely accessible.
-* In this tutorial, SOLUTIONS ARE PROVIDED AT THE END OF EVERY STEP!!! under headings like this:
-### [nth Challenge Solution Here]()
+* In this tutorial, **SOLUTIONS ARE PROVIDED AT THE END OF EVERY STEP** under headings like this:
+	### [nth Challenge Solution Here]()
 
 ## STEP 1: Create a simple web page to hold our SVG graphic
 
