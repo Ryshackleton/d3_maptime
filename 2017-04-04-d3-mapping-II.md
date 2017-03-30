@@ -603,6 +603,12 @@ We could rewrite it like this to be more explicit
 ```
 This basically requests a [transition to occur for each](http://bl.ocks.org/Kcnarf/9e4813ba03ef34beac6e) earthquake, in sequence. The `.delay(function(d,i){ return i*100; })` line really does most of the work here, telling D3 to wait a few milliseconds between each transition (i is the index in the parsedJSON.features) array.  The [.duration() controls how fast the transition happens](https://bl.ocks.org/d3noob/c3cbb8af554eb848d09ab97306bb5583), and the [.ease() controls the rate of change of the transition](http://bl.ocks.org/hunzy/9929724), in this case making the earthquake pop a little beyond the radius, then getting smaller.
 
+
+
+### [5th Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/03_myEarthquakeMap_challenge5_solution.html)
+
+<img src="https://ryshackleton.github.io/d3_maptime/img/challenge5_solution.svg">
+
 ## STEP 6: Add some country boundaries...FINALLY, something that looks like a MAP!!!
 When you complete this step, you will have a map to "back up" your earthquake data.  In the interests of time, I'll just give you some pre-written code and then explain how it works.
 
@@ -637,6 +643,10 @@ Refresh your map, bask in the glory, and then we'll talk about how it all works!
     }
     drawCountryBoundaries();
 ```
+### [6th Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/03_myEarthquakeMap_challenge6_solution.html)
+
+<img src="https://ryshackleton.github.io/d3_maptime/img/challenge6_solution.svg">
+
 #### Projection for lines
 When D3 renders lines as SVG, it has to translate a vector format containing vertices ([longitude,latitude]) and line segments in (GeoJSON), to [SVG path instructions](https://www.w3schools.com/graphics/svg_path.asp) in X,Y space, which are the the rough equivalent of *"move to x,y, draw a line to x1,y1, move horizontally by 10 pixels, draw a horizontal line to...."*.  So it has to project all of the coordinates, then turn them into those wacky instructions.  **I'm SOOO glad someone else wrote that code.** This functionality is called a *path generator*.  The *path generator* line almost always looks just like this, and it always need to be *told what projection to use*.
 ```JS
