@@ -196,10 +196,10 @@ The console will also show you errors in your code, but I'm sure you'll never ha
 
 ### To select more than one element...
 Use **.selectAll()**
-#### Add this line of code to your hello-d3.html and then try to get your circles variable printed to the console.  How do we do that again? (see #5 above)
+#### Add this line of code to your hello-d3.html and then try to get your circle variable printed to the console.  How do we do that again? (see #5 above)
 
 ```JavaScript
-  var circles = svg.selectAll("circles");
+  var circle = svg.selectAll("circle");
 ```
 
 ### 1st Challenge, 10 minutes: Change the Color and Size of the SVG elements
