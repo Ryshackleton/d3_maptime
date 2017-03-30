@@ -72,20 +72,19 @@ With any luck, today we will produce **[this map](https://bl.ocks.org/Ryshacklet
 <img src="https://ryshackleton.github.io/d3_maptime/img/threeLittleCircles.svg">
  
 2. Learn to select and manipulate existing SVG objects with D3
-
-Change colors & sizes:
+Change attributes and styles to control sizes and colors:
 <img src="https://ryshackleton.github.io/d3_maptime/img/challenge1_solution.svg">
 
-Change positions:
+Bind data to change positions:
 <img src="https://ryshackleton.github.io/d3_maptime/img/challenge2_solution.svg">
  
-3. Learn to create new SVG objects with D3 to create a scatterplot
+3. Learn to create SVG elements from scratch to build a scatterplot
 <img src="https://ryshackleton.github.io/d3_maptime/img/challenge3_solution_with_style.svg">
   
 4. Read GeoJSON data and scatterplot the data (no geo-projection)
 <img src="https://ryshackleton.github.io/d3_maptime/img/challenge4_solution.svg">
    
-5. Read GeoJSON data and geographically project the data
+5. Geographically project the GeoJSON data
 <img src="https://ryshackleton.github.io/d3_maptime/img/challenge5_solution.svg">
     
 6. Add country boundaries to the map
