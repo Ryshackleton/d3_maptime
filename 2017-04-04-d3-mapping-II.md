@@ -180,7 +180,7 @@ D3 has really easy shorthand for selecting objects in webpages.  First, we'll as
 You just did your first D3 Selection! Not very exciting, but this will provide us a little intro to how to debug your scripts in a web browser using the browser's Developer Tools.
 
 #### Find the  Developer Tools for debugging your code by doing the following:
-To see the contents of the variables ("body" and "svg")
+To see the contents of the variables "body" and "svg"
 1. go back to your web browser showing hello-d3.html
 1. right click anywhere in the page
 1. select "View Page Source" or "Inspect Element", which shows you the source code for the page
