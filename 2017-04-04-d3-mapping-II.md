@@ -567,7 +567,7 @@ We could rewrite it like this to be more explicit
 	var y = x_y[1]; // get y from the array
 ```
 
-#### And, I bet you know what to do now!  Add this code to our un-projected scatterplot! Define the projection just below where you defined the width and height:
+### 5th Challenge: Add this code to our un-projected scatterplot! Define the projection just below where you defined the width and height:
 ```JavaScript
     var width = 700,
         height = 500;
@@ -606,8 +606,9 @@ This basically requests a [transition to occur for each](http://bl.ocks.org/Kcna
 ## STEP 6: Add some country boundaries...FINALLY, something that looks like a MAP!!!
 When you complete this step, you will have a map to "back up" your earthquake data.  In the interests of time, I'll just give you some pre-written code and then explain how it works.
 
-#### Copy and Paste the following block of code JUST ABOVE THE closing `</script>` tag near the bottom of your html file
-Refresh your map, bask in the glory, and then we'll talk about what it does!
+### 6th Challenge: Copy and Paste the following block of code JUST ABOVE THE closing `</script>` tag near the bottom of your html file
+
+Refresh your map, bask in the glory, and then we'll talk about how it all works!
 ```JS
     function drawCountryBoundaries() {
       // define the path generator (this should really be at the top)
