@@ -103,6 +103,7 @@ By the time we finish this tutorial, we will have built our first (or nth) D3 we
 * In this tutorial, **SOLUTIONS ARE PROVIDED AT THE END OF EVERY STEP** under headings like this:
 	### [nth Challenge Solution Here]()
 
+
 ## STEP 1: Create a simple web page to hold our SVG graphic
 
 Below I've included the quick-and-dirtiest version EVER of how web pages work, along with some boilerplate HTML we can use to get started.  If you need more of a refresher on how to make a simple web page, have a look a our [web map tutorial](http://maptimesea.github.io/2014/11/05/web-map-intro.html#let-s-get-started).  
