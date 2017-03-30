@@ -194,13 +194,12 @@ console.log(svg);
 ```
 The console will also show you errors in your code, but I'm sure you'll never have any of those...
 
-### To select more than one element...
-Use **.selectAll()**
-#### Add this line of code to your hello-d3.html and then try to get your circle variable printed to the console.  How do we do that again? (see #5 above)
+#### Add this line of code to your hello-d3.html to select all of the circle objects in the SVG
 
 ```JavaScript
   var circle = svg.selectAll("circle");
 ```
+#### Now try to get your circle variable printed to the console.  How do we do that again? (see #5 above)
 
 ### 1st Challenge, 10 minutes: Change the Color and Size of the SVG elements
 Head over to [this awesome tutorial](https://strongriley.github.io/d3/tutorial/circle.html), where the first section: **Selecting Elements** will show you how to give your circles some style.  
