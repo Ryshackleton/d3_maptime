@@ -567,7 +567,7 @@ We could rewrite it like this to be more explicit
 	var y = x_y[1]; // get y from the array
 ```
 
-### 5th Challenge: Add this code to our un-projected scatterplot! Define the projection just below where you defined the width and height:
+### 5th Challenge: Add this code to our [un-projected scatterplot example](https://github.com/Ryshackleton/d3_maptime/blob/master/html/03_myEarthquakeMap_challenge5_start.html)! Define the projection just below where you defined the width and height:
 ```JavaScript
     var width = 700,
         height = 500;
@@ -589,11 +589,11 @@ We could rewrite it like this to be more explicit
                 })
 ```
 
-#### And you can even do a quick and dirty scaling of your circle sizes to earthquake magnitudes like this:
+#### We can add a quick and dirty scaling of the circle sizes to earthquake magnitudes like this:
 ```JavaScript
           .attr("r", function(d){ return d.properties.mag > 0 ? 1.5 * d.properties.mag : 0; } )
 ```
-#### And if you want to get *really fancy*, you can ANIMATE your earthquakes by adding some transition effects just above where you set the radius
+#### To get *really fancy*, we can ANIMATE the earthquakes by adding some transition effects just above where we set the radius
 ```JavaScript
           .transition()
           .duration(500)
@@ -602,8 +602,6 @@ We could rewrite it like this to be more explicit
           .attr("r", function(d){ return d.properties.mag > 0 ? 1.5 * d.properties.mag : 0; } )
 ```
 This basically requests a [transition to occur for each](http://bl.ocks.org/Kcnarf/9e4813ba03ef34beac6e) earthquake, in sequence. The `.delay(function(d,i){ return i*100; })` line really does most of the work here, telling D3 to wait a few milliseconds between each transition (i is the index in the parsedJSON.features) array.  The [.duration() controls how fast the transition happens](https://bl.ocks.org/d3noob/c3cbb8af554eb848d09ab97306bb5583), and the [.ease() controls the rate of change of the transition](http://bl.ocks.org/hunzy/9929724), in this case making the earthquake pop a little beyond the radius, then getting smaller.
-
-
 
 ### [5th Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/03_myEarthquakeMap_challenge5_solution.html)
 
