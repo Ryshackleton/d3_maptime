@@ -64,7 +64,7 @@ SVGs are human readable, which works well for us because we aren't computers. Th
 And this is the rendered version of that code:
 <img src="https://ryshackleton.github.io/d3_maptime/img/threeLittleCircles.svg">
 
-SVG's work similarly to html pages, where tags represent objects that can have *objects nested within them*: each circle is an element *nested within* the SVG. Each circle contains some coordinates of the object's center (cx, cy), and radius (r), so the SVG is just a set of instructions defining the geometry of each object, where to put each object, and how to style the objects.
+SVG's work similarly to html pages, where tags represent objects that can have *objects nested within them*: each circle is an element *nested within* the SVG. Each circle contains some coordinates of the object's center (cx, cy), and radius (r), so the SVG is just a set of instructions defining the geometry of each object, where to put each object, and how to style the objects in [the SVG coordinate space](https://bl.ocks.org/mbostock/3019563).
 
 It's also worth noting that D3 has the ability to write and edit [many types of shape elements](https://www.w3schools.com/graphics/svg_examples.asp) to SVG's, like rectangles (`<rect>`), not just circles.  Later we'll use a [`<path>` element](https://www.w3schools.com/graphics/svg_path.asp), which has a shorthand format for definining complex polygons like country boundaries.
 
@@ -264,7 +264,7 @@ Your result should look something like this:
 **Further Reading on Selections and Binding**: [How Selections Work](https://bost.ocks.org/mike/selection/), [Thinking With Joins](https://bost.ocks.org/mike/join/), and [The Original Three Little Circles Tutorial](https://bost.ocks.org/mike/circles/)
 
 ### Advanced Challenge, if you have extra time: Add Transition Effects
-Check out [the tutorial on Transitions](https://bost.ocks.org/mike/transition/), and see if you can transition from one state to another.  You probably want to have your code triggered by a button so you can see the transition happen. To add a button, add the following snippet to your script (not the html), then add all of the code we've written (plus your transitioning code) inside the `function myFunction()`
+Check out [this simple example of a transition](https://bl.ocks.org/d3noob/c3cbb8af554eb848d09ab97306bb5583), or [this thorough explanation of transitions](http://chimera.labs.oreilly.com/books/1230000000345/ch09.html#_transitions) and see if you can transition from one state to another.  You probably want to have your code triggered by a button so you can see the transition happen. To add a button, add the following snippet to your script (not the html), then add all of the code we've written (plus your transitioning code) inside the `function myFunction()`.
 
 ```JavaScript
     // use d3 to add a new button in the body
@@ -277,6 +277,8 @@ Check out [the tutorial on Transitions](https://bost.ocks.org/mike/transition/),
       // add your transitioning code here
     }
 ```
+**Further Reading on Transitions**:  [Mike's tutorial on Transitions](https://bost.ocks.org/mike/transition/), [Chained Transitions](https://bl.ocks.org/mbostock/1125997), [Crazy transform Transitions](https://bl.ocks.org/mbostock/1345853).
+
 ### [Advanced Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/01_hello-d3_challenge_advanced_solution.html)
 ### [See the Solution Live Here](https://bl.ocks.org/Ryshackleton/3edae1f5a5ed46c946c40947ee893f5a)
 
@@ -715,6 +717,22 @@ Now we draw the path, which looks similar to the circle drawing code, except tha
 ```
 
 **Congratulations!** You built a web map in D3.js!
+
+## Thanks for coming!  Here are some D3 References that I have found very useful:
+### [Free Book: Interactive Data Visualization for the Web](http://chimera.labs.oreilly.com/books/1230000000345/index.html) - probably the most thorough place to start, and has some GREAT [chapters on D3 at the end](http://chimera.labs.oreilly.com/books/1230000000345/ch05.html#_going_chainless)
+
+### Bl.ocks.org:
+[Create your own!](https://bl.ocks.org/-/about)
+
+### Legends:
+[Susielu.com](http://d3-legend-v3.susielu.com/)
+
+### Reusable Custom D3 Charts:
+[Towards Reusable Charts: a must read if you really want to use D3 extensively](https://bost.ocks.org/mike/chart/)
+[Simple example of a Reusable Chart](https://gist.github.com/cpbotha/5073718)
+
+### Cartograms:
+[Excellent US Cartogram example](http://prag.ma/code/d3-cartogram/?segmentized#intlmig/2011)
 
 ## Fin.
 
