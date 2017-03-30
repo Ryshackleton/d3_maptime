@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  
+  <!--   using D3 version 4-->
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  
+    <!--  could add CSS inside the <style> tags -->
+    <style>
+      
+    </style>
+
+</head>
+
+<body>  
+  <script>
+    var width = 700,
+        height = 500;
+    
+    var svg = d3.select("body")
+                .append("svg"); // NOW svg looks like this in the document:
+                           // <body>
+                           //    <svg></svg>
+                           // </body>
+    svg.attr("width", width)
+        .attr("height", height) // NOW svg looks like this in the document:
+                           // <body>
+                           //    <svg width="700" height="500"></svg>
+                           // </body>
+        .style("border","3px solid black") 
+        .style("background-color","lightblue"); 
+                           // NOW svg looks like this in the document:
+                           // <body>
+                           //   <svg width="700" height="500" style="border: 3px solid black; background-color: lightblue;">
+                           // </body>
+    
+    // here's your data to plot!
+    var myData = [ 20, 60, 100, 300 ];
+    
+    /* add your code to create circles here */
+    svg.selectAll("circle")
+        .data(myData)
+      .enter().append("svg:circle")
+        .attr("cy", function(d) {  return d / 2;  })
+        .attr("cx", String)
+        .attr("r", Math.sqrt);
+    
+    // optional styles
+/*
+    svg.selectAll("circle")
+        .style("fill", "rgb(255,255,0)")
+        .style("stroke", "black")
+        .style("stroke-width", 1)
+        .style("opacity", 0.5); 
+*/
+    
+  </script>
+</body>
+</html>
