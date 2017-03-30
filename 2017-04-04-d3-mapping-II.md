@@ -77,15 +77,25 @@ It's also worth noting that D3 has the ability to write and edit [many types of 
 
 # Tutorial Time!
 
-With any luck, today we will produce a simplified version of [this map](https://ryshackleton.github.io/global_daily_earthquakes_d3/index.html), which displays the [United States Geological Survey (USGS) GeoJSON feed of recent earthquakes around the world](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php).  We'll do this in steps:
+With any luck, today we will produce [this map](https://bl.ocks.org/Ryshackleton/52c97ff17236c2accccdadc47b122228), which displays the [United States Geological Survey (USGS) GeoJSON feed of recent earthquakes around the world](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php).  We'll do this in steps:
 
- 1. Start with a simple webpage template
- 1. Learn to select existing SVG objects with D3
- 1. Learn to create new SVG objects with D3 to create a scatterplot
- 1. Read GeoJSON data and scatterplot that data (no geo-projection)
- 1. Project the data coordinates to graphics coordinates
- 1. Add country boundaries to the map
- 1. Pretty it up!
+1. Start with a simple webpage containing the SVG we saw above
+ <img src="https://ryshackleton.github.io/d3_maptime/img/threeLittleCircles.svg">
+ 
+2. Learn to select existing SVG objects with D3
+ <img src="https://ryshackleton.github.io/d3_maptime/img/challenge1_solution.svg">
+ 
+3. Learn to create new SVG objects with D3 to create a scatterplot
+  <img src="https://ryshackleton.github.io/d3_maptime/img/challenge3_solution_with_style.svg">
+  
+4. Read GeoJSON data and scatterplot the data (no geo-projection) 
+   <img src="https://ryshackleton.github.io/d3_maptime/img/challenge4_solution.svg">
+   
+5. Read GeoJSON data and geographically project the data
+    <img src="https://ryshackleton.github.io/d3_maptime/img/challenge5_solution.svg">
+    
+6. Add country boundaries to the map
+     <img src="https://ryshackleton.github.io/d3_maptime/img/challenge6_solution.svg">
 
 By the time we finish this tutorial, we will have built our first (or nth) D3 web map! This will not be the prettiest map you've ever made, but hopefully once you've made it, you will have a launching pad to make an even better D3 map in the future.
 
@@ -206,7 +216,7 @@ The console will also show you errors in your code, but I'm sure you'll never ha
 ```
 #### Now try to get your circle variable printed to the console.  How do we do that again? (see #5 above)
 
-### 1st Challenge, 10 minutes: Change the Color and Size of the SVG elements
+### 1st Challenge, 20 minutes: Change the Color and Size of the SVG elements
 Head over to [this awesome tutorial](https://strongriley.github.io/d3/tutorial/circle.html), and read the first section entitled: **Selecting Elements**.
 
 #### In the [tutorial](https://strongriley.github.io/d3/tutorial/circle.html), find the code that changes the color and size of circles, then modify [the script we started above](https://github.com/Ryshackleton/d3_maptime/blob/master/html/01_hello-d3_challenge1_start.html) to give your circles the following properties
@@ -222,7 +232,7 @@ Your result should look something like this:
 
 ### [1st Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/01_hello-d3_challenge1_solution.html)
 
-### 2nd Challenge, 10 minutes: Bind Some Data to your circles
+### 2nd Challenge, 20 minutes: Bind Some Data to your circles
 Stick with the [same tutorial](https://strongriley.github.io/d3/tutorial/circle.html), but now move onto: **Binding Data**.  See if you can bind the following data to the `cy` attribute on each of your circles.
 
 ```JavaScript
@@ -316,7 +326,7 @@ The next lines just adds attributes and styles to the SVG in the same way we wer
 
 You may notice that I have started [chaining methods](http://alignedleft.com/tutorials/d3/chaining-methods) together.  I can do that because the .attr() and .style() methods assign an attribute or style first, then they *return a reference to the svg that they just modified*.  You'll see **method chaining** *a lot* in D3.
 
-### 3rd Challenge, 10 minutes: Create Circles from scratch using data!
+### 3rd Challenge, 20 minutes: Create Circles from scratch using data!
 [Start with the same tutorial](https://strongriley.github.io/d3/tutorial/circle.html), but now move onto: **Creating Elements**.  When you've finished reading through that section, you should be able to figure out how to plot the data that's defined at the end of your script.
 
 ```JavaScript
@@ -438,7 +448,7 @@ So, we just need to know how to pull the data out of this "blob" and attach it t
 ```
 
 The first `console.log("Number of quakes = " + parsedJSON.metadata.count);` refers to a single variable, which it prints to the Developer Tools console.  The next statement `console.log(parsedJSON.features);` prints the whole array of features to the console.  We'll explore this in the next challenge!
-### 4th Challenge, 10 minutes: Extract that data from the GeoJSON!!!
+### 4th Challenge, 20 minutes: Extract that data from the GeoJSON!!!
 #### Copy and paste [the html below](https://github.com/Ryshackleton/d3_maptime/blob/master/html/myEarthquakeMap.html) to a file called `myEarthquakeMap.html`.
 This script does the following, some of which should look familiar!
 1. The first few lines create an SVG in the body with some size and style attributes
@@ -567,7 +577,7 @@ We could rewrite it like this to be more explicit
 	var y = x_y[1]; // get y from the array
 ```
 
-### 5th Challenge: Add this code to our [un-projected scatterplot example](https://github.com/Ryshackleton/d3_maptime/blob/master/html/03_myEarthquakeMap_challenge5_start.html)! Define the projection just below where you defined the width and height:
+### 5th Challenge, 20 minutes: Add this code to our [un-projected scatterplot example](https://github.com/Ryshackleton/d3_maptime/blob/master/html/03_myEarthquakeMap_challenge5_start.html)! Define the projection just below where you defined the width and height:
 ```JavaScript
     var width = 700,
         height = 500;
@@ -610,7 +620,7 @@ This basically requests a [transition to occur for each](http://bl.ocks.org/Kcna
 ## STEP 6: Add some country boundaries...FINALLY, something that looks like a MAP!!!
 When you complete this step, you will have a map to "back up" your earthquake data.  In the interests of time, I'll just give you some pre-written code and then explain how it works.
 
-### 6th Challenge: Copy and Paste the following block of code JUST ABOVE THE closing `</script>` tag near the bottom of your html file
+### 6th Challenge, 20 minutes (hopefully less!): Copy and Paste the following block of code JUST ABOVE THE closing `</script>` tag near the bottom of your html file
 
 Refresh your map. Then sit back, bask in the glory, and then we'll talk about how it all works!
 ```JS
