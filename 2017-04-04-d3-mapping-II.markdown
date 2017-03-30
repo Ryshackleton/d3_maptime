@@ -101,9 +101,8 @@ By the time we finish this tutorial, we will have built our first (or nth) D3 we
 * Refer to [documentation](https://github.com/d3/d3/blob/master/API.md) / [tutorials](https://github.com/d3/d3/wiki/Tutorials)
 * **Cannibalize code** wherever/whenever you can. D3 has [great examples](https://bl.ocks.org/) and most the code is freely accessible.
 * In this tutorial, **SOLUTIONS ARE PROVIDED AT THE END OF EVERY STEP** under headings like this:
-	### [nth Challenge Solution Here]()
-
-If you want all of the starter and solution files ahead of time, feel free to [clone this git repo](https://github.com/Ryshackleton/d3_maptime.git).
+	### nth Challenge Solution Here
+	### Or [clone this git repo](https://github.com/Ryshackleton/d3_maptime.git) to get all of the starter/solution files ahead of time
 
 ## STEP 1: Create a simple web page to hold our SVG graphic
 
