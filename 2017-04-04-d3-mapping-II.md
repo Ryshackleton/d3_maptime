@@ -68,13 +68,6 @@ SVG's work similarly to html pages, where tags represent objects that can have *
 
 It's also worth noting that D3 has the ability to write and edit [many types of shape elements](https://www.w3schools.com/graphics/svg_examples.asp) to SVG's, like rectangles (`<rect>`), not just circles.  Later we'll use a [`<path>` element](https://www.w3schools.com/graphics/svg_path.asp), which has a shorthand format for definining complex polygons like country boundaries.
 
-# Tips
-
-* The learning curve can be pretty steep. Stay positive
-* Start simple, add complexity piece by piece
-* Refer to [documentation](https://github.com/d3/d3/blob/master/API.md) / [tutorials](https://github.com/d3/d3/wiki/Tutorials)
-* **Cannibalize code** wherever/whenever you can. D3 has [great examples](https://bl.ocks.org/) and most the code is freely accessible. See something you like? Take a look at how it's done, but definitely go line-by-line in the code to make sure you know what's happening!
-
 # Tutorial Time!
 
 With any luck, today we will produce [this map](https://bl.ocks.org/Ryshackleton/52c97ff17236c2accccdadc47b122228), which displays the [United States Geological Survey (USGS) GeoJSON feed of recent earthquakes around the world](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php).  We'll do this in steps:
@@ -98,6 +91,15 @@ With any luck, today we will produce [this map](https://bl.ocks.org/Ryshackleton
 <img src="https://ryshackleton.github.io/d3_maptime/img/challenge6_solution.svg">
 
 By the time we finish this tutorial, we will have built our first (or nth) D3 web map! This will not be the prettiest map you've ever made, but hopefully once you've made it, you will have a launching pad to make an even better D3 map in the future.
+
+# Tips
+
+* The learning curve can be pretty steep. Stay positive.  Ask lots of questions.
+* Start simple, add complexity piece by piece
+* Refer to [documentation](https://github.com/d3/d3/blob/master/API.md) / [tutorials](https://github.com/d3/d3/wiki/Tutorials)
+* **Cannibalize code** wherever/whenever you can. D3 has [great examples](https://bl.ocks.org/) and most the code is freely accessible.
+* In this tutorial, SOLUTIONS ARE PROVIDED AT THE END OF EVERY STEP!!! under headings like this:
+### [nth Challenge Solution Here]()
 
 ## STEP 1: Create a simple web page to hold our SVG graphic
 
