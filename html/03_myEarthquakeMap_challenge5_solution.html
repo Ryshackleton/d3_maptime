@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  
+  <!--   using D3 version 4-->
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://d3js.org/topojson.v2.min.js"></script>
+  
+  <!--  could add CSS inside the <style> tags -->
+  <style>
+  </style>
+
+</head>
+
+<body>  
+  <script>
+    var width = 700,
+        height = 500;
+    
+    // define the map projection
+    var projection = d3.geoEquirectangular() // in D3 version 3 this will be: 
+        .scale(height / Math.PI)
+        .translate([width / 2, height / 2]);
+    
+    // set up the SVG
+    var svg = d3.select("body")
+                .append("svg"); 
+    svg.attr("width", width)
+        .attr("height", height) 
+        .style("border","3px solid black") 
+        .style("background-color","lightblue"); 
+    
+    var todaysQuakesFeed =
+        "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson";
+    
+    // send a JSON request to the earthquake feed,
+    d3.json(todaysQuakesFeed, function(parsedJSON){ //-- result of the parsing is in parsedJSON
+      
+      console.log("Number of quakes = " + parsedJSON.metadata.count);
+      
+      console.log(parsedJSON.features); // log the features array to the console
+      
+      console.log("First Feature.properties")
+      console.log(parsedJSON.features[0].properties); // log the properties for the first feature to the console
+      
+      console.log("Second Feature.geometry")
+      console.log(parsedJSON.features[1].geometry); // log the geometry for the second feature to the console
+      
+      svg.selectAll("circle")
+          .data(parsedJSON.features) //-- notice that we refer to .features: an array just like before!
+        .enter().append("circle")
+           .attr("cx", function(d) { //-- this 'd' refers to A FEATURE in the array
+                    var x = projection( d.geometry.coordinates ) [0];
+                    return x;
+                }) 
+          .attr("cy", function(d) { //-- this 'd' refers to A FEATURE in the array
+                    var y = projection( d.geometry.coordinates ) [1];
+                    return y;
+                })
+        .transition()
+          .duration(500)
+          .delay(function(d,i){ return i * 100; })
+          .ease(d3.easeElastic)
+          .attr("r", function(d){ return d.properties.mag > 0 ? 1.5 * d.properties.mag : 0; } )
+          .attr("r", function(d){ return d.properties.mag > 0 ? 1.5 * d.properties.mag : 0; } )
+          .style("fill", "rgb(255, 255, 0)")
+          .style("stroke", "black")
+          .style("stroke-width", 1)
+          .style("opacity", 0.5);
+    });
+    
+  </script>
+</body>
+</html>
