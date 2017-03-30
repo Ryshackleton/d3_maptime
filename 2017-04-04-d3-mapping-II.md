@@ -206,9 +206,9 @@ The console will also show you errors in your code, but I'm sure you'll never ha
 #### Now try to get your circle variable printed to the console.  How do we do that again? (see #5 above)
 
 ### 1st Challenge, 10 minutes: Change the Color and Size of the SVG elements
-Head over to [this awesome tutorial](https://strongriley.github.io/d3/tutorial/circle.html), where the first section: **Selecting Elements** will show you how to give your circles some style.  
+Head over to [this awesome tutorial](https://strongriley.github.io/d3/tutorial/circle.html), where the first section: **Selecting Elements** will show you how to give your circles some style.
 
-#### Find the code to select circles, and change colors and sizes of circles, then add the relevant code to your script and see if you can make your circles have the following properties
+#### Find the code to select circles, and change colors and sizes of circles, then add the relevant code to [the script we started above](https://github.com/Ryshackleton/d3_maptime/blob/master/html/01_hello-d3_challenge1_start.html) and see if you can make your circles have the following properties
 
  * radius: 20
  * fill: darkred
