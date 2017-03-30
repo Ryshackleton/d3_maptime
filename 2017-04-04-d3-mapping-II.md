@@ -527,6 +527,7 @@ Then try to print data you want to the console using console.log().  You should 
 </html>
 ```
 You should just see some earthquakes in your SVG. Their locations will be different depending on today's earthquakes!
+
 <img src="https://ryshackleton.github.io/d3_maptime/img/challenge4_solution.svg">
 
 ### [4th Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/03_myEarthquakeMap_challenge4_solution.html)
