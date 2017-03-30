@@ -335,7 +335,13 @@ You can add the following styles if you have time, or add your own styles.
 * stroke-width: 1
 * opacity: 0.5
 
-When you're done, pat yourself on the back for having made a scatterplot from scratch!
+When you're done, pat yourself on the back for having made a scatterplot from scratch!  If you don't have time to add the styles, you should see this:
+<img src="https://ryshackleton.github.io/d3_maptime/img/challenge3_solution_no_style.svg">
+
+And if you do add the styles, you should see this:
+<img src="https://ryshackleton.github.io/d3_maptime/img/challenge3_solution_with_style.svg">
+
+### [3rd Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/02_myScatterPlot_challenge1_solution.html)
 
 ## STEP 4: Read GeoJSON data and scatterplot that data (no geo-projection)
 OK, enough of this plotting boring arrays of meaningless data.  Let's plot something EARTH SHATTERING!!! How about earthquakes? (Oh!! See what I did there??).
