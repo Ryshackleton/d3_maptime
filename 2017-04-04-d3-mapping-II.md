@@ -92,7 +92,8 @@ With any luck, today we will produce [this map](https://bl.ocks.org/Ryshackleton
 
 By the time we finish this tutorial, we will have built our first (or nth) D3 web map! This will not be the prettiest map you've ever made, but hopefully once you've made it, you will have a launching pad to make an even better D3 map in the future.
 
-# Tips
+
+## Tips
 
 * The learning curve can be pretty steep. Stay positive.  Ask lots of questions.
 * Start simple, add complexity piece by piece
