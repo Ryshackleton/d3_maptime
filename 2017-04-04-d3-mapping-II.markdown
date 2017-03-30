@@ -379,7 +379,7 @@ Where before we had `var myData = [ 20, 60, 100 ];`, now we'll have something li
 ```
 Each block `{ }` will be parsed into a *JavaScript object*, which could hold arrays of sub-data. [Have a look here for the basic formats and JSON data structures if you need help](https://www.w3schools.com/js/js_json_datatypes.asp).
 
-I've pasted an abridged version of the USGS data format below with three earthquake "features".  I have deleted a lot of attributes and reformatted the tabs so you can see where the coordinate data "lives" in the GeoJSON data structure.  To see the whole feed of all global earthquakes in the past day, [click here](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson).
+The code below shows an abridged version of the USGS data format with three earthquake "features".  I have deleted a lot of attributes and reformatted the tabs so you can see where the coordinate data "lives" in the GeoJSON data structure.  To see the whole feed of all global earthquakes in the past day, [click here](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson), or [click here a nicely formatted example of 3 earthquakes](https://github.com/Ryshackleton/d3_maptime/blob/master/data/sampleQuakeData.json?short_path=a7c888c)
 
 ```JSON 
 {
