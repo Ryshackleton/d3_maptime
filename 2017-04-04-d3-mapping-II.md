@@ -250,6 +250,7 @@ Check out [the tutorial on Transitions](https://bost.ocks.org/mike/transition/),
     }
 ```
 ### [Advanced Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/01_hello-d3_challenge_advanced_solution.html)
+### [See the Solution Live Here](https://bl.ocks.org/Ryshackleton/3edae1f5a5ed46c946c40947ee893f5a)
 
 ## STEP 3: Learn to Create Elements from Scratch!
 #### Copy the code to below to your text editor, and SAVE to a file called `myScatterPlot.html`.
