@@ -178,7 +178,6 @@ From here on out, most of what we'll be doing is writing JavaScript to select an
 
 ## STEP 2: Learn to select SVG objects with D3
 ### Your first D3 Selection
-
 D3 has really easy shorthand for selecting objects in webpages.  First, we'll ask D3 to select the `<body>` tag, and then select the `<svg>` inside the body.
 
 #### Again, writing your code between the `<script>` tags, add the following code.
@@ -232,8 +231,16 @@ Your result should look something like this:
 
 ### [1st Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/01_hello-d3_challenge1_solution.html)
 
+### Binding Data to Circle Elements
+Conceptually, what we want to do next is to take a **data array** *(shown on the right)*, and bind it to an **empty selection of circles** *(shown on the left)*
+<img src="https://ryshackleton.github.io/d3_maptime/img/d3.data.png">
+
+After we've *bound* the data, we have our data **linked to the selection of circles**, and then we can use the data in the SVG.
+<img src="https://ryshackleton.github.io/d3_maptime/img/d3.data.circles.png">
+
 ### 2nd Challenge, 20 minutes: Bind Some Data to your circles
-Stick with the [same tutorial](https://strongriley.github.io/d3/tutorial/circle.html), but now move onto: **Binding Data**.  See if you can bind the following data to the `cy` attribute on each of your circles.
+Stick with the [same tutorial](https://strongriley.github.io/d3/tutorial/circle.html), but now move onto: **Binding Data**.
+### In the tutorial, find the code that will help you bind the following data to the `cy` attribute on each of your circles.
 
 ```JavaScript
 	var myData = [ 20, 60, 100 ];
@@ -244,6 +251,8 @@ Your result should look something like this:
 
 **If you get wacky results, be sure you changed the `cy` attribute and not the `cx` attribute as they do in the tutorial!**
 ### [2nd Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/01_hello-d3_challenge2_solution.html)
+
+**Further Reading on Selections and Binding**: [How Selections Work](https://bost.ocks.org/mike/selection/), [Thinking With Joins](https://bost.ocks.org/mike/join/), and [The Original Three Little Circles Tutorial](https://bost.ocks.org/mike/circles/)
 
 ### Advanced Challenge, if you have extra time: Add Transition Effects
 Check out [the tutorial on Transitions](https://bost.ocks.org/mike/transition/), and see if you can transition from one state to another.  You probably want to have your code triggered by a button so you can see the transition happen. To add a button, add the following snippet to your script (not the html), then add all of the code we've written (plus your transitioning code) inside the `function myFunction()`
