@@ -206,14 +206,15 @@ The console will also show you errors in your code, but I'm sure you'll never ha
 #### Now try to get your circle variable printed to the console.  How do we do that again? (see #5 above)
 
 ### 1st Challenge, 10 minutes: Change the Color and Size of the SVG elements
-Head over to [this awesome tutorial](https://strongriley.github.io/d3/tutorial/circle.html), where the first section: **Selecting Elements** will show you how to give your circles some style.
+Head over to [this awesome tutorial](https://strongriley.github.io/d3/tutorial/circle.html), and read the first section entitled: **Selecting Elements**.
 
-#### Find the code to select circles, and change colors and sizes of circles, then add the relevant code to [the script we started above](https://github.com/Ryshackleton/d3_maptime/blob/master/html/01_hello-d3_challenge1_start.html) and see if you can make your circles have the following properties
+#### In the [tutorial]((https://strongriley.github.io/d3/tutorial/circle.html), find the code that changes the color and size of circles, then modify [the script we started above](https://github.com/Ryshackleton/d3_maptime/blob/master/html/01_hello-d3_challenge1_start.html) to give your circles the following properties
 
  * radius: 20
  * fill: darkred
- 
-Be sure to make good use of the Developer Tools to find errors (in the Console).
+
+Hint: if you get lost, check out the lines: `circle.style("fill","steelblue");` and `circle.attr("r",30);`). Be sure to make good use of the Developer Tools to find errors (in the Console).
+
 Your result should look something like this:
 
 <img src="https://ryshackleton.github.io/d3_maptime/img/challenge1_solution.svg">
