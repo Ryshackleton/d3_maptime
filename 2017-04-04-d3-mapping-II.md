@@ -215,6 +215,7 @@ Head over to [this awesome tutorial](https://strongriley.github.io/d3/tutorial/c
  
 Be sure to make good use of the Developer Tools to find errors (in the Console).
 Your result should look something like this:
+
 <img src="https://ryshackleton.github.io/d3_maptime/img/challenge1_solution.svg">
  
 ### 2nd Challenge, 10 minutes: Bind Some Data to your circles
@@ -224,7 +225,9 @@ Stick with the [same tutorial](https://strongriley.github.io/d3/tutorial/circle.
 	var myData = [ 20, 60, 100 ];
 ```
 Your result should look something like this:
+
 <img src="https://ryshackleton.github.io/d3_maptime/img/challenge2_solution.svg">
+
 **Be sure you changed the `cy` attribute and not the `cx` attribute as they do in the tutorial!**
 
 ### Advanced Challenge, if you have extra time: Add Transition Effects
