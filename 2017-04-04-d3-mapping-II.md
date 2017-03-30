@@ -718,7 +718,7 @@ Now we draw the path, which looks similar to the circle drawing code, except tha
 
 **Congratulations!** You built a web map in D3.js!  Thanks for coming.
 
-#Further Reading:
+# Further Reading:
 Here are some D3 References that I have found very useful:
 
 ### Free Book
