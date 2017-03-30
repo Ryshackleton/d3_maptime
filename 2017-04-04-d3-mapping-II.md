@@ -217,6 +217,7 @@ Be sure to make good use of the Developer Tools to find errors (in the Console).
 Your result should look something like this:
 
 <img src="https://ryshackleton.github.io/d3_maptime/img/challenge1_solution.svg">
+
 ### [1st Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/01_hello-d3_challenge1_solution.html)
 
 ### 2nd Challenge, 10 minutes: Bind Some Data to your circles
