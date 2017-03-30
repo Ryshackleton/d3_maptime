@@ -440,7 +440,7 @@ So, we just need to know how to pull the data out of this "blob" and attach it t
 
 The first `console.log("Number of quakes = " + parsedJSON.metadata.count);` refers to a single variable, which it prints to the Developer Tools console.  The next statement `console.log(parsedJSON.features);` prints the whole array of features to the console.  We'll explore this in the next challenge!
 ### 4th Challenge, 10 minutes: Extract that data from the GeoJSON!!!
-#### Copy and paste to the following html to a file called "myEarthquakeMap.html".
+#### Copy and paste [the html below](https://github.com/Ryshackleton/d3_maptime/blob/master/html/myEarthquakeMap.html) to a file called `myEarthquakeMap.html`.
 This script does the following, some of which should look familiar!
 1. The first few lines create an SVG in the body with some size and style attributes
 1. The d3.json(...) send the JSON request from the URL to get the GeoJSON data
@@ -449,7 +449,8 @@ This script does the following, some of which should look familiar!
 #### Your task will be to modify the two .attr("cx", ...) and .attr("cy", ...) to assign the longitude (x) and latitude (y) to the "cx" and "cy" variables. 
 I know, I know, lat/long's can be negative, and lat/long's aren't the same thing as SVG pixels, but we'll get to that very soon.
 
-#### Hint: look at the structure of the data that gets printed to the console. Then try to console.log() the data you want from the function (before the return statement).  Also, remember to make use of the [actual USGS documentation](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php)!
+#### Hint: Open up the Developer Tools Console and look at the structure of the data that gets printed to the console.
+Then try to print data you want to the console using console.log().  You should try to print from inside `function(d) { return 0; }` (but before the return statement).  Also, remember to make use of the [actual USGS documentation](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php) to understand the GeoJSON data and properties!
 
 ```HTML
 <!doctype html>
@@ -526,6 +527,7 @@ I know, I know, lat/long's can be negative, and lat/long's aren't the same thing
 </body>
 </html>
 ```
+### [4th Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/03_myEarthquakeMap_challenge4_solution.html)
 
 ## STEP 5: Define your projection and project the data!
 When you define a projection, you tell D3 how to transform your data from spherical to Cartesian coordinates. Take a look at the [projection docs](https://github.com/d3/d3/blob/master/API.md#geographies-d3-geo) to get a sense of how you can project your data with D3.
