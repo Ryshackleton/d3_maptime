@@ -723,7 +723,7 @@ Now we select the grouping node `<g>` we just created, and append drawing paths 
               .style("stroke-linejoin","round");
       });
 ```
-For a much better explanation of paths and path generators, see [this book section](http://chimera.labs.oreilly.com/books/1230000000345/ch12.html#_projections) and [the Let's Make a Map Tutorial](https://bost.ocks.org/mike/map/).  This is a great way to launch into [Choropleth Maps](http://chimera.labs.oreilly.com/books/1230000000345/ch12.html#_choropleth).
+For a much better explanation of paths and path generators, see [this book section](http://chimera.labs.oreilly.com/books/1230000000345/ch12.html#_projections) and [the Command Line Cartography Tutorial](https://medium.com/@mbostock/command-line-cartography-part-1-897aa8f8ca2c).  This is a great way to launch into [Choropleth Maps](http://chimera.labs.oreilly.com/books/1230000000345/ch12.html#_choropleth).
 
 **Congratulations!** You built a web map in D3.js!  Thanks for coming.
 
