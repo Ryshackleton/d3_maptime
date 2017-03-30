@@ -223,9 +223,9 @@ Head over to [this awesome tutorial](https://strongriley.github.io/d3/tutorial/c
 #### In the [tutorial](https://strongriley.github.io/d3/tutorial/circle.html), find the code that changes the color and size of circles, then modify [the script we started above](https://github.com/Ryshackleton/d3_maptime/blob/master/html/01_hello-d3_challenge1_start.html) to give your circles the following properties
 
  * radius: 20
- * fill: darkred
+ * fill: "darkred"
 
-Hint: if you get lost, check out the lines: `circle.style("fill","steelblue");` and `circle.attr("r",30);`). Be sure to make good use of the Developer Tools to find errors (in the Console).
+**NEED A HINT? If you get lost, check out the lines: `circle.style("fill","steelblue");` and `circle.attr("r",30);`).**  All you should really need to change are the `"steelblue"` and `30` to the values above Be sure to make good use of the Developer Tools to find errors (in the Console).
 
 Your result should look something like this:
 
