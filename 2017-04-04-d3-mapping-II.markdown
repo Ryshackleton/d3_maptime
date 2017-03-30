@@ -221,7 +221,7 @@ Head over to [this awesome tutorial](https://strongriley.github.io/d3/tutorial/c
  * radius: 20
  * fill: "darkred"
 
-**NEED A HINT? Check out the lines: `circle.style("fill","steelblue");` and `circle.attr("r",30);`).**  All you should really need to do is paste those two lines into your script, then change are the `"steelblue"` and `30` to `"darkred"` and `20`.  Be sure to make good use of the Developer Tools to find errors (in the Console) if you get a blank page. (Right click in the page, and "View Source")
+**NEED A HINT? Check out the lines: `circle.style("fill","steelblue");` and `circle.attr("r",30);`.**  All you should really need to do is paste those two lines into your script, then change are the `"steelblue"` and `30` to `"darkred"` and `20`.  Be sure to make good use of the Developer Tools to find errors (in the Console) if you get a blank page. (Right click in the page, and "View Source")
 
 Your result should look something like this:
 
@@ -236,7 +236,8 @@ Conceptually, what we want to do next is to take a **data array** *(shown on the
 After we've *bound* the data, we have our data **linked to the selection of circles**, and then we can use the data in the SVG.
 <img src="https://ryshackleton.github.io/d3_maptime/img/d3.data.circles.png">
 
-### Stick with the [same tutorial](https://strongriley.github.io/d3/tutorial/circle.html), but now move onto: **Binding Data**. Find the code that will help you bind the following data to the `cy` attribute on each of your circles.
+### Stick with the [same tutorial](https://strongriley.github.io/d3/tutorial/circle.html), but now move onto the **Binding Data** Section of the tutorial.
+Find the code that will help you bind the following data to the `cy` attribute on each of your circles.
 
 ```JavaScript
 	var myData = [ 20, 60, 100 ];
