@@ -157,7 +157,6 @@ I have also included the SVG we discussed above inside the `<body>` tag, which w
 #### Open hello-d3.html in a web browser.  You should see something like this:
 <img src="https://ryshackleton.github.io/d3_maptime/img/threeLittleCircles.svg">
 
-From here on out, most of what we'll be doing is writing JavaScript to select and add things to the web page.
 #### In `hello-d3.html`, find the `<body>` tag, then find the `<script>` tag inside the `<body>`.  All of our code will go there.
 
 ```JavaScript 
@@ -165,6 +164,8 @@ From here on out, most of what we'll be doing is writing JavaScript to select an
     	/* Your JavaScript Here */
     </script>
 ```
+From here on out, most of what we'll be doing is writing JavaScript to select and add things to the web page.
+
 ## STEP 2: Learn to select SVG objects with D3
 ### Your first D3 Selection
 
