@@ -646,7 +646,7 @@ Refresh your map. Then sit back, bask in the glory, and then we'll talk about ho
           .projection(projection);
     
       // send a JSON request to get the world boundaries  
-      var worldBoundariesURL = "https://raw.githubusercontent.com/Ryshackleton/json_resources/master/world-topo-min.json";
+      var worldBoundariesURL = "https://ryshackleton.github.io/d3_maptime/data/world-topo-min.json";
       d3.json(worldBoundariesURL, function(world) {
         
         // create a group <g> element at the front of the SVG
@@ -682,10 +682,10 @@ When D3 renders lines as SVG, it has to translate a vector format containing ver
 ```
 **So, the path generator is kind of like projection for lines: vector goes in, projected line in x,y space comes out**
 
-The next few lines do the same thing we did before: get data from a GeoJSON-like format called [TopoJSON](https://github.com/topojson/topojson): a format specifically designed to reduce file size.  [You can grab the data here](https://github.com/Ryshackleton/json_resources/blob/master/world-topo-min.json).
+The next few lines do the same thing we did before: get data from a GeoJSON-like format called [TopoJSON](https://github.com/topojson/topojson): a format specifically designed to reduce file size.  [You can grab the data here](https://github.com/Ryshackleton/d3_maptime/blob/master/data/world-topo-min.json).
 ```JS
       // send a JSON request to get the world boundaries  
-      var worldBoundariesURL = "https://raw.githubusercontent.com/Ryshackleton/json_resources/master/world-topo-min.json";
+      var worldBoundariesURL = "https://ryshackleton.github.io/d3_maptime/data/world-topo-min.json";
       d3.json(worldBoundariesURL, function(world) {
       });
 ```
