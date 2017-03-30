@@ -243,7 +243,7 @@ Conceptually, what we want to do next is to take our **selection** of circles *(
 
 After we've *bound* the data, we can *retrieve* the data to set attributes on the circles, as we did before.  The **Binding Data** section of the [same tutorial](https://strongriley.github.io/d3/tutorial/circle.html), will show you how to do that!
 
-### 2nd Challenge, 20 minutes: Find the code in the tutorial that will help you bind the following data to the `cy` attribute on each of your circles.
+### 2nd Challenge, 20 minutes: Find the code in the *Binding Data* section of [the tutorial](https://strongriley.github.io/d3/tutorial/circle.html) that will help you bind the data array below to the `cy` attribute on each of your circles.
 
 ```JavaScript
 	var myData = [ 20, 60, 100 ];
