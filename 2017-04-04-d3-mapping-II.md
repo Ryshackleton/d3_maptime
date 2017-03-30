@@ -225,7 +225,7 @@ Head over to [this awesome tutorial](https://strongriley.github.io/d3/tutorial/c
  * radius: 20
  * fill: "darkred"
 
-**NEED A HINT? If you get lost, check out the lines: `circle.style("fill","steelblue");` and `circle.attr("r",30);`).**  All you should really need to change are the `"steelblue"` and `30` to the values above Be sure to make good use of the Developer Tools to find errors (in the Console).
+**NEED A HINT? Check out the lines: `circle.style("fill","steelblue");` and `circle.attr("r",30);`).**  All you should really need to do is paste those two lines into your script, then change are the `"steelblue"` and `30` to `"darkred"` and `20`.  Be sure to make good use of the Developer Tools to find errors (in the Console) if you get a blank page. (Right click in the page, and "View Source")
 
 Your result should look something like this:
 
