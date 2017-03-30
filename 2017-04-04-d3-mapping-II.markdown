@@ -66,7 +66,7 @@ It's also worth noting that D3 has the ability to select, write, and edit any el
 
 # Tutorial Time!
 
-With any luck, today we will produce **[this map](https://bl.ocks.org/Ryshackleton/52c97ff17236c2accccdadc47b122228/71e8c79a711b532565b97a16c83dc222246568d2)**, which displays the [a GeoJSON feed of daily earthquakes around the world](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php).  We'll do this in steps:
+With any luck, today we will produce **[this map](https://bl.ocks.org/Ryshackleton/52c97ff17236c2accccdadc47b122228/71e8c79a711b532565b97a16c83dc222246568d2)**, which displays [a GeoJSON feed of daily earthquakes around the world](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php).  We'll do this in steps:
 
 1. Start with a simple webpage containing the SVG we saw above
 <img src="https://ryshackleton.github.io/d3_maptime/img/threeLittleCircles.svg">
@@ -285,7 +285,9 @@ Check out [this simple example of a transition](https://bl.ocks.org/d3noob/c3cbb
 ### [Advanced Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/01_hello-d3_challenge_advanced_solution.html)
 ### [See the Solution Live Here](https://bl.ocks.org/Ryshackleton/3edae1f5a5ed46c946c40947ee893f5a)
 
-## STEP 3: We Don't Need To Start with `<svg>`'s in our `<body>`!!  We Can Create Elements from Scratch!
+## STEP 3: Creating SVG Elements From Scratch
+We don't need no stinking `<svg>`'s in our `<body>`!!  D3 can create them on the fly.
+
 #### Copy the code to below to your text editor, and SAVE to a file called `myScatterPlot.html`.
 Notice that there's no SVG in the `<body>`: just the script, which uses D3 to create the SVG from scratch!
 ```HTML
