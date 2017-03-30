@@ -237,11 +237,11 @@ Your result should look something like this:
 ### [1st Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/01_hello-d3_challenge1_solution.html)
 
 ### 2nd Challenge, 20 minutes: Binding Data to Circle Elements
-Conceptually, what we want to do next is to take a **data array** *(shown on the right)*, and bind it to an **empty selection of circles** *(shown on the left)*
-<img src="https://ryshackleton.github.io/d3_maptime/img/d3.data.png">
+Conceptually, what we want to do next is to take a **data array** like this `[5, 15, 30]`, and bind the data array to **the selection of circles**  *(the circle selection is shown on the left in the image below)*
+
+<img src="https://ryshackleton.github.io/d3_maptime/img/d3.data.circles.png">
 
 After we've *bound* the data, we have our data **linked to the selection of circles**, and then we can use the data in the SVG.
-<img src="https://ryshackleton.github.io/d3_maptime/img/d3.data.circles.png">
 
 ### Stick with the [same tutorial](https://strongriley.github.io/d3/tutorial/circle.html), but now move onto the **Binding Data** Section of the tutorial.
 Find the code that will help you bind the following data to the `cy` attribute on each of your circles.
