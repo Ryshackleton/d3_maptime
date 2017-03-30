@@ -236,7 +236,7 @@ Your result should look something like this:
 ### [2nd Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/01_hello-d3_challenge2_solution.html)
 
 ### Advanced Challenge, if you have extra time: Add Transition Effects
-Check out [the tutorial on Transitions](https://bost.ocks.org/mike/transition/), and see if you can transition from one state to another.  You probably want to have your code triggered by a button so you can see the transition happen. To add a button, add the following snippet to your script (not the html), then add your transitioning code inside the `function myFunction()`
+Check out [the tutorial on Transitions](https://bost.ocks.org/mike/transition/), and see if you can transition from one state to another.  You probably want to have your code triggered by a button so you can see the transition happen. To add a button, add the following snippet to your script (not the html), then add all of the code we've written (plus your transitioning code) inside the `function myFunction()`
 
 ```JavaScript
     // use d3 to add a new button in the body
@@ -249,9 +249,10 @@ Check out [the tutorial on Transitions](https://bost.ocks.org/mike/transition/),
       // add your transitioning code here
     }
 ```
+### [Advanced Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/01_hello-d3_challenge_advanced_solution.html)
 
 ## STEP 3: Learn to Create Elements from Scratch!
-#### Start with this template, or copy the code to below to a file called myScatterPlot.html.
+#### Copy the code to below to your text editor, and SAVE to a file called `myScatterPlot.html`.
 Notice that there's no SVG in the `<body>`: just the script, which uses D3 to create the SVG from scratch!
 ```HTML
 <!doctype html>
