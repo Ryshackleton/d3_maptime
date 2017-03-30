@@ -716,10 +716,13 @@ Now we draw the path, which looks similar to the circle drawing code, except tha
       });
 ```
 
-**Congratulations!** You built a web map in D3.js!
+**Congratulations!** You built a web map in D3.js!  Thanks for coming.
 
-## Thanks for coming!  Here are some D3 References that I have found very useful:
-### [Free Book: Interactive Data Visualization for the Web](http://chimera.labs.oreilly.com/books/1230000000345/index.html) - probably the most thorough place to start, and has some GREAT [chapters on D3 at the end](http://chimera.labs.oreilly.com/books/1230000000345/ch05.html#_going_chainless)
+#Further Reading:
+Here are some D3 References that I have found very useful:
+
+### Free Book
+[Interactive Data Visualization for the Web](http://chimera.labs.oreilly.com/books/1230000000345/index.html) - probably the most thorough place to start, and has some GREAT [chapters on D3 at the end](http://chimera.labs.oreilly.com/books/1230000000345/ch05.html#_going_chainless)
 
 ### Bl.ocks.org:
 [Create your own!](https://bl.ocks.org/-/about)
@@ -729,6 +732,7 @@ Now we draw the path, which looks similar to the circle drawing code, except tha
 
 ### Reusable Custom D3 Charts:
 [Towards Reusable Charts: a must read if you really want to use D3 extensively](https://bost.ocks.org/mike/chart/)
+
 [Simple example of a Reusable Chart](https://gist.github.com/cpbotha/5073718)
 
 ### Cartograms:
