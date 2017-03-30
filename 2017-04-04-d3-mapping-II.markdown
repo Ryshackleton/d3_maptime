@@ -71,8 +71,8 @@ With any luck, today we will produce [this map](https://bl.ocks.org/Ryshackleton
 1. Start with a simple webpage containing the SVG we saw above
 <img src="https://ryshackleton.github.io/d3_maptime/img/threeLittleCircles.svg">
  
-2. Learn to select existing SVG objects with D3
-<img src="https://ryshackleton.github.io/d3_maptime/img/challenge1_solution.svg">
+2. Learn to select and manipulate existing SVG objects with D3
+<img src="https://ryshackleton.github.io/d3_maptime/img/challenge1_solution.svg">, and <img src="https://ryshackleton.github.io/d3_maptime/img/challenge2_solution.svg">
  
 3. Learn to create new SVG objects with D3 to create a scatterplot
 <img src="https://ryshackleton.github.io/d3_maptime/img/challenge3_solution_with_style.svg">
