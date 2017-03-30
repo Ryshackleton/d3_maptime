@@ -725,6 +725,14 @@ Here are some D3 References that I have found very useful:
 ### Free Book
 [Interactive Data Visualization for the Web](http://chimera.labs.oreilly.com/books/1230000000345/index.html) - probably the most thorough place to start, and has some GREAT [chapters on D3 at the end](http://chimera.labs.oreilly.com/books/1230000000345/ch05.html#_going_chainless)
 
+### Other Cool D3 Maptimes
+[Boston](http://maptimeboston.github.io/d3-maptime/#/)
+[Amsterdam](https://github.com/maptime-ams/animated-borders-d3js)
+[SF](http://enjalot.github.io/intro-d3/maptime/)
+
+### SVG
+[The Documentaion](https://www.w3.org/TR/SVG/expanded-toc.html)
+
 ### Bl.ocks.org:
 [Create your own!](https://bl.ocks.org/-/about)
 
