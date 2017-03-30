@@ -217,7 +217,8 @@ Be sure to make good use of the Developer Tools to find errors (in the Console).
 Your result should look something like this:
 
 <img src="https://ryshackleton.github.io/d3_maptime/img/challenge1_solution.svg">
- 
+### [1st Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/01_hello-d3_challenge1_solution.html)
+
 ### 2nd Challenge, 10 minutes: Bind Some Data to your circles
 Stick with the [same tutorial](https://strongriley.github.io/d3/tutorial/circle.html), but now move onto: **Binding Data**.  See if you can bind the following data to the `cy` attribute on each of your circles.
 
@@ -228,7 +229,8 @@ Your result should look something like this:
 
 <img src="https://ryshackleton.github.io/d3_maptime/img/challenge2_solution.svg">
 
-**Be sure you changed the `cy` attribute and not the `cx` attribute as they do in the tutorial!**
+**If you get wacky results, be sure you changed the `cy` attribute and not the `cx` attribute as they do in the tutorial!**
+### [2nd Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/01_hello-d3_challenge2_solution.html)
 
 ### Advanced Challenge, if you have extra time: Add Transition Effects
 Check out [the tutorial on Transitions](https://bost.ocks.org/mike/transition/), and see if you can transition from one state to another.  You probably want to have your code triggered by a button so you can see the transition happen. To add a button, add the following snippet to your script (not the html), then add your transitioning code inside the `function myFunction()`
