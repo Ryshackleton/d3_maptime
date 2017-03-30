@@ -10,10 +10,9 @@ So *why use D3 for maps?* Maps are fundamentally graphical objects based on data
 
 ### What do I need for this tutorial?
 
-To successfully follow this tutorial you need a text editor (such as Notepad++, Brackets, or Sublime Text). Go ahead and use your personal favorite, or if you don't have one installed,
-download [Sublime Text](http://www.sublimetext.com/) or [Brackets](http://brackets.io).
+To successfully follow this tutorial you need a text editor (such as Notepad++, Brackets, or Sublime Text). Go ahead and use your personal favorite, or if you don't have one installed, download [Brackets](http://brackets.io), it's free.
 
-Also, to complete this tutorial without running a local web server (not what we're here to learn), you'll need to open your web map in Firefox or Chrome. Download [Firefox](https://www.mozilla.org/en-US/firefox/new/).
+Also, to complete this tutorial without running a local web server (not what we're here to learn), you'll need to open your web map in Safari, Firefox, or Chrome. Download [Chrome](https://www.google.com/chrome/browser/desktop/index.html).
 
 ### What can I create with D3?
 
