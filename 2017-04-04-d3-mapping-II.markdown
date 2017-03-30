@@ -127,6 +127,7 @@ Like nouns, adjectives, and verbs, the web (in its simplest form) is made of HTM
 ```HTML
 <!doctype html>
 <html lang="en">
+<!-- Save me as: hello-d3.html -->
 
 <head>
   <meta charset="utf-8">
@@ -284,7 +285,7 @@ Check out [this simple example of a transition](https://bl.ocks.org/d3noob/c3cbb
 ```
 **Further Reading on Transitions**:  [Mike's tutorial on Transitions](https://bost.ocks.org/mike/transition/), [Chained Transitions](https://bl.ocks.org/mbostock/1125997), [Crazy transform Transitions](https://bl.ocks.org/mbostock/1345853).
 
-### [Advanced Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/01_hello-d3_challenge_advanced_solution.html)
+### [Advanced Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/01_hello-d3_challenge3_advanced_solution.html)
 ### [See the Solution Live Here](https://bl.ocks.org/Ryshackleton/3edae1f5a5ed46c946c40947ee893f5a)
 
 ## STEP 3: Creating SVG Elements From Scratch
@@ -295,6 +296,7 @@ Notice that there's no SVG in the `<body>`: just the script, which uses D3 to cr
 ```HTML
 <!doctype html>
 <html lang="en">
+<!-- Save me as: myScatterPlot.html -->
 
 <head>
   <meta charset="utf-8">
@@ -462,7 +464,7 @@ So, we just need to know how to pull the data out of this "blob" and attach it t
         "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson";
     
     // send a JSON request to the earthquake feed,
-    d3.json(todaysQuakesFeed, function(parsedJSON){ // <-- result of the parsing is in parsedJSON
+    d3.json(todaysQuakesFeed, function(parsedJSON){ // <-- result of the parsing is in the variable parsedJSON
       
       console.log("Number of quakes = " + parsedJSON.metadata.count);
       
@@ -474,13 +476,14 @@ So, we just need to know how to pull the data out of this "blob" and attach it t
     });
 ```
 
-The first `console.log("Number of quakes = " + parsedJSON.metadata.count);` refers to a single variable, which it prints to the Developer Tools console.  The next statement `console.log(parsedJSON.features);` prints the whole array of features to the console.  We'll explore this in the next challenge!
+The first `console.log("Number of quakes = " + parsedJSON.metadata.count);` refers to a single variable, which it prints to the Developer Tools console.  The next statement `console.log(parsedJSON.features);` prints the whole array of features to the console.
+
 ### 4th Challenge, 20 minutes: Extract that data from the GeoJSON!!!
 #### Copy and paste [the html below](https://github.com/Ryshackleton/d3_maptime/blob/master/html/myEarthquakeMap.html) to a file called `myEarthquakeMap.html`.
 This script does the following, some of which should look familiar!
 1. The first few lines create an SVG in the body with some size and style attributes
 1. The d3.json(...) send the JSON request from the URL to get the GeoJSON data
-1. Create some circles on the SVG with their cx, cy = [0,0]
+1. The lines inside the `function(parsedJSON) { }` block creates some circles on the SVG with their cx, cy = [0,0]
 
 #### Your task will be to modify the two .attr("cx", ...) and .attr("cy", ...) to assign the longitude (x) and latitude (y) to the "cx" and "cy" variables. 
 I know, I know, lat/long's can be negative, and lat/long's aren't the same thing as SVG pixels, but we'll get to that very soon.
@@ -491,6 +494,7 @@ Then try to print data you want to the console using console.log().  You should 
 ```HTML
 <!doctype html>
 <html lang="en">
+<!-- Save me as: myEarthquakeMap.html -->
 
 <head>
   <meta charset="utf-8">
@@ -525,15 +529,11 @@ Then try to print data you want to the console using console.log().  You should 
     // send a JSON request to the earthquake feed,
     d3.json(todaysQuakesFeed, function(parsedJSON){ //-- result of the parsing is in parsedJSON
       
-      console.log("Number of quakes = " + parsedJSON.metadata.count);
+      // examples of referencing data within the parsedJSON
+      console.log(parsedJSON.features); // log the whole features array to the console
       
-      console.log(parsedJSON.features); // log the features array to the console
-      
-      console.log("First Feature.properties")
-      console.log(parsedJSON.features[0].properties); // log the properties for the first feature to the console
-      
-      console.log("Second Feature.geometry")
-      console.log(parsedJSON.features[1].geometry); // log the geometry for the second feature to the console
+      console.log("First Feature.geometry")
+      console.log(parsedJSON.features[0].geometry); // log the geometry for the first feature to the console
       
       svg.selectAll("circle")
           .data(parsedJSON.features) //-- notice that we refer to .features: an array just like before!
@@ -563,7 +563,7 @@ Then try to print data you want to the console using console.log().  You should 
 </body>
 </html>
 ```
-You should just see some earthquakes in your SVG. Their locations will be different depending on today's earthquakes!
+When you're done, you should just see some earthquakes in your SVG. Their locations will be different depending on today's earthquakes!
 
 <img src="https://ryshackleton.github.io/d3_maptime/img/challenge4_solution.svg">
 
@@ -580,19 +580,19 @@ Generally we **set up the projection ahead of time, then USE it to project all o
         .scale(height / Math.PI)
         .translate([width / 2, height / 2]);
 ```
-The .scale() and .translate() are basically like panning and zooming around in x,y space.  Generally you can look at an [existing example](https://bl.ocks.org/mbostock/3711652) to figure out what the scale should be, and then scale and translate from there.
+The .scale() and .translate() are basically like zooming and panning around in x,y space.  Generally you can look at an [existing example](https://bl.ocks.org/mbostock/3711652) to figure out what the scale should be, and then try your own scaling and translation from there.
 
 Notice that the [d3.projection object is also a function](https://github.com/d3/d3-geo/blob/master/README.md#_projection), meaning, you can pass it an arary of [longitude,latitude] like this: `projection([longitude,latitude])` and it will return an [x,y] array.
 
-**The gist is: raw longitude and latitude data go in, x,y data come out**
+**So: Longitude, latitude go in; x , y come out**
 
-So, for our parsed JSON example, we can project like this:
+For our parsed JSON example, we can project like this:
 
 ```JavaScript
       var x = projection( d.geometry.coordinates )[0];
       var y = projection( d.geometry.coordinates )[1];
 ```
-Wha???? Let's break it down:
+What the hell is that???? Let's break it down:
 1. We call projection( [longitude, latitude] ) on our earthquake coordinate array (as it turns out, D3 will just ignore the 3rd "depth" coordinate)
 2. projection() returns an [x,y] array, and we refer to the first element of the array with [0] to get x, and the second element [1] to get y
 
@@ -638,7 +638,7 @@ We could rewrite it like this to be more explicit
           .ease(d3.easeElastic)
           .attr("r", function(d){ return d.properties.mag > 0 ? 1.5 * d.properties.mag : 0; } )
 ```
-This basically requests a [transition to occur for each](http://bl.ocks.org/Kcnarf/9e4813ba03ef34beac6e) earthquake, in sequence. The `.delay(function(d,i){ return i*100; })` line really does most of the work here, telling D3 to wait a few milliseconds between each transition (i is the index in the parsedJSON.features) array.  The [.duration() controls how fast the transition happens](https://bl.ocks.org/d3noob/c3cbb8af554eb848d09ab97306bb5583), and the [.ease() controls the rate of change of the transition](http://bl.ocks.org/hunzy/9929724), in this case making the earthquake pop a little beyond the radius, then getting smaller.
+This code requests a [transition to occur for each](http://bl.ocks.org/Kcnarf/9e4813ba03ef34beac6e) earthquake, in sequence. The `.delay(function(d,i){ return i*100; })` line really does most of the work here, telling D3 to wait a few milliseconds between each transition (i is the index in the parsedJSON.features) array.  The [.duration() controls how fast the transition happens](https://bl.ocks.org/d3noob/c3cbb8af554eb848d09ab97306bb5583).  The [.ease() controls the rate of change of the transition](http://bl.ocks.org/hunzy/9929724), which in this case makes the earthquake pop a little beyond the radius, then get smaller.
 
 ### [5th Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/03_myEarthquakeMap_challenge5_solution.html)
 
