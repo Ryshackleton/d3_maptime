@@ -237,7 +237,7 @@ Your result should look something like this:
 ### [1st Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/01_hello-d3_challenge1_solution.html)
 
 ### 2nd Challenge, 20 minutes: Binding Data to Circle Elements
-Conceptually, what we want to do next is to take a **data array** like this `[5, 15, 30]`, and bind the data array to **the selection of circles**  *(the circle selection is shown on the left in the image below)*
+Conceptually, what we want to do next is to take our **selection** of circles *(left in the image below)*, and bind the circles to a **data array** like this `[5, 15, 30]` *(right in the image below)*
 
 <img src="https://ryshackleton.github.io/d3_maptime/img/d3.data.circles.png">
 
