@@ -105,7 +105,7 @@ Like nouns, adjectives, and verbs, the web (in its simplest form) is made of HTM
 <img src="http://maptimesea.github.io/img/tut001-nounverbadj.svg">
 </div>
 
-### Copy this HTML code into a file called hello-d3.html in your text editor to get started
+#### Copy this HTML code into a file called hello-d3.html in your text editor to get started
 
 ```HTML
 <!doctype html>
@@ -154,7 +154,8 @@ I have also included the SVG we discussed above inside the `<body>` tag, which w
     <circle cx="120" cy="60" r="10"></circle>
   </svg>
 ```
-From here on out, most of what we'll be doing is writing JavaScript to select and add things to the web page.  In `hello-d3.html`, find the `<body>` tag, then find the `<script>` tag inside the `<body>`.  All of our code will go there.
+From here on out, most of what we'll be doing is writing JavaScript to select and add things to the web page.
+#### In `hello-d3.html`, find the `<body>` tag, then find the `<script>` tag inside the `<body>`.  All of our code will go there.
 
 ```JavaScript 
     <script>
@@ -164,7 +165,8 @@ From here on out, most of what we'll be doing is writing JavaScript to select an
 ## STEP 2: Learn to select SVG objects with D3
 ### Your first D3 Selection
 
-D3 has really easy shorthand for selecting objects in webpages.  First, we'll ask D3 to select the `<body>` tag, and then select the `<svg>` inside the body.  Again, writing your code between the `<script>` tags, add the following code.
+D3 has really easy shorthand for selecting objects in webpages.  First, we'll ask D3 to select the `<body>` tag, and then select the `<svg>` inside the body.
+#### Again, writing your code between the `<script>` tags, add the following code.
 
 ```JavaScript
   var body = d3.select("body"); // select the html element with <body>
@@ -173,7 +175,7 @@ D3 has really easy shorthand for selecting objects in webpages.  First, we'll as
 ```
 You just did your first D3 Selection! Not very exciting, but this will provide us a little intro to how to debug your scripts in a web browser using the browser's Developer Tools.
 
-##### Developer Tools for debugging
+#### Find the  Developer Tools for debugging your code by doing the following:
 To see the contents of the variables ("body" and "svg")
 1. go back to your web browser showing hello-d3.html
 1. right click anywhere in the page
@@ -194,6 +196,7 @@ console.log(svg);
 ### Select more than one thing at once...
 
 How about selecting more than one thing, like, say, the circles in the SVG?  Easy.  Use **.selectAll()**
+#### Add this line of code to your hello-d3.html and then try to get your circles variable printed to the console.  How do we do that again? (see #5 above)
 
 ```JavaScript
   var circles = svg.selectAll("circles");
@@ -201,7 +204,9 @@ How about selecting more than one thing, like, say, the circles in the SVG?  Eas
 Here I'm looking *within the svg that I selected above* for all of the circle objects.
 
 ### 1st Challenge, 10 minutes: Change the Color and Size of the SVG elements
-Head over to [this awesome tutorial](https://strongriley.github.io/d3/tutorial/circle.html), where the first section: **Selecting Elements** will show you how to give your circles some style.  Find the code to select circles, and change colors and sizes of circles, then add the relevant code to your script and see if you can make your circles have the following properties
+Head over to [this awesome tutorial](https://strongriley.github.io/d3/tutorial/circle.html), where the first section: **Selecting Elements** will show you how to give your circles some style.  
+
+#### Find the code to select circles, and change colors and sizes of circles, then add the relevant code to your script and see if you can make your circles have the following properties
 
  1. radius: 20
  1. fill: darkred
@@ -231,7 +236,9 @@ Check out [the tutorial on Transitions](https://bost.ocks.org/mike/transition/),
 ```
 
 ## STEP 3: Learn to Create Elements from Scratch!
-Start with this template, or copy the code to below to a file called myScatterPlot.html. Notice that there's no SVG in the `<body>`: just the script, which uses D3 to create the SVG from scratch!  Your job will be to finish the rest of the script to add some circles and make a scatterplot. 
+#### Start with this template, or copy the code to below to a file called myScatterPlot.html.
+Notice that there's no SVG in the `<body>`: just the script, which uses D3 to create the SVG from scratch!
+#### Your job will be to finish the rest of the script to add some circles and make a scatterplot. 
 
 ```HTML
 <!doctype html>
@@ -287,14 +294,17 @@ Have a look at the JavaScript code above: We start by creating some variables to
 	var svg = d3.select("body")
 	            .append("svg");
 ```
-When we append() to the `<body>` element, D3 just adds a new `<svg>` just below the script that we're actually writing.  Yeah, you heard that right: we're writing code to edit the document that we're writing....#MINDBLOWN. To prove it to yourself, open the file in your browser, right click on the svg, and select *Inspect Element*.
+When we append() to the `<body>` element, D3 just adds a new `<svg>` just below the script that we're actually writing.  Yeah, you heard that right: we're writing code to edit the document that we're writing....#MINDBLOWN. If you don't believe me, open the file in your browser, right click on the svg, and select *Inspect Element*.
 
 The next lines just adds attributes and styles to the SVG in the same way we were doing to the circles in the [tutorial](https://strongriley.github.io/d3/tutorial/circle.html).  We'll use SVG styling more below to style individual elements. [Here's the full documentation](https://www.w3.org/TR/SVG/styling.html) for styling SVG elements for reference.
 
 You may notice that I have started [chainin methods](http://alignedleft.com/tutorials/d3/chaining-methods) together.  I can do that because the .attr() and .style() methods assign an attribute or style first, then they *return svg a reference to the svg that they just modified*.  You'll see **method chaining** *a lot* in D3.
 
 ### 3rd Challenge, 10 minutes: Create Circles from scratch using data!
-[Same tutorial](https://strongriley.github.io/d3/tutorial/circle.html), but now move onto: **Creating Elements**.  When you've finished that section, you should have all the tools to plot the data that's defined at the end of your script.  Create some circles with the following attributes, which will define your first scatterplot. (Hint, find the second to last (or last) code block in the **Creating Elements** section, and then figure out how to modify the `function(d) { return d; }` section of the code to return the data values in the proper format)
+[Same tutorial](https://strongriley.github.io/d3/tutorial/circle.html), but now move onto: **Creating Elements**.  When you've finished that section, you should be able to figure out how to plot the data that's defined at the end of your script.
+
+#### Starting with the myScatterPlot.html file you created above, **add** some circles to create your first scatterplot.
+(Hint, find the second to last (or last) code block in the **Creating Elements** section of the tutorial, and then figure out how to modify the `function(d) { return d; }` section of the code to return the data values in the proper format)
 1. cx: myData
 1. cy: myData / 2
 1. radius ("r"): square root of myData (use JavaScript's Math.sqrt() function)
@@ -308,15 +318,15 @@ You can add the following styles if you have time, or add your own styles.
 When you're done, pat yourself on the back for having made a scatterplot from scratch!
 
 ## STEP 4: Read GeoJSON data and scatterplot that data (no geo-projection)
-OK, enough of this plotting boring arrays of meaningless data.  Let's plot something REAL!  Well, earthquakes are real, and pretty serious, so how about that?
+OK, enough of this plotting boring arrays of meaningless data.  Let's plot something EARTH SHATTERING!!! OK, how about earthquakes? (Oh!! See what I did there??).
 
-Let's start with the earthquake data.  The data format will be [GeoJSON](http://geojson.org/), which will be a bit more complicated to reference, but is still just an array of data features. Previously, our data was just: `var myData = [ 20, 60, 100 ];`, whereas now we'll have something like what you see below, where each block `{ }` will be parsed into a *JavaScript object*, which could hold arrays of sub-data like strings, arrays of numbers, etc, etc.
+The [USGS publishes GeoJSON feeds of recent earthquakes on their website](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php), so we can get [longitude, latitude, depth, magnitude] of just about any earthquake ever recorded by human intstruments.  The data format will be [GeoJSON](http://geojson.org/), which will be a bit more complicated to reference, but is still just an array of data features. 
+
+Previously, our data was just: `var myData = [ 20, 60, 100 ];`, whereas now we'll have something like what you see below, where each block `{ }` will be parsed into a *JavaScript object*, which could hold arrays of sub-data. [Have a look here for the basic formats and JSON data structures if you need help](https://www.w3schools.com/js/js_json_datatypes.asp).
 ```JavaScript
 	var myData = [ {/* object with data */ }, {/* object with data */ }, {/* object with data */ } ];
 ```
-If you're not that familiar with JSON data, [have a look here for the basic formats and data types](https://www.w3schools.com/js/js_json_datatypes.asp).
-
-Our data feed will come from the [USGS GeoJSON feed of earthquakes](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php), which contains a lot more data than we'll need.  I've pasted an abridged version of the data format below with two "features" representing earthquakes.  I have deleted a lot of attributes so you can see where the coordinate data "lives" in the GeoJSON data structure.  To see an example of the feed of all global earthquakes in the past day, with all of the associated data [click here](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson).
+I've pasted an abridged version of the USGS data format below with three earthquake "features".  I have deleted a lot of attributes so you can see where the coordinate data "lives" in the GeoJSON data structure.  To see an example of the feed of all global earthquakes in the past day, with all of the associated data [click here](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson).
 
 ```JSON 
 {
@@ -402,7 +412,15 @@ So, we just need to know how to pull the data out of this "blob" and attach it t
 
 The first `console.log("Number of quakes = " + parsedJSON.metadata.count);` refers to a single variable, which it prints to the Developer Tools console.  The next statement `console.log(parsedJSON.features);` prints the whole array of features to the console.  We'll explore this in the next challenge!
 ### 4th Challenge, 10 minutes: Extract that data from the GeoJSON!!!
-Copy and paste to the following html to a file called "myEarthquakeMap.html".
+#### Copy and paste to the following html to a file called "myEarthquakeMap.html".
+Some code should look familiar.  The first few lines create an SVG in the body, and sizes it as we did previously.  There's also code in there to:
+1. Send the JSON request to get the GeoJSON data
+1. Create some circles on the SVG
+
+#### Your task will be to modify the two .attr("cx", ...) and .attr("cy", ...) to assign the longitude (x) and latitude (y) to the "cx" and "cy" variables
+I know, lat/long's can be negative, and lat/long's aren't the same as SVG pixels, but we'll get to that very soon.  I've included lots of information in the comments to guide you.
+##### Hint: look at the structure of the data that gets printed to the console. Then try to console.log() the data you want from the function (before the return statement)
+
 ```HTML
 <!doctype html>
 <html lang="en">
@@ -438,7 +456,7 @@ Copy and paste to the following html to a file called "myEarthquakeMap.html".
         "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson";
     
     // send a JSON request to the earthquake feed,
-    d3.json(todaysQuakesFeed, function(parsedJSON){ // <-- result of the parsing is in parsedJSON
+    d3.json(todaysQuakesFeed, function(parsedJSON){ //-- result of the parsing is in parsedJSON
       
       console.log("Number of quakes = " + parsedJSON.metadata.count);
       
@@ -449,16 +467,16 @@ Copy and paste to the following html to a file called "myEarthquakeMap.html".
       console.log(parsedJSON.features[1].geometry); // log the geometry for the second feature to the console
       
       svg.selectAll("circle")
-          .data(parsedJSON.features) // <-- notice that we refer to .features: an array just like before!
+          .data(parsedJSON.features) //-- notice that we refer to .features: an array just like before!
         .enter().append("circle")
-          .attr("cx", function(d) { // <-- this 'd' refers to A FEATURE in the array
+          .attr("cx", function(d) { //-- this 'd' refers to A FEATURE in the array
                   // modify this method to return the
-                  // earthquake longitude from the JSON feature (return d.something....)
+                  // earthquake longitude from the JSON feature (return d.something.something[number]....)
                   return 0;
                 }) 
-          .attr("cy", function(d) { // <-- this 'd' refers to A FEATURE in the array
+          .attr("cy", function(d) { //-- this 'd' refers to A FEATURE in the array
                   // modify this method to return the
-                  // earthquake latitude from the JSON feature (return d.something....)
+                  // earthquake latitude from the JSON feature (return d.something.something[number]....)
                   return 0;
                 })
           .attr("r", 10 ) // try adding a function here that returns the magnitude
