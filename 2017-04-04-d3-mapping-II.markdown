@@ -103,6 +103,7 @@ By the time we finish this tutorial, we will have built our first (or nth) D3 we
 * In this tutorial, **SOLUTIONS ARE PROVIDED AT THE END OF EVERY STEP** under headings like this:
 	### [nth Challenge Solution Here]()
 
+If you want all of the starter and solution files ahead of time, feel free to [clone this git repo](https://github.com/Ryshackleton/d3_maptime.git).
 
 ## STEP 1: Create a simple web page to hold our SVG graphic
 
@@ -228,7 +229,7 @@ Head over to [this awesome tutorial](https://strongriley.github.io/d3/tutorial/c
  * radius: 20
  * fill: "darkred"
 
-**NEED A HINT? Check out the lines: `circle.style("fill","steelblue");` and `circle.attr("r",30);`.**  All you should really need to do is paste those two lines into your script, then change are the `"steelblue"` and `30` to `"darkred"` and `20`.  Be sure to make good use of the Developer Tools to find errors (in the Console) if you get a blank page. (Right click in the page, and "View Source")
+**NEED A HINT? Check out the lines: `circle.style("fill","steelblue");` and `circle.attr("r",30);`.**  Paste those two lines into your script, then change the `"steelblue"` and `30` to `"darkred"` and `20`.  If your page is blank, check the Console for errors (Right click in the page, and "View Source", then find the "Console" tab).
 
 Your result should look something like this:
 
