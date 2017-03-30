@@ -72,11 +72,14 @@ With any luck, today we will produce **[this map](https://bl.ocks.org/Ryshacklet
 <img src="https://ryshackleton.github.io/d3_maptime/img/threeLittleCircles.svg">
  
 2. Learn to select and manipulate existing SVG objects with D3
-Change attributes and styles to control sizes and colors:
-<img src="https://ryshackleton.github.io/d3_maptime/img/challenge1_solution.svg">
 
-Bind data to change positions:
-<img src="https://ryshackleton.github.io/d3_maptime/img/challenge2_solution.svg">
+	Change attributes and styles to control sizes and colors:
+
+	<img src="https://ryshackleton.github.io/d3_maptime/img/challenge1_solution.svg">
+
+	Bind data to change positions:
+
+	<img src="https://ryshackleton.github.io/d3_maptime/img/challenge2_solution.svg">
  
 3. Learn to create SVG elements from scratch to build a scatterplot
 <img src="https://ryshackleton.github.io/d3_maptime/img/challenge3_solution_with_style.svg">
