@@ -80,22 +80,22 @@ It's also worth noting that D3 has the ability to write and edit [many types of 
 With any luck, today we will produce [this map](https://bl.ocks.org/Ryshackleton/52c97ff17236c2accccdadc47b122228), which displays the [United States Geological Survey (USGS) GeoJSON feed of recent earthquakes around the world](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php).  We'll do this in steps:
 
 1. Start with a simple webpage containing the SVG we saw above
- <img src="https://ryshackleton.github.io/d3_maptime/img/threeLittleCircles.svg">
+<img src="https://ryshackleton.github.io/d3_maptime/img/threeLittleCircles.svg">
  
 2. Learn to select existing SVG objects with D3
- <img src="https://ryshackleton.github.io/d3_maptime/img/challenge1_solution.svg">
+<img src="https://ryshackleton.github.io/d3_maptime/img/challenge1_solution.svg">
  
 3. Learn to create new SVG objects with D3 to create a scatterplot
-  <img src="https://ryshackleton.github.io/d3_maptime/img/challenge3_solution_with_style.svg">
+<img src="https://ryshackleton.github.io/d3_maptime/img/challenge3_solution_with_style.svg">
   
-4. Read GeoJSON data and scatterplot the data (no geo-projection) 
-   <img src="https://ryshackleton.github.io/d3_maptime/img/challenge4_solution.svg">
+4. Read GeoJSON data and scatterplot the data (no geo-projection)
+<img src="https://ryshackleton.github.io/d3_maptime/img/challenge4_solution.svg">
    
 5. Read GeoJSON data and geographically project the data
-    <img src="https://ryshackleton.github.io/d3_maptime/img/challenge5_solution.svg">
+<img src="https://ryshackleton.github.io/d3_maptime/img/challenge5_solution.svg">
     
 6. Add country boundaries to the map
-     <img src="https://ryshackleton.github.io/d3_maptime/img/challenge6_solution.svg">
+<img src="https://ryshackleton.github.io/d3_maptime/img/challenge6_solution.svg">
 
 By the time we finish this tutorial, we will have built our first (or nth) D3 web map! This will not be the prettiest map you've ever made, but hopefully once you've made it, you will have a launching pad to make an even better D3 map in the future.
 
