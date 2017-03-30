@@ -335,10 +335,9 @@ You can add the following styles if you have time, or add your own styles.
 * stroke-width: 1
 * opacity: 0.5
 
-When you're done, pat yourself on the back for having made a scatterplot from scratch!  If you don't have time to add the styles, you should see this:
-<img src="https://ryshackleton.github.io/d3_maptime/img/challenge3_solution_no_style.svg">
+When you're done, pat yourself on the back for having made a scatterplot from scratch!
 
-And if you do add the styles, you should see this:
+You should see something like this: *(If you didn't add styles, your circles will just be black, which is totally fine)*
 <img src="https://ryshackleton.github.io/d3_maptime/img/challenge3_solution_with_style.svg">
 
 ### [3rd Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/02_myScatterPlot_challenge1_solution.html)
@@ -527,6 +526,9 @@ Then try to print data you want to the console using console.log().  You should 
 </body>
 </html>
 ```
+You should just see some earthquakes in your SVG. Their locations will be different depending on today's earthquakes!
+<img src="https://ryshackleton.github.io/d3_maptime/img/challenge3_solution_with_style.svg">
+
 ### [4th Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/03_myEarthquakeMap_challenge4_solution.html)
 
 ## STEP 5: Define your projection and project the data!
