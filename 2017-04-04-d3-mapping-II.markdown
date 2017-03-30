@@ -236,15 +236,14 @@ Your result should look something like this:
 
 ### [1st Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/01_hello-d3_challenge1_solution.html)
 
-### Binding Data to Circle Elements:
+### Next Step: Binding Data to Circle Elements:
 Conceptually, what we want to do next is to take our **selection** of circles *(left in the image below)*, and BIND the circles to a **data array** like this `[5, 15, 30]` *(right in the image below)*
 
 <img src="https://ryshackleton.github.io/d3_maptime/img/d3.data.circles.png">
 
-After we've *bound* the data, we can *retrieve* the data to set attributes on the circles, as we did before.  The next 
+After we've *bound* the data, we can *retrieve* the data to set attributes on the circles, as we did before.  The **Binding Data** section of the [same tutorial](https://strongriley.github.io/d3/tutorial/circle.html), will show you how to do that!
 
-### 2nd Challenge, 20 minutes:Stick with the [same tutorial](https://strongriley.github.io/d3/tutorial/circle.html), but now move onto the **Binding Data** Section of the tutorial.
-Find the code that will help you bind the following data to the `cy` attribute on each of your circles.
+### 2nd Challenge, 20 minutes: Find the code in the tutorial that will help you bind the following data to the `cy` attribute on each of your circles.
 
 ```JavaScript
 	var myData = [ 20, 60, 100 ];
@@ -286,7 +285,7 @@ Check out [this simple example of a transition](https://bl.ocks.org/d3noob/c3cbb
 ### [Advanced Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/01_hello-d3_challenge_advanced_solution.html)
 ### [See the Solution Live Here](https://bl.ocks.org/Ryshackleton/3edae1f5a5ed46c946c40947ee893f5a)
 
-## STEP 3: Learn to Create Elements from Scratch!
+## STEP 3: We Don't Need To Start with `<svg>`'s in our `<body>`!!  We Can Create Elements from Scratch!
 #### Copy the code to below to your text editor, and SAVE to a file called `myScatterPlot.html`.
 Notice that there's no SVG in the `<body>`: just the script, which uses D3 to create the SVG from scratch!
 ```HTML
