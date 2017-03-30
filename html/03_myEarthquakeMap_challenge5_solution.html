@@ -38,16 +38,6 @@
     // send a JSON request to the earthquake feed,
     d3.json(todaysQuakesFeed, function(parsedJSON){ //-- result of the parsing is in parsedJSON
       
-      console.log("Number of quakes = " + parsedJSON.metadata.count);
-      
-      console.log(parsedJSON.features); // log the features array to the console
-      
-      console.log("First Feature.properties")
-      console.log(parsedJSON.features[0].properties); // log the properties for the first feature to the console
-      
-      console.log("Second Feature.geometry")
-      console.log(parsedJSON.features[1].geometry); // log the geometry for the second feature to the console
-      
       svg.selectAll("circle")
           .data(parsedJSON.features) //-- notice that we refer to .features: an array just like before!
         .enter().append("circle")
