@@ -245,6 +245,15 @@ After we've *bound* the data, we have our data **linked to the selection of circ
 ```JavaScript
 	var myData = [ 20, 60, 100 ];
 ```
+**NEED A HINT? You can start by just copying the first few lines of code in the Binding Data section of the tutorial into your script**
+```JavaScript
+	circle.data([32, 57, 112]);
+	circle.attr("cx", function(d) {
+  				return d;
+			   });
+```
+Then replace the `[32, 57, 112]` with `myData`, and change the `"cx"` to `"cy"`.
+
 Your result should look something like this:
 
 <img src="https://ryshackleton.github.io/d3_maptime/img/challenge2_solution.svg">
