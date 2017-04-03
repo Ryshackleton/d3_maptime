@@ -192,20 +192,27 @@ From here on out, most of what we'll be doing is writing JavaScript to select an
 ### Your first D3 Selection
 D3 has really easy shorthand for selecting objects in webpages.  First, we'll ask D3 to select the `<body>` tag, and then select the `<svg>` inside the body.
 
-#### Again, writing your code between the `<script>` tags, add the following code.
+#### Writing your code between the `<script>` tags, add the following code.
 
 ```JavaScript
   var body = d3.select("body"); // select the html element with <body>
   
   var svg = body.select("svg"); // select the <svg> that lies within the <body>
 ```
-You just did your first D3 Selection! Not very exciting, but this will provide us a little intro to how to debug your scripts in a web browser using the browser's Developer Tools.
+You just did your first D3 Selection!  Notice that we only selected ONE object.  To select multiple objects, try:
+
+#### Add this line of code to your hello-d3.html to select ALL of the circle objects in the SVG
+
+```JavaScript
+  var circle = svg.selectAll("circle");
+```
+Not very exciting, but this will provide us with a little intro to how to debug your scripts in a web browser using the browser's Developer Tools.
 
 #### Find the  Developer Tools for debugging your code by doing the following:
 To see the contents of the variables "body" and "svg"
 1. go back to your web browser showing hello-d3.html
-1. right click anywhere in the page
-1. select "View Page Source" or "Inspect Element", which shows you the source code for the page
+1. right click on one of the circles
+1. select "Inspect" or "Inspect Element", which shows you the source code for that element in the page
 1. find the "Console" section or tab
 1. type "svg" into the console to access your stored "svg" variable, which should reveal something like this:
 
@@ -220,12 +227,6 @@ console.log(svg);
 ```
 The console will also show you errors in your code, but I'm sure you'll never have any of those...
 
-#### Add this line of code to your hello-d3.html to select all of the circle objects in the SVG
-
-```JavaScript
-  var circle = svg.selectAll("circle");
-```
-#### Now try to get your circle variable printed to the console.  How do we do that again? (see #5 above)
 
 ### 1st Challenge, 20 minutes: Change the Color and Size of the SVG elements
 Head over to [this awesome tutorial](https://strongriley.github.io/d3/tutorial/circle.html), and read the first section entitled: **Selecting Elements**.
@@ -250,7 +251,7 @@ Conceptually, what we want to do next is to take our **selection** of circles *(
 
 After we've *bound* the data, we can *retrieve* the data to set attributes on the circles, as we did before.  The **Binding Data** section of the [same tutorial](https://strongriley.github.io/d3/tutorial/circle.html), will show you how to do that!
 
-### 2nd Challenge, 20 minutes: Find the code in the *Binding Data* section of [the tutorial](https://strongriley.github.io/d3/tutorial/circle.html) that will help you bind the data array below to the `cy` attribute on each of your circles.
+### 2nd Challenge, 15 minutes: Find the code in the *Binding Data* section of [the tutorial](https://strongriley.github.io/d3/tutorial/circle.html) that will help you bind the data array below to the `cy` attribute on each of your circles.
 
 ```JavaScript
 	var myData = [ 20, 60, 100 ];
@@ -270,7 +271,7 @@ Your result should look something like this:
 
 **If you get wacky results, be sure you changed the `cy` attribute and not the `cx` attribute as they do in the tutorial!**
 
-Side note: the JavaScript to accomplish the same task using the [HTML DOM API](https://www.w3.org/DOM/DOMTR) would look like this, which is much more tedious!
+**Side note:** the JavaScript to accomplish the same task using the [HTML DOM API](https://www.w3.org/DOM/DOMTR) would look like this, which is much more tedious!
 
 ```JavaScript
     var circles = document.getElementsByTagName("circle");
@@ -283,7 +284,7 @@ Side note: the JavaScript to accomplish the same task using the [HTML DOM API](h
 
 ### [2nd Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/01_hello-d3_challenge2_solution.html)
 
-**Further Reading on Selections and Binding**: [How Selections Work](https://bost.ocks.org/mike/selection/), [Thinking With Joins](https://bost.ocks.org/mike/join/), and [The Original Three Little Circles Tutorial](https://bost.ocks.org/mike/circles/)
+**Further Reading on Selections and Data Binding**: [How Selections Work](https://bost.ocks.org/mike/selection/), [Thinking With Joins](https://bost.ocks.org/mike/join/), and [The Original Three Little Circles Tutorial](https://bost.ocks.org/mike/circles/)
 
 ### Advanced Challenge, if you have extra time: Add Transition Effects
 Check out [this simple example of a transition](https://bl.ocks.org/d3noob/c3cbb8af554eb848d09ab97306bb5583), or [this thorough explanation of transitions](http://chimera.labs.oreilly.com/books/1230000000345/ch09.html#_transitions) and see if you can transition from one state to another.  You probably want to have your code triggered by a button so you can see the transition happen. To add a button, add the following snippet to your script (not the html), then add all of the code we've written (plus your transitioning code) inside the `function myFunction()`.
