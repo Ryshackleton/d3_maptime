@@ -495,7 +495,7 @@ So, we just need to know how to pull the data out of this "blob" and attach it t
 
 The first `console.log("Number of quakes = " + parsedJSON.metadata.count);` refers to a single variable, which it prints to the Developer Tools console.  The next statement `console.log(parsedJSON.features);` prints the whole array of features to the console. In the 3rd and 4th console.log() statements print out properties on an individual feature by index (0..n-1).
 
-### 4th Challenge, 20 minutes: Extract that data from the GeoJSON!!!
+### 4th Challenge, 15 minutes: Extract that data from the GeoJSON!!!
 #### Copy and paste [the html below](https://github.com/Ryshackleton/d3_maptime/blob/master/html/myEarthquakeMap.html) to a file called `myEarthquakeMap.html`.
 
 This script does the following, some of which should look familiar!
@@ -622,7 +622,7 @@ We could rewrite it like this to be more explicit
 	var y = x_y[1]; // get y from the array
 ```
 
-### 5th Challenge, 20 minutes: Add this code to our [un-projected scatterplot example](https://github.com/Ryshackleton/d3_maptime/blob/master/html/03_myEarthquakeMap_challenge5_start.html)! Define the projection just below where you defined the width and height:
+### 5th Challenge, 15 minutes: Add this code to our [un-projected scatterplot example](https://github.com/Ryshackleton/d3_maptime/blob/master/html/03_myEarthquakeMap_challenge5_start.html)! Define the projection just below where you defined the width and height:
 ```JavaScript
     var width = 700,
         height = 500;
@@ -665,7 +665,7 @@ This code requests a [transition to occur for each](http://bl.ocks.org/Kcnarf/9e
 ## STEP 6: Add some country boundaries...FINALLY, something that looks like a MAP!!!
 When you complete this step, you will have a map to "back up" your earthquake data.  In the interests of time, I'll just give you some pre-written code and then explain how it works.
 
-### 6th Challenge, 20 minutes (hopefully less!): Copy and Paste the following block of code JUST ABOVE THE closing `</script>` tag near the bottom of your html file
+### 6th Challenge, 15 minutes (hopefully less!): Copy and Paste the following block of code JUST ABOVE THE closing `</script>` tag near the bottom of your html file
 
 Refresh your map. Then sit back, bask in the glory, and then we'll talk about how it all works!
 ```JS
