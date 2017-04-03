@@ -244,7 +244,7 @@ Your result should look something like this:
 
 ### [1st Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/01_hello-d3_challenge1_solution.html)
 
-**Side note:** the JavaScript to accomplish the same task using the [HTML DOM API](https://www.w3.org/DOM/DOMTR) would look like this, which is much more tedious!
+**Side note:** the JavaScript to accomplish the same task *without D3* and using the [HTML Document Object Model API](https://www.w3.org/DOM/DOMTR) would look like the code below. Much more tedious!
 
 ```JavaScript
     var circles = document.getElementsByTagName("circle");
