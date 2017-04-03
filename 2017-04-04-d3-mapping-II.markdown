@@ -67,6 +67,8 @@ It's also worth noting that D3 has the ability to select, write, and edit any el
 To successfully follow this tutorial you need a text editor (such as Notepad++, Brackets, or Sublime Text). Go ahead and use your personal favorite, or if you don't have one installed, download [Brackets](http://brackets.io), it's free.
 
 Also, to complete this tutorial without running a local web server (not what we're here to learn), you'll need to open your web map in Safari, Firefox, or Chrome. Download [Chrome](https://www.google.com/chrome/browser/desktop/index.html).
+
+### What map are we making?
 With any luck, today we will produce **[this map](https://bl.ocks.org/Ryshackleton/52c97ff17236c2accccdadc47b122228/71e8c79a711b532565b97a16c83dc222246568d2)**, which displays [a GeoJSON feed of daily earthquakes around the world](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php).  We'll do this in steps:
 
 1. Start with a simple webpage containing the SVG we saw above
