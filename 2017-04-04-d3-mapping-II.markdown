@@ -556,16 +556,16 @@ Then try to print data you want to the console using console.log().  You should 
       svg.selectAll("circle")
           .data(parsedJSON.features) //-- notice that we refer to .features: an array just like before!
         .enter().append("circle")
-          .attr("cx", function(d) { //-- this 'd' refers to A FEATURE in the array
-                  // if you get stuck, un-comment the next two lines, reload the page, and see the console
-                  // console.log("d is: ");
-                  // console.log(d);
-        
+          .attr("cx", function(d) { //-- this 'd' refers to A FEATURE in the array 
                   // MODIFY THE NEXT LINE TO RETURN THE EARTHQUAKE LONGITUDE
                   // from the JSON feature (return d.something.something[number];)
                   return 0;
                 }) 
           .attr("cy", function(d) { //-- this 'd' refers to A FEATURE in the array
+	          // HINT: if you get stuck, un-comment the next two lines, reload the page, and see the console
+                  // console.log("d is: ");
+                  // console.log(d);
+		  
                   // MODIFY THE NEXT LINE TO RETURN THE EARTHQUAKE LATITUDE 
                   // from the JSON feature (return d.something.something[number];)
                   return 0;
