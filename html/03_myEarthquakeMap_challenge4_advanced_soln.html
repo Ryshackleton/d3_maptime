@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  
+  <!--   using D3 version 4-->
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://d3js.org/topojson.v2.min.js"></script>
+  
+  <!--  could add CSS inside the <style> tags -->
+  <style>
+
+  </style>
+
+</head>
+
+<body>  
+  <script>
+    var width = 700,
+        height = 500;
+    
+    // set up the SVG
+    var svg = d3.select("body")
+                .append("svg"); 
+    svg.attr("width", width)
+        .attr("height", height) 
+        .style("border","3px solid black") 
+        .style("background-color","lightblue"); 
+    // create a tooltip on the body element (we'll change the position of the tooltip below)
+    var tooltip = d3.select("body")
+	.append("div")
+	.style("position", "absolute")
+	.style("z-index", "10")
+	.style("visibility", "hidden")
+	.text("a simple tooltip");
+    
+    var todaysQuakesFeed =
+        "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson";
+    
+    // send a JSON request to the earthquake feed,
+    d3.json(todaysQuakesFeed, function(parsedJSON){ //-- result of the parsing is in parsedJSON
+      
+      // examples of referencing data within the parsedJSON
+      console.log(parsedJSON.features); // log the whole features array to the console
+      
+      console.log("First Feature.geometry")
+      console.log(parsedJSON.features[0].geometry); // log the geometry for the first feature to the console 
+      
+      svg.selectAll("circle")
+          .data(parsedJSON.features) //-- notice that we refer to .features: an array just like before!
+        .enter().append("circle")
+          .attr("cx", function(d) { //-- this 'd' refers to A FEATURE in the array
+                  // if you get stuck, un-comment the next two lines, reload the page, and see the console
+                  // console.log("d is: ");
+                  // console.log(d);
+        
+                  // MODIFY THE NEXT LINE TO RETURN THE EARTHQUAKE LONGITUDE
+                  // from the JSON feature (return d.something.something[number];)
+                  return d.geometry.coordinates[0];
+                }) 
+          .attr("cy", function(d) { //-- this 'd' refers to A FEATURE in the array
+                  // MODIFY THE NEXT LINE TO RETURN THE EARTHQUAKE LATITUDE 
+                  // from the JSON feature (return d.something.something[number];)
+                  return d.geometry.coordinates[1];
+                })
+          .attr("r", function(d) { return Math.abs(d.properties.mag); } ) // magnitude can be negative, so just take the absolute value for now 
+          .style("fill", "rgb(255, 255, 0)")
+          .style("stroke", "black")
+          .style("stroke-width", 1)
+          .style("opacity", 0.5)
+          // tooltip functionality starts here
+     	  .on("mouseover", function(d){
+                                    tooltip.text("Magnitude: "+d.properties.mag);
+                                    return tooltip.style("visibility", "visible");
+                            })
+	      .on("mousemove", function(){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");})
+	      .on("mouseout", function(){
+                                    tooltip.text("a simple tooltip");
+                                    return tooltip.style("visibility", "hidden");
+                                    }); 
+    });
+    
+  </script>
+</body>
+</html>
