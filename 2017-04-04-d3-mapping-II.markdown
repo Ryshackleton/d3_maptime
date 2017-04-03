@@ -210,7 +210,7 @@ You just did your first D3 Selection!  Notice that we only selected ONE object w
 Not very exciting, but this will provide us with a little intro to how to debug your scripts in a web browser using the browser's Developer Tools.
 
 #### Find the  Developer Tools for debugging your code by doing the following:
-To see the contents of the variables "body" and "svg"
+To see the contents of the variables "body", "svg", or "circle"
 1. go back to your web browser showing hello-d3.html
 1. right click on one of the circles
 1. select "Inspect" or "Inspect Element", which shows you the source code for that element in the page
@@ -244,6 +244,17 @@ Your result should look something like this:
 
 ### [1st Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/01_hello-d3_challenge1_solution.html)
 
+**Side note:** the JavaScript to accomplish the same task using the [HTML DOM API](https://www.w3.org/DOM/DOMTR) would look like this, which is much more tedious!
+
+```JavaScript
+    var circles = document.getElementsByTagName("circle");
+    for (var i = 0; i < circles.length; i++) {
+      var circle = circles.item(i);
+      circle.style.setProperty("fill", "darkred", null);
+      circle.setAttribute("r", 20, null);
+    }
+```
+
 ### Next Step: Binding Data to Circle Elements:
 Conceptually, what we want to do next is to take our **selection** of circles *(left in the image below)*, and BIND the circles to a **data array** like this `[5, 15, 30]` *(right in the image below)*
 
@@ -270,17 +281,6 @@ Your result should look something like this:
 <img src="https://ryshackleton.github.io/d3_maptime/img/challenge2_solution.svg">
 
 **If you get wacky results, be sure you changed the `cy` attribute and not the `cx` attribute as they do in the tutorial!**
-
-**Side note:** the JavaScript to accomplish the same task using the [HTML DOM API](https://www.w3.org/DOM/DOMTR) would look like this, which is much more tedious!
-
-```JavaScript
-    var circles = document.getElementsByTagName("circle");
-    for (var i = 0; i < circles.length; i++) {
-      var circle = circles.item(i);
-      circle.style.setProperty("fill", "darkred", null);
-      circle.setAttribute("r", 20, null);
-    }
-```
 
 ### [2nd Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/01_hello-d3_challenge2_solution.html)
 
@@ -372,7 +372,7 @@ The next lines just adds attributes and styles to the SVG in the same way we wer
 
 You may notice that I have started [chaining methods](http://alignedleft.com/tutorials/d3/chaining-methods) together.  I can do that because the .attr() and .style() methods assign an attribute or style first, then they *return a reference to the svg that they just modified*.  You'll see **method chaining** *a lot* in D3.
 
-### 3rd Challenge, 20 minutes: Create Circles from scratch using data!
+### 3rd Challenge, 15 minutes: Create Circles from scratch using data!
 [Start with the same tutorial](https://strongriley.github.io/d3/tutorial/circle.html), but now move onto: **Creating Elements**.  When you've finished reading through that section, you should be able to figure out how to plot the data that's defined at the end of your script.
 
 ```JavaScript
@@ -493,10 +493,11 @@ So, we just need to know how to pull the data out of this "blob" and attach it t
     });
 ```
 
-The first `console.log("Number of quakes = " + parsedJSON.metadata.count);` refers to a single variable, which it prints to the Developer Tools console.  The next statement `console.log(parsedJSON.features);` prints the whole array of features to the console.
+The first `console.log("Number of quakes = " + parsedJSON.metadata.count);` refers to a single variable, which it prints to the Developer Tools console.  The next statement `console.log(parsedJSON.features);` prints the whole array of features to the console. In the 3rd and 4th console.log() statements print out properties on an individual feature by index (0..n-1).
 
 ### 4th Challenge, 20 minutes: Extract that data from the GeoJSON!!!
 #### Copy and paste [the html below](https://github.com/Ryshackleton/d3_maptime/blob/master/html/myEarthquakeMap.html) to a file called `myEarthquakeMap.html`.
+
 This script does the following, some of which should look familiar!
 1. The first few lines create an SVG in the body with some size and style attributes
 1. The d3.json(...) send the JSON request from the URL to get the GeoJSON data
