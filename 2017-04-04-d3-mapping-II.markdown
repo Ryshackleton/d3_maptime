@@ -585,6 +585,9 @@ When you're done, you should just see some earthquakes in your SVG. Their locati
 
 <img src="https://ryshackleton.github.io/d3_maptime/img/challenge4_solution.svg">
 
+### Advanced Challenge: Add a Tooltip!
+Check out this [simple tooltip example](http://bl.ocks.org/biovisualize/1016860) and add a tooltip showing the earthquake's magnitude (feature.properties.mag).
+
 ### [4th Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/03_myEarthquakeMap_challenge4_solution.html)
 
 ## STEP 5: Define your projection and project the data!
@@ -665,7 +668,7 @@ This code requests a [transition to occur for each](http://bl.ocks.org/Kcnarf/9e
 ## STEP 6: Add some country boundaries...FINALLY, something that looks like a MAP!!!
 When you complete this step, you will have a map to "back up" your earthquake data.  In the interests of time, I'll just give you some pre-written code and then explain how it works.
 
-### 6th Challenge, 15 minutes (hopefully less!): Copy and Paste the following block of code JUST ABOVE THE closing `</script>` tag near the bottom of your html file
+### 6th Challenge, 15 minutes or less: Copy and Paste the following block of code JUST ABOVE THE closing `</script>` tag near the bottom of your html file
 
 Refresh your map. Then sit back, bask in the glory, and then we'll talk about how it all works!
 ```JS
