@@ -10,12 +10,6 @@ So *why use D3 for maps?* Maps are fundamentally graphical objects based on data
 
 So *why not use another library like [Leaflet.js](http://leafletjs.com/)?* The short answer is that D3 will be advantageous when you really want to customize interactivity and dynamic visualization. The tradeoff is in ease-of-creation: D3 will take more time to customize the map to what you want. That said, there's really no reason you can't use both D3 and Leaflet together! Here is a great tutorial [example](https://bost.ocks.org/mike/leaflet/) using D3 to create dynamic overlays on a Leaflet map.
 
-### What do I need for this tutorial?
-
-To successfully follow this tutorial you need a text editor (such as Notepad++, Brackets, or Sublime Text). Go ahead and use your personal favorite, or if you don't have one installed, download [Brackets](http://brackets.io), it's free.
-
-Also, to complete this tutorial without running a local web server (not what we're here to learn), you'll need to open your web map in Safari, Firefox, or Chrome. Download [Chrome](https://www.google.com/chrome/browser/desktop/index.html).
-
 ### What can I create with D3?
 
 Check out these links for some examples of D3 visualizations:
@@ -68,6 +62,11 @@ It's also worth noting that D3 has the ability to select, write, and edit any el
 
 # Tutorial Time!
 
+### What do I need for this tutorial?
+
+To successfully follow this tutorial you need a text editor (such as Notepad++, Brackets, or Sublime Text). Go ahead and use your personal favorite, or if you don't have one installed, download [Brackets](http://brackets.io), it's free.
+
+Also, to complete this tutorial without running a local web server (not what we're here to learn), you'll need to open your web map in Safari, Firefox, or Chrome. Download [Chrome](https://www.google.com/chrome/browser/desktop/index.html).
 With any luck, today we will produce **[this map](https://bl.ocks.org/Ryshackleton/52c97ff17236c2accccdadc47b122228/71e8c79a711b532565b97a16c83dc222246568d2)**, which displays [a GeoJSON feed of daily earthquakes around the world](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php).  We'll do this in steps:
 
 1. Start with a simple webpage containing the SVG we saw above
