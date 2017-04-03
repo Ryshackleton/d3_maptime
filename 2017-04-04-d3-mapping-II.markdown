@@ -199,13 +199,14 @@ D3 has really easy shorthand for selecting objects in webpages.  First, we'll as
   
   var svg = body.select("svg"); // select the <svg> that lies within the <body>
 ```
-You just did your first D3 Selection!  Notice that we only selected ONE object.  To select multiple objects, try:
+You just did your first D3 Selection!  Notice that we only selected ONE object with .select().  To select multiple objects, try .selectAll() as as shown below:
 
 #### Add this line of code to your hello-d3.html to select ALL of the circle objects in the SVG
 
 ```JavaScript
   var circle = svg.selectAll("circle");
 ```
+
 Not very exciting, but this will provide us with a little intro to how to debug your scripts in a web browser using the browser's Developer Tools.
 
 #### Find the  Developer Tools for debugging your code by doing the following:
@@ -214,12 +215,12 @@ To see the contents of the variables "body" and "svg"
 1. right click on one of the circles
 1. select "Inspect" or "Inspect Element", which shows you the source code for that element in the page
 1. find the "Console" section or tab
-1. type "svg" into the console to access your stored "svg" variable, which should reveal something like this:
+1. type "circle" into the console to access your stored "circle" variable (a D3 "selection", which contains an array), which should reveal something like this:
 
 ```JavaScript
 > dt {_groups: Array[1], _parents: Array[1]}
 ```
-You can expand the dropdowns and see the contents of the svg object.  This is a handy way to get behind the scenes of your JavaScript code.  You can also access the console directly from inside your code by adding things like:
+You can **expand the dropdown arrows** and see the contents of the circle object.  This is a handy way to get behind the scenes of your JavaScript code.  You can also access the console directly from inside your code by adding things like:
 
 ```JavaScript
 console.log("Here's my svg at step 1:");
@@ -227,8 +228,7 @@ console.log(svg);
 ```
 The console will also show you errors in your code, but I'm sure you'll never have any of those...
 
-
-### 1st Challenge, 20 minutes: Change the Color and Size of the SVG elements
+### 1st Challenge, 15 minutes: Change the Color and Size of the SVG elements
 Head over to [this awesome tutorial](https://strongriley.github.io/d3/tutorial/circle.html), and read the first section entitled: **Selecting Elements**.
 
 #### In the [tutorial](https://strongriley.github.io/d3/tutorial/circle.html), find the code that changes the color and size of circles, then modify [the script we started above](https://github.com/Ryshackleton/d3_maptime/blob/master/html/01_hello-d3_challenge1_start.html) to give your circles the following properties
@@ -251,7 +251,7 @@ Conceptually, what we want to do next is to take our **selection** of circles *(
 
 After we've *bound* the data, we can *retrieve* the data to set attributes on the circles, as we did before.  The **Binding Data** section of the [same tutorial](https://strongriley.github.io/d3/tutorial/circle.html), will show you how to do that!
 
-### 2nd Challenge, 15 minutes: Find the code in the *Binding Data* section of [the tutorial](https://strongriley.github.io/d3/tutorial/circle.html) that will help you bind the data array below to the `cy` attribute on each of your circles.
+### 2nd Challenge, 10 minutes: Find the code in the *Binding Data* section of [the tutorial](https://strongriley.github.io/d3/tutorial/circle.html) that will help you bind the data array below to the `cy` attribute on each of your circles.
 
 ```JavaScript
 	var myData = [ 20, 60, 100 ];
