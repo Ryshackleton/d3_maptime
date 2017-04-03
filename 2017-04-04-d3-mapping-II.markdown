@@ -4,7 +4,7 @@ title: "Mapping with D3.js - v2.0"
 ---
 
 # Intro
-[D3](http://d3js.org/) is a powerful data visualization library written by [Mike Bostock](https://bost.ocks.org/mike/) that helps connect your data to graphical elements, and then apply data-driven transformations to those elements. The basic idea is that when the data is bound to graphics, you can produce more portable graphics and much more dynamic visualization with less effort.
+[D3](http://d3js.org/) is a powerful data visualization library that helps connect data to graphical elements and then apply data-driven transformations to those elements. The basic idea is that when the data is bound to graphics, you can produce more portable graphics and much more dynamic visualization with less effort.
 
 So *why use D3 for maps?* Maps are fundamentally graphical objects based on data, and D3 has built in support for map projections and transformations. D3 is actually the backend renderer for SVG images in the [OpenStreetMap editor iD](https://github.com/openstreetmap/iD), so that's a pretty good endorsement for D3 mapping! You might also wonder why you would choose D3 over another library like [Leaflet.js](http://leafletjs.com/). That really depends on what you want to display, but there's no reason you can use both! Here is a great tutorial [example](https://bost.ocks.org/mike/leaflet/) using D3 to create dynamic overlays on a Leaflet map.
 
@@ -108,7 +108,7 @@ By the time we finish this tutorial, we will have built our first (or nth) D3 we
 
 ## STEP 1: Create a simple web page to hold our SVG graphic
 
-Below I've included the quick-and-dirtiest version EVER of how web pages work, along with some boilerplate HTML we can use to get started.  If you need more of a refresher on how to make a simple web page, have a look a our [web map tutorial](http://maptimesea.github.io/2014/11/05/web-map-intro.html#let-s-get-started).  
+I've included the quick-and-dirty overview of how simple web pages work, along with some boilerplate HTML we can use to get started.  If you need more of a refresher on how to make a simple web page, have a look a our [web map tutorial](http://maptimesea.github.io/2014/11/05/web-map-intro.html#let-s-get-started).  
 
 Like nouns, adjectives, and verbs, the web (in its simplest form) is made of HTML, CSS, and Javascript.
 
@@ -177,12 +177,13 @@ I have also included the SVG we discussed above inside the `<body>` tag, which w
 
 #### In `hello-d3.html`, find the `<body>` tag, then find the `<script>` tag inside the `<body>`.  All of our code will go there.
 
+From here on out, most of what we'll be doing is writing JavaScript to select and add things to the web page.
+
 ```JavaScript 
     <script>
     	/* Your JavaScript Here */
     </script>
 ```
-From here on out, most of what we'll be doing is writing JavaScript to select and add things to the web page.
 
 ## STEP 2: Learn to select SVG objects with D3
 ### Your first D3 Selection
