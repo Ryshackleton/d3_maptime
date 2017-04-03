@@ -585,10 +585,12 @@ When you're done, you should just see some earthquakes in your SVG. Their locati
 
 <img src="https://ryshackleton.github.io/d3_maptime/img/challenge4_solution.svg">
 
-### Advanced Challenge: Add a Tooltip!
-Check out this [simple tooltip example](http://bl.ocks.org/biovisualize/1016860) and add a tooltip showing the earthquake's magnitude (feature.properties.mag).
-
 ### [4th Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/03_myEarthquakeMap_challenge4_solution.html)
+
+### Advanced Challenge: Add a Tooltip to show Earthquake Magnitude
+Check out this [simple tooltip example](http://bl.ocks.org/biovisualize/1016860) and add a tooltip showing the earthquake's magnitude (feature.properties.mag) when the user mouses-over an earthquake.
+
+### [4th Challenge Advanced Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/03_myEarthquakeMap_challenge4_advanced_soln.html)
 
 ## STEP 5: Define your projection and project the data!
 When you define a projection, you tell D3 how to transform your data from spherical to Cartesian coordinates. Take a look at the [projection docs](https://github.com/d3/d3/blob/master/API.md#geographies-d3-geo) to get a sense of how you can project your data with D3.
