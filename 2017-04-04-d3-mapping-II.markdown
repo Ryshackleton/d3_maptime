@@ -627,7 +627,7 @@ We could rewrite it like this to be more explicit
 	var y = x_y[1]; // get y from the array
 ```
 
-### 5th Challenge, 15 minutes: Add this code to our [un-projected scatterplot example](https://github.com/Ryshackleton/d3_maptime/blob/master/html/03_myEarthquakeMap_challenge5_start.html)! Define the projection just below where you defined the width and height:
+### 5th Challenge, 15 minutes: Add the projection code shown below to our [un-projected scatterplot example](https://github.com/Ryshackleton/d3_maptime/blob/master/html/03_myEarthquakeMap_challenge5_start.html)! Define the projection just below where you defined the width and height:
 ```JavaScript
     var width = 700,
         height = 500;
