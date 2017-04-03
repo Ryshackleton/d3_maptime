@@ -6,7 +6,9 @@ title: "Mapping with D3.js - v2.0"
 # Intro
 [D3](http://d3js.org/) is a powerful data visualization library that helps connect data to graphical elements and then apply data-driven transformations to those elements. The basic idea is that when the data is bound to graphics, you can produce more portable graphics and much more dynamic visualization with less effort.
 
-So *why use D3 for maps?* Maps are fundamentally graphical objects based on data, and D3 has built in support for map projections and transformations. D3 is actually the backend renderer for SVG images in the [OpenStreetMap editor iD](https://github.com/openstreetmap/iD), so that's a pretty good endorsement for D3 mapping! You might also wonder why you would choose D3 over another library like [Leaflet.js](http://leafletjs.com/). That really depends on what you want to display, but there's no reason you can use both! Here is a great tutorial [example](https://bost.ocks.org/mike/leaflet/) using D3 to create dynamic overlays on a Leaflet map.
+So *why use D3 for maps?* Maps are fundamentally graphical objects based on data, and D3 has built in support for map projections and transformations. D3 is actually the backend renderer for SVG images in the [OpenStreetMap editor iD](https://github.com/openstreetmap/iD), so that's a pretty good endorsement for D3 mapping!
+
+So *why not use another library like [Leaflet.js](http://leafletjs.com/)?* The short answer is that D3 will be advantageous when you really want to customize interactivity and dynamic visualization. The tradeoff is in ease-of-creation: D3 will take more time to customize the map to what you want. That said, there's really no reason you can't use both D3 and Leaflet together! Here is a great tutorial [example](https://bost.ocks.org/mike/leaflet/) using D3 to create dynamic overlays on a Leaflet map.
 
 ### What do I need for this tutorial?
 
@@ -22,7 +24,7 @@ Check out these links for some examples of D3 visualizations:
 
 [Geographic Projections: animated](https://bl.ocks.org/mbostock/3711652), and [draggable](https://www.jasondavies.com/maps/transition/)
 
-[The famous: Wealth of Nations](https://bost.ocks.org/mike/nations/)
+[The famous "Wealth of Nations" Viz](https://bost.ocks.org/mike/nations/)
 
 [Ummm, really?](https://bl.ocks.org/mbostock/1136236)
 
@@ -232,7 +234,7 @@ Head over to [this awesome tutorial](https://strongriley.github.io/d3/tutorial/c
  * radius: 20
  * fill: "darkred"
 
-**NEED A HINT? Check out the lines: `circle.style("fill","steelblue");` and `circle.attr("r",30);`.**  Paste those two lines into your script, then change the `"steelblue"` and `30` to `"darkred"` and `20`.  If your page is blank, check the Console for errors (Right click in the page, and "View Source", then find the "Console" tab).
+**NEED A HINT? Check out the lines: `circle.style("fill","steelblue");` and `circle.attr("r",30);`.**  Paste those two lines into your script, then change the `"steelblue"` and `30` to `"darkred"` and `20`.  If your web page is blank, check the Console for errors (Right click in the page, and "View Source", then find the "Console" tab).
 
 Your result should look something like this:
 
@@ -266,6 +268,18 @@ Your result should look something like this:
 <img src="https://ryshackleton.github.io/d3_maptime/img/challenge2_solution.svg">
 
 **If you get wacky results, be sure you changed the `cy` attribute and not the `cx` attribute as they do in the tutorial!**
+
+Side note: the JavaScript to accomplish the same task using the [HTML DOM API](https://www.w3.org/DOM/DOMTR) would look like this, which is much more tedious!
+
+```JavaScript
+    var circles = document.getElementsByTagName("circle");
+    for (var i = 0; i < circles.length; i++) {
+      var circle = circles.item(i);
+      circle.style.setProperty("fill", "darkred", null);
+      circle.setAttribute("r", 20, null);
+    }
+```
+
 ### [2nd Challenge Solution Here](https://github.com/Ryshackleton/d3_maptime/blob/master/html/01_hello-d3_challenge2_solution.html)
 
 **Further Reading on Selections and Binding**: [How Selections Work](https://bost.ocks.org/mike/selection/), [Thinking With Joins](https://bost.ocks.org/mike/join/), and [The Original Three Little Circles Tutorial](https://bost.ocks.org/mike/circles/)
