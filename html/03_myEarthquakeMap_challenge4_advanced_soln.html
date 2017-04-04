@@ -27,13 +27,14 @@
         .attr("height", height) 
         .style("border","3px solid black") 
         .style("background-color","lightblue"); 
+    
     // create a tooltip on the body element (we'll change the position of the tooltip below)
     var tooltip = d3.select("body")
-	.append("div")
-	.style("position", "absolute")
-	.style("z-index", "10")
-	.style("visibility", "hidden")
-	.text("a simple tooltip");
+                    .append("div")
+                    .style("position", "absolute")
+                    .style("z-index", "10")
+                    .style("visibility", "hidden")
+                    .text("a simple tooltip");
     
     var todaysQuakesFeed =
         "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson";
@@ -69,7 +70,7 @@
           .style("stroke", "black")
           .style("stroke-width", 1)
           .style("opacity", 0.5)
-          // tooltip functionality starts here
+          // tooltip functionality 
      	  .on("mouseover", function(d){
                                     tooltip.text("Magnitude: "+d.properties.mag);
                                     return tooltip.style("visibility", "visible");
