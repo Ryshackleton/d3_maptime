@@ -41,7 +41,7 @@
       svg.selectAll("circle")
           .data(parsedJSON.features) //-- notice that we refer to .features: an array just like before!
         .enter().append("circle")
-           .attr("cx", function(d) { //-- this 'd' refers to A FEATURE in the array
+          .attr("cx", function(d) { //-- this 'd' refers to A FEATURE in the array
                     var x = projection( d.geometry.coordinates ) [0];
                     return x;
                 }) 

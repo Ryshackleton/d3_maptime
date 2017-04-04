@@ -23,6 +23,7 @@
     // set up the SVG
     var svg = d3.select("body")
                 .append("svg"); 
+    
     svg.attr("width", width)
         .attr("height", height) 
         .style("border","3px solid black") 
@@ -42,20 +43,10 @@
     // send a JSON request to the earthquake feed,
     d3.json(todaysQuakesFeed, function(parsedJSON){ //-- result of the parsing is in parsedJSON
       
-      // examples of referencing data within the parsedJSON
-      console.log(parsedJSON.features); // log the whole features array to the console
-      
-      console.log("First Feature.geometry")
-      console.log(parsedJSON.features[0].geometry); // log the geometry for the first feature to the console 
-      
       svg.selectAll("circle")
           .data(parsedJSON.features) //-- notice that we refer to .features: an array just like before!
         .enter().append("circle")
           .attr("cx", function(d) { //-- this 'd' refers to A FEATURE in the array
-                  // if you get stuck, un-comment the next two lines, reload the page, and see the console
-                  // console.log("d is: ");
-                  // console.log(d);
-        
                   // MODIFY THE NEXT LINE TO RETURN THE EARTHQUAKE LONGITUDE
                   // from the JSON feature (return d.something.something[number];)
                   return d.geometry.coordinates[0];
